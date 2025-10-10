@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sávio Soares - Projetos</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4A90E2",
+              "fundo-claro": "#F5F5F5",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .menu-toggle .bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        margin: 4px auto;
+        background-color: #374151;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+      }
+      .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+
+      #mobileMenu {
+        opacity: 0.98;
+      }
+      .translate-x-0 {
+        transform: translateX(0) !important;
+      }
+      .no-scroll {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body class="bg-fundo-claro min-h-screen">
+    <header
+      class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50"
+    >
+      <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+
+      <nav class="hidden md:flex space-x-8" id="navMenu">
+        <a
+          href="index.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Home</a
+        >
+        <a
+          href="projetos.html"
+          class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active"
+          >Projetos</a
+        >
+        <a
+          href="blog.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Blog</a
+        >
+        <a
+          href="sobre.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Sobre</a
+        >
+        <a
+          href="contato.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Contato</a
+        >
+      </nav>
+
+      <button
+        class="md:hidden flex flex-col justify-center items-center menu-toggle z-50"
+        id="menuToggle"
+        aria-label="Toggle Menu"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav
+        id="mobileMenu"
+        class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+      >
+        <ul
+          class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
+        >
+          <li>
+            <a href="index.html" class="text-white hover:text-primary">Home</a>
+          </li>
+          <li>
+            <a href="projetos.html" class="text-primary hover:text-white"
+              >Projetos</a
+            >
+          </li>
+          <li>
+            <a href="blog.html" class="text-white hover:text-primary">Blog</a>
+          </li>
+          <li>
+            <a href="sobre.html" class="text-white hover:text-primary">Sobre</a>
+          </li>
+          <li>
+            <a href="contato.html" class="text-white hover:text-primary"
+              >Contato</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-6 md:py-16">
+      <h1
+        class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 border-b-4 border-primary pb-2 inline-block"
+      >
+        Meus Projetos
+      </h1>
+
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
+        >
+          <div class="p-6">
+            <span
+              class="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4"
+            >
+              Spring + NextJs
+            </span>
+            <img
+              src="./assets/print_arenahub_home.png"
+              alt="Mockup do AppCoffeeShop"
+              class="w-full h-auto rounded-md mb-4 shadow-md"
+            />
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">ArenaHub</h2>
+            <p class="text-gray-600 mb-6">
+              Plataforma completa para gestão de arenas e agendamento de
+              quadras, incluindo pagamentos PIX, jogos abertos, avaliações e
+              gestão de clientes.
+            </p>
+            <div class="flex justify-between items-center">
+              <a
+                href="./arenahub.html"
+                class="text-primary hover:text-blue-600 font-semibold flex items-center"
+                >
+                Ver detalhes
+                <i data-lucide="info" class="w-4 h-4 ml-2"></i>
+              </a>
+              <a
+                href="https://arenahub.app"
+                class="text-gray-500 hover:text-primary"
+                title="Visitar ArenaHub"
+              >
+                <i data-lucide="external-link" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
+        >
+          <div
+            class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
+          >
+            <div class="p-6">
+              <span
+                class="inline-block bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full mb-4"
+              >
+                React Native / TypeScript
+              </span>
+              <img
+                src="./assets/print_coffee_app_reactnative_2.png"
+                alt="Mockup do AppCoffeeShop"
+                class="w-full h-auto rounded-md mb-4 shadow-md"
+              />
+              <h2 class="text-2xl font-bold text-gray-900 mb-3">
+                AppCoffeeShop
+              </h2>
+              <p class="text-gray-600 mb-6">
+                Aplicação mobile de compras de café com carrinho, checkout e
+                sistema de recompensas. Desenvolvido com React Native para
+                experiência nativa.
+              </p>
+              <div class="flex justify-between items-center">
+                <a
+                  href="./appcoffeeshop.html"
+                  class="text-primary hover:text-blue-600 font-semibold flex items-center"
+                >
+                  Ver Detalhes
+                  <i data-lucide="info" class="w-4 h-4 ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
+        >
+          <div class="p-6">
+            <span
+              class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-4"
+              >JavaFX / Desktop</span
+            >
+            <img
+                src="./assets/print_mundo_animal_dashboard_admin.png"
+                alt="Mockup do Mundo Animal"
+                class="w-full h-auto rounded-md mb-4 shadow-md"
+              />
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">
+              Mundo Animal (Petshop)
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Sistema desktop em JavaFX para gestão completa de Petshops,
+              incluindo agendamento de serviços, cadastro de clientes, animais,
+              histórico e relatórios de atendimento.
+            </p>
+            <div class="flex justify-between items-center">
+              <a
+                href="./mundoanimal.html" 
+                class="text-primary hover:text-blue-600 font-semibold flex items-center"
+              >
+                Ver Detalhes
+                <i data-lucide="info" class="w-4 h-4 ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
