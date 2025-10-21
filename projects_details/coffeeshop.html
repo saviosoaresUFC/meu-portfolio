@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ArenaHub - Detalhes do Projeto | Sávio Soares</title>
+    <title>Coffee Shop - Detalhes do Projeto | Sávio Soares</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -15,6 +15,8 @@
             colors: {
               primary: "#4A90E2",
               "fundo-claro": "#F5F5F5",
+              // ADIÇÃO DE COR DESTAQUE PARA O TEMA CAFÉ
+              coffee: "#A0522D", // Marrom Sólido
             },
           },
         },
@@ -22,7 +24,7 @@
     </script>
 
     <style>
-      /* Apenas o CSS necessário para o menu e animações */
+      /* Apenas o CSS necessário para o menu e animações (Mantido do ArenaHub) */
       .menu-toggle .bar {
         display: block;
         width: 24px;
@@ -62,27 +64,22 @@
 
       <nav class="hidden md:flex space-x-8" id="navMenu">
         <a
-          href="index.html"
+          href="../index.html"
           class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
           >Home</a
         >
         <a
-          href="projetos.html"
+          href="../projetos.html"
           class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active"
           >Projetos</a
         >
         <a
-          href="blog.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Blog</a
-        >
-        <a
-          href="sobre.html"
+          href="../sobre.html"
           class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
           >Sobre</a
         >
         <a
-          href="contato.html"
+          href="../contato.html"
           class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
           >Contato</a
         >
@@ -106,21 +103,18 @@
           class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
         >
           <li>
-            <a href="index.html" class="text-white hover:text-primary">Home</a>
+            <a href="../index.html" class="text-white hover:text-primary">Home</a>
           </li>
           <li>
-            <a href="projetos.html" class="text-primary hover:text-white"
+            <a href="../projetos.html" class="text-primary hover:text-white"
               >Projetos</a
             >
           </li>
           <li>
-            <a href="blog.html" class="text-white hover:text-primary">Blog</a>
+            <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
           </li>
           <li>
-            <a href="sobre.html" class="text-white hover:text-primary">Sobre</a>
-          </li>
-          <li>
-            <a href="contato.html" class="text-white hover:text-primary"
+            <a href="../contato.html" class="text-white hover:text-primary"
               >Contato</a
             >
           </li>
@@ -131,39 +125,37 @@
     <main class="max-w-6xl mx-auto p-6 md:py-16">
       <header class="mb-16 md:mb-20 text-center">
         <div
-          class="inline-flex items-center justify-center p-6 rounded-2xl bg-white shadow-lg border-2 border-green-600 mb-8"
+          class="inline-flex items-center justify-center p-6 rounded-2xl bg-white shadow-lg border-2 border-amber-800 mb-8"
         >
           <img
-            src="./assets/icon_arenahub_light.svg"
-            alt="Logo ArenaHub"
-            class="h-24 md:h-28 w-auto drop-shadow-md transition-transform duration-500 hover:scale-105"
+            src="../assets/cofeeshop/icon_reactnative.png"
+            alt="Mockup do CoffeeShop"
+            class="h-36 md:h-56 w-auto drop-shadow-lg transition-transform duration-500 hover:scale-105"
           />
         </div>
 
+        <h1
+          class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"
+        >
+          Coffee Shop
+        </h1>
         <p class="max-w-3xl mx-auto text-gray-600 mt-6 text-lg leading-relaxed">
-          O <strong class="text-green-600 font-semibold">ArenaHub</strong> é uma
-          plataforma moderna que transforma a gestão de arenas esportivas e a
-          experiência dos atletas. Desenvolvido em
-          <span class="text-gray-800 font-semibold">Spring Boot + NextJs</span>,
-          combina escalabilidade, segurança e performance em um único sistema.
+          O <strong class="text-coffee font-semibold">Coffee Shop</strong> é
+          um aplicativo móvel de comércio eletrônico focado na venda de café.
+          Desenvolvido com
+          <span class="text-gray-800 font-semibold"
+            >React Native e TypeScript</span
+          >, ele oferece uma experiência de compra nativa, rápida e intuitiva.
         </p>
 
         <div class="flex justify-center flex-wrap gap-4 mt-10">
           <a
-            href="https://github.com/orgs/EngStrategy/repositories"
+            href="https://github.com/saviosoaresUFC/AppCoffeeShop"
             target="_blank"
             class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <i data-lucide="github" class="w-5 h-5 mr-2"></i>
-            Ver no GitHub
-          </a>
-          <a
-            href="https://arenahub.app"
-            target="_blank"
-            class="flex items-center text-primary border-2 border-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
-          >
-            <i data-lucide="monitor" class="w-5 h-5 mr-2"></i>
-            Visitar Site
+            Ver no GitHub (Código)
           </a>
         </div>
       </header>
@@ -178,90 +170,56 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i
-              data-lucide="calendar-check"
-              class="w-6 h-6 text-primary mt-1"
-            ></i>
+            <i data-lucide="shopping-cart" class="w-6 h-6 text-coffee mt-1"></i>
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Agendamento Inteligente
+                Carrinho Inteligente
               </h3>
               <p class="text-gray-600 text-sm">
-                Atletas podem agendar quadras facilmente, com visualização de
-                horários disponíveis e gerenciamento simplificado para
-                administradores da arena.
+                Gestão de itens no carrinho com cálculo de frete dinâmico e
+                opções de personalização de pedidos (leite, açúcar, etc.).
               </p>
             </div>
           </div>
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="credit-card" class="w-6 h-6 text-primary mt-1"></i>
+            <i data-lucide="clock" class="w-6 h-6 text-coffee mt-1"></i>
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Pagamento PIX Integrado
+                Histórico de Pedidos
               </h3>
               <p class="text-gray-600 text-sm">
-                Confirmação de agendamentos via pagamento PIX direto na
-                plataforma, garantindo segurança e agilidade, com cancelamento
-                automático de 10 minutos se não pago.
+                Visualização de pedidos anteriores, facilitando a repetição de
+                compras favoritas com um único clique.
               </p>
             </div>
           </div>
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="users" class="w-6 h-6 text-primary mt-1"></i>
+            <i data-lucide="award" class="w-6 h-6 text-coffee mt-1"></i>
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Jogos Abertos e Conexão
+                Programa de Fidelidade
               </h3>
               <p class="text-gray-600 text-sm">
-                Recurso para atletas entrarem em "jogos abertos" com vagas
-                remanescentes, promovendo a interação e garantindo quadras
-                cheias.
+                Sistema de pontos e recompensas integrado, incentivando a
+                fidelidade e oferecendo descontos exclusivos.
               </p>
             </div>
           </div>
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="bar-chart-2" class="w-6 h-6 text-primary mt-1"></i>
+            <i data-lucide="map-pin" class="w-6 h-6 text-coffee mt-1"></i>
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Gestão de Clientes e Quadras
+                Busca de Lojas Próximas
               </h3>
               <p class="text-gray-600 text-sm">
-                Ferramentas para arenas gerenciarem seus clientes, quadras,
-                visualizar histórico de agendamentos e participação.
-              </p>
-            </div>
-          </div>
-          <div
-            class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
-          >
-            <i data-lucide="star" class="w-6 h-6 text-primary mt-1"></i>
-            <div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Avaliações e Feedback
-              </h3>
-              <p class="text-gray-600 text-sm">
-                Sistema de avaliação para atletas darem feedback sobre arenas,
-                ajudando na melhoria contínua dos serviços.
-              </p>
-            </div>
-          </div>
-          <div
-            class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
-          >
-            <i data-lucide="shuffle" class="w-6 h-6 text-primary mt-1"></i>
-            <div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Sorteio de Times
-              </h3>
-              <p class="text-gray-600 text-sm">
-                Funcionalidade para sortear jogadores em times, tornando a
-                organização dos rachas mais justa e divertida.
+                Usa a geolocalização do usuário para encontrar a cafeteria mais
+                próxima com o menu completo e horários de funcionamento.
               </p>
             </div>
           </div>
@@ -276,63 +234,38 @@
         </h2>
         <div class="flex flex-wrap gap-3">
           <span
-            class="bg-purple-100 text-purple-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Java 17 & OOP</span
-          >
-          <span
-            class="bg-pink-100 text-pink-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Spring Boot 3 (Maven)</span
-          >
-          <span
-            class="bg-red-100 text-red-700 text-sm font-medium px-4 py-2 rounded-full"
-            >PostgreSQL & Hibernate</span
-          >
-          <span
-            class="bg-yellow-100 text-yellow-700 text-sm font-medium px-4 py-2 rounded-full"
-            >REST API & JWT</span
-          >
-
-          <span
             class="bg-blue-100 text-blue-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Asaas API (PIX)</span
+            >React Native</span
           >
-          <span
-            class="bg-gray-400 text-white text-sm font-medium px-4 py-2 rounded-full"
-            >Stripe (Assinatura)</span
-          >
-          <span
-            class="bg-indigo-100 text-indigo-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Zenvia (SMS)</span
-          >
-
           <span
             class="bg-cyan-100 text-cyan-700 text-sm font-medium px-4 py-2 rounded-full"
             >TypeScript</span
           >
           <span
-            class="bg-blue-300 text-blue-900 text-sm font-medium px-4 py-2 rounded-full"
-            >Next.js / React</span
+            class="bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full"
+            >Expo Go</span
           >
           <span
-            class="bg-teal-100 text-teal-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Tailwind CSS</span
+            class="bg-red-100 text-red-700 text-sm font-medium px-4 py-2 rounded-full"
+            >React Navigation</span
           >
 
           <span
             class="bg-orange-100 text-orange-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Docker</span
-          >
-          <span
-            class="bg-lime-100 text-lime-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Git / GitHub</span
-          >
-          <span
-            class="bg-amber-100 text-amber-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Scrum / Metodologias Ágeis</span
+            >Redux Toolkit (Gestão de Estado)</span
           >
           <span
             class="bg-green-100 text-green-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Flyway (Migrações)</span
+            >Firebase</span
+          >
+          <span
+            class="bg-yellow-100 text-yellow-700 text-sm font-medium px-4 py-2 rounded-full"
+            >API de Pagamento (Stripe/Pix)</span
+          >
+
+          <span
+            class="bg-lime-100 text-lime-700 text-sm font-medium px-4 py-2 rounded-full"
+            >Git / GitHub</span
           >
         </div>
       </section>
@@ -346,29 +279,25 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <img
-              src="./assets/print_horarios_livres.png"
-              alt="Screenshot do Agendamento"
+              src="../assets/cofeeshop/print_coffee_app_reactnative_2.png"
+              alt="Screenshot da tela inicial"
               class="w-full h-auto object-cover"
             />
             <p class="p-4 text-gray-700 text-sm">
-              Tela de agendamento de quadras com disponibilidade.
+              Tela inicial com destaque para os produtos e ofertas do dia.
             </p>
           </div>
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <img
-              src="./assets/print_dashboard_arena.png"
-              alt="Screenshot do Dashboard da Arena"
+              src="../assets/cofeeshop/app_coffee_cart.png"
+              alt="Screenshot da tela de carrinho"
               class="w-full h-auto object-cover"
             />
             <p class="p-4 text-gray-700 text-sm">
-              Dashboard de gestão da arena com visualização de agendamentos e
-              clientes.
+              Tela de carrinho para revisar o pedido antes do checkout.
             </p>
           </div>
         </div>
-        <p class="text-center text-gray-600 mt-8">
-          Em breve, mais detalhes e um vídeo de demonstração completo!
-        </p>
       </section>
     </main>
 

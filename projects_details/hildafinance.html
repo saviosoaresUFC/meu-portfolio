@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AppCoffeeShop - Detalhes do Projeto | Sávio Soares</title>
+    <title>Hilda Finance - Detalhes do Projeto | Sávio Soares</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -15,8 +15,6 @@
             colors: {
               primary: "#4A90E2",
               "fundo-claro": "#F5F5F5",
-              // ADIÇÃO DE COR DESTAQUE PARA O TEMA CAFÉ
-              coffee: "#A0522D", // Marrom Sólido
             },
           },
         },
@@ -24,7 +22,6 @@
     </script>
 
     <style>
-      /* Apenas o CSS necessário para o menu e animações (Mantido do ArenaHub) */
       .menu-toggle .bar {
         display: block;
         width: 24px;
@@ -33,7 +30,6 @@
         background-color: #374151;
         transition: all 0.3s ease-in-out;
       }
-
       .menu-toggle.active .bar:nth-child(2) {
         opacity: 0;
       }
@@ -43,7 +39,6 @@
       .menu-toggle.active .bar:nth-child(3) {
         transform: translateY(-10px) rotate(-45deg);
       }
-
       #mobileMenu {
         opacity: 0.98;
       }
@@ -64,27 +59,22 @@
 
       <nav class="hidden md:flex space-x-8" id="navMenu">
         <a
-          href="index.html"
+          href="../index.html"
           class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
           >Home</a
         >
         <a
-          href="projetos.html"
+          href="../projetos.html"
           class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active"
           >Projetos</a
         >
         <a
-          href="blog.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Blog</a
-        >
-        <a
-          href="sobre.html"
+          href="../sobre.html"
           class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
           >Sobre</a
         >
         <a
-          href="contato.html"
+          href="../contato.html"
           class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
           >Contato</a
         >
@@ -108,21 +98,18 @@
           class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
         >
           <li>
-            <a href="index.html" class="text-white hover:text-primary">Home</a>
+            <a href="../index.html" class="text-white hover:text-primary">Home</a>
           </li>
           <li>
-            <a href="projetos.html" class="text-primary hover:text-white"
+            <a href="../projetos.html" class="text-primary hover:text-white"
               >Projetos</a
             >
           </li>
           <li>
-            <a href="blog.html" class="text-white hover:text-primary">Blog</a>
+            <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
           </li>
           <li>
-            <a href="sobre.html" class="text-white hover:text-primary">Sobre</a>
-          </li>
-          <li>
-            <a href="contato.html" class="text-white hover:text-primary"
+            <a href="../contato.html" class="text-white hover:text-primary"
               >Contato</a
             >
           </li>
@@ -133,37 +120,37 @@
     <main class="max-w-6xl mx-auto p-6 md:py-16">
       <header class="mb-16 md:mb-20 text-center">
         <div
-          class="inline-flex items-center justify-center p-6 rounded-2xl bg-white shadow-lg border-2 border-amber-800 mb-8"
+          class="inline-flex items-center justify-center p-6 rounded-2xl bg-white shadow-lg border-2 border-teal-600 mb-8"
         >
           <img
-            src="./assets/icon_reactnative.png"
-            alt="Mockup do AppCoffeeShop"
-            class="h-36 md:h-56 w-auto drop-shadow-lg transition-transform duration-500 hover:scale-105"
+            class="h-20 w-20 transition-transform duration-500 hover:scale-105"
+            src="../assets/hildafinance/icon_burguer.png"
+            alt="Logo do Hilda Finance"
           />
         </div>
 
-        <h1
-          class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"
-        >
-          AppCoffeeShop
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+          Hilda Finance
         </h1>
         <p class="max-w-3xl mx-auto text-gray-600 mt-6 text-lg leading-relaxed">
-          O <strong class="text-coffee font-semibold">AppCoffeeShop</strong> é
-          um aplicativo móvel de comércio eletrônico focado na venda de café.
-          Desenvolvido com
+          O
+          <strong class="text-teal-600 font-semibold">Hilda Finance</strong>
+          é um aplicativo móvel para gestão simplificada de <strong>Estoque e Vendas
+          Diárias</strong>, desenvolvido sob medida para uma espetaria em Floriano, PI.
+          Criado com
           <span class="text-gray-800 font-semibold"
-            >React Native e TypeScript</span
-          >, ele oferece uma experiência de compra nativa, rápida e intuitiva.
+            >React Native (TypeScript)</span
+          >, garante agilidade e confiabilidade na operação do dia a dia.
         </p>
 
         <div class="flex justify-center flex-wrap gap-4 mt-10">
           <a
-            href="https://github.com/saviosoaresUFC/AppCoffeeShop"
+            href="https://github.com/saviosoaresUFC/Hilda_Finance"
             target="_blank"
             class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <i data-lucide="github" class="w-5 h-5 mr-2"></i>
-            Ver no GitHub (Código)
+            Ver no GitHub
           </a>
         </div>
       </header>
@@ -172,62 +159,69 @@
         <h2
           class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2"
         >
-          Funcionalidades Principais
+          Funcionalidades Chave
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="shopping-cart" class="w-6 h-6 text-coffee mt-1"></i>
+            <i
+              data-lucide="package-search"
+              class="w-16 h-16 text-teal-600 mt-1"
+            ></i>
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Carrinho Inteligente
+                Controle de Estoque
               </h3>
               <p class="text-gray-600 text-sm">
-                Gestão de itens no carrinho com cálculo de frete dinâmico e
-                opções de personalização de pedidos (leite, açúcar, etc.).
+                Gerenciamento de entradas e saídas de produtos. Alerta
+                automático para itens com baixo estoque, reduzindo perdas e
+                garantindo disponibilidade.
               </p>
             </div>
           </div>
+
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="clock" class="w-6 h-6 text-coffee mt-1"></i>
+            <i data-lucide="dollar-sign" class="w-16 h-16 text-teal-600 mt-1"></i>
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Histórico de Pedidos
+                Registro de Vendas Diárias
               </h3>
               <p class="text-gray-600 text-sm">
-                Visualização de pedidos anteriores, facilitando a repetição de
-                compras favoritas com um único clique.
+                Interface rápida e intuitiva para registrar as vendas do dia,
+                ajudando no fechamento de caixa e na conciliação financeira.
               </p>
             </div>
           </div>
+
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="award" class="w-6 h-6 text-coffee mt-1"></i>
+            <i data-lucide="user-plus" class="w-16 h-16 text-teal-600 mt-1"></i>
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Programa de Fidelidade
+                Cadastro de Produtos Personalizado
               </h3>
               <p class="text-gray-600 text-sm">
-                Sistema de pontos e recompensas integrado, incentivando a
-                fidelidade e oferecendo descontos exclusivos.
+                Módulo para adicionar novos itens ao cardápio com variação de
+                preços, descrições e categorias específicas para espetaria.
               </p>
             </div>
           </div>
+
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="map-pin" class="w-6 h-6 text-coffee mt-1"></i>
+            <i data-lucide="bar-chart" class="w-16 h-16 text-teal-600 mt-1"></i>
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                Busca de Lojas Próximas
+                Relatórios e Dashboards
               </h3>
               <p class="text-gray-600 text-sm">
-                Usa a geolocalização do usuário para encontrar a cafeteria mais
-                próxima com o menu completo e horários de funcionamento.
+                Visualizações simples e claras do desempenho de vendas, dos
+                produtos mais vendidos e do histórico de estoque.
               </p>
             </div>
           </div>
@@ -242,7 +236,7 @@
         </h2>
         <div class="flex flex-wrap gap-3">
           <span
-            class="bg-blue-100 text-blue-700 text-sm font-medium px-4 py-2 rounded-full"
+            class="bg-blue-300 text-blue-900 text-sm font-medium px-4 py-2 rounded-full"
             >React Native</span
           >
           <span
@@ -250,30 +244,20 @@
             >TypeScript</span
           >
           <span
-            class="bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Expo Go</span
+            class="bg-green-100 text-green-700 text-sm font-medium px-4 py-2 rounded-full"
+            >Expo</span
           >
           <span
             class="bg-red-100 text-red-700 text-sm font-medium px-4 py-2 rounded-full"
-            >React Navigation</span
-          >
-
-          <span
-            class="bg-orange-100 text-orange-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Redux Toolkit (Gestão de Estado)</span
+            >SQLite / AsyncStorage</span
           >
           <span
-            class="bg-green-100 text-green-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Firebase</span
+            class="bg-indigo-100 text-indigo-700 text-sm font-medium px-4 py-2 rounded-full"
+            >Context API / Redux</span
           >
           <span
-            class="bg-yellow-100 text-yellow-700 text-sm font-medium px-4 py-2 rounded-full"
-            >API de Pagamento (Stripe/Pix)</span
-          >
-
-          <span
-            class="bg-lime-100 text-lime-700 text-sm font-medium px-4 py-2 rounded-full"
-            >Git / GitHub</span
+            class="bg-amber-100 text-amber-700 text-sm font-medium px-4 py-2 rounded-full"
+            >Styled Components</span
           >
         </div>
       </section>
@@ -282,27 +266,27 @@
         <h2
           class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2"
         >
-          Screenshots e Demonstração
+          Screenshots e Imagens
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <img
-              src="./assets/print_coffee_app_reactnative_2.png"
-              alt="Screenshot da tela inicial"
+              src="../assets/hildafinance/modal_venda.png"
+              alt="Screenshot da tela de Vendas"
               class="w-full h-auto object-cover"
             />
             <p class="p-4 text-gray-700 text-sm">
-              Tela inicial com destaque para os produtos e ofertas do dia.
+              Tela de registro rápido de vendas.
             </p>
           </div>
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <img
-              src="./assets/app_coffee_cart.png"
-              alt="Screenshot da tela de carrinho"
+              src="../assets/hildafinance/relatorio_parcial.png"
+              alt="Screenshot da tela de Estoque"
               class="w-full h-auto object-cover"
             />
             <p class="p-4 text-gray-700 text-sm">
-              Tela de carrinho para revisar o pedido antes do checkout.
+              Módulo de controle de vendas e estoque.
             </p>
           </div>
         </div>

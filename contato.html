@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato - Sávio Soares</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-fundo-claro min-h-screen">
+    <header
+      class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50"
+    >
+      <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+
+      <nav class="hidden md:flex space-x-8" id="navMenu">
+        <a
+          href="index.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Home</a
+        >
+        <a
+          href="projetos.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Projetos</a
+        >
+        <a
+          href="sobre.html"
+          class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active"
+          >Sobre</a
+        >
+        <a
+          href="contato.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Contato</a
+        >
+      </nav>
+
+      <button
+        class="md:hidden flex flex-col justify-center items-center menu-toggle z-50"
+        id="menuToggle"
+        aria-label="Toggle Menu"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav
+        id="mobileMenu"
+        class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+      >
+        <ul
+          class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
+        >
+          <li>
+            <a href="index.html" class="text-white hover:text-primary">Home</a>
+          </li>
+          <li>
+            <a href="projetos.html" class="text-white hover:text-primary"
+              >Projetos</a
+            >
+          </li>
+          <li>
+            <a href="sobre.html" class="text-primary hover:text-white">Sobre</a>
+          </li>
+          <li>
+            <a href="contato.html" class="text-white hover:text-primary"
+              >Contato</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="flex justify-center items-centermx-auto p-6 md:py-16">
+      <strong class="text-3xl font-bold text-gray-800 mb-6 block">
+        Página de Contato em Construção
+      </strong>
+    </main>
+  </body>
+</html>
