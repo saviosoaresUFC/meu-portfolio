@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coffee Shop - Detalhes do Projeto | Sávio Soares</title>
+    <title>Coffee Shop - Detalhes do Projeto</title>
 
+    <link rel="stylesheet" href="../css/global.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
       tailwind.config = {
@@ -15,45 +15,12 @@
             colors: {
               primary: "#4A90E2",
               "fundo-claro": "#F5F5F5",
-              // ADIÇÃO DE COR DESTAQUE PARA O TEMA CAFÉ
               coffee: "#A0522D", // Marrom Sólido
             },
           },
         },
       };
     </script>
-
-    <style>
-      /* Apenas o CSS necessário para o menu e animações (Mantido do ArenaHub) */
-      .menu-toggle .bar {
-        display: block;
-        width: 24px;
-        height: 2px;
-        margin: 4px auto;
-        background-color: #374151;
-        transition: all 0.3s ease-in-out;
-      }
-
-      .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle.active .bar:nth-child(1) {
-        transform: translateY(10px) rotate(45deg);
-      }
-      .menu-toggle.active .bar:nth-child(3) {
-        transform: translateY(-10px) rotate(-45deg);
-      }
-
-      #mobileMenu {
-        opacity: 0.98;
-      }
-      .translate-x-0 {
-        transform: translateX(0) !important;
-      }
-      .no-scroll {
-        overflow: hidden;
-      }
-    </style>
   </head>
 
   <body class="bg-fundo-claro min-h-screen">
@@ -72,6 +39,11 @@
           href="../projetos.html"
           class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active"
           >Projetos</a
+        >
+        <a
+          href="../blog.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Blog</a
         >
         <a
           href="../sobre.html"
@@ -103,7 +75,9 @@
           class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
         >
           <li>
-            <a href="../index.html" class="text-white hover:text-primary">Home</a>
+            <a href="../index.html" class="text-white hover:text-primary"
+              >Home</a
+            >
           </li>
           <li>
             <a href="../projetos.html" class="text-primary hover:text-white"
@@ -111,7 +85,14 @@
             >
           </li>
           <li>
-            <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+            <a href="../blog.html" class="text-white hover:text-primary"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a href="../sobre.html" class="text-white hover:text-primary"
+              >Sobre</a
+            >
           </li>
           <li>
             <a href="../contato.html" class="text-white hover:text-primary"
@@ -140,8 +121,8 @@
           Coffee Shop
         </h1>
         <p class="max-w-3xl mx-auto text-gray-600 mt-6 text-lg leading-relaxed">
-          O <strong class="text-coffee font-semibold">Coffee Shop</strong> é
-          um aplicativo móvel de comércio eletrônico focado na venda de café.
+          O <strong class="text-coffee font-semibold">Coffee Shop</strong> é um
+          aplicativo móvel de comércio eletrônico focado na venda de café.
           Desenvolvido com
           <span class="text-gray-800 font-semibold"
             >React Native e TypeScript</span
@@ -154,7 +135,11 @@
             target="_blank"
             class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <i data-lucide="github" class="w-5 h-5 mr-2"></i>
+            <img
+              src="../assets/icons/github.svg"
+              alt="Ícone do GitHub"
+              class="w-5 h-5 mr-2 icons-white"
+            />
             Ver no GitHub (Código)
           </a>
         </div>
@@ -170,7 +155,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="shopping-cart" class="w-6 h-6 text-coffee mt-1"></i>
+            <img
+              src="../assets/icons/shopping-cart.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-brown"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Carrinho Inteligente
@@ -184,7 +173,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="clock" class="w-6 h-6 text-coffee mt-1"></i>
+            <img
+              src="../assets/icons/clock.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-brown"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Histórico de Pedidos
@@ -198,7 +191,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="award" class="w-6 h-6 text-coffee mt-1"></i>
+            <img
+              src="../assets/icons/award.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-brown"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Programa de Fidelidade
@@ -212,7 +209,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="map-pin" class="w-6 h-6 text-coffee mt-1"></i>
+            <img
+              src="../assets/icons/map-pin.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-brown"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Busca de Lojas Próximas
@@ -307,9 +308,6 @@
       </p>
     </footer>
 
-    <script src="js/script.js"></script>
-    <script>
-      lucide.createIcons();
-    </script>
+    <script src="../js/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,115 @@
+/* =========== Estilos do Menu =============*/
+.menu-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 4px auto;
+    background-color: #374151;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+#mobileMenu {
+    opacity: 0.98;
+}
+
+.translate-x-0 {
+    transform: translateX(0) !important;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+/* =================================================== */
+
+/* ===================== ICONS ======================= */
+
+.icons-social-media {
+    transition: transform 0.3s ease-in-out;
+    filter: invert(34%) sepia(83%) saturate(749%) hue-rotate(181deg) brightness(95%) contrast(92%);
+}
+
+.icons-social-media:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.icons-blue {
+    filter: invert(34%) sepia(83%) saturate(749%) hue-rotate(181deg) brightness(95%) contrast(92%);
+}
+
+.icons-gray-500 {
+    filter: invert(39%) sepia(3%) saturate(0%) hue-rotate(169deg) brightness(91%) contrast(87%);
+}
+
+.icons-white {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
+}
+
+.icons-green {
+    filter: invert(48%) sepia(83%) saturate(749%) hue-rotate(81deg) brightness(95%) contrast(92%);
+}
+
+.icons-brown {
+    filter: invert(20%) sepia(30%) saturate(1000%) hue-rotate(10deg) brightness(80%) contrast(90%);
+}
+
+.icons-orange {
+    filter: invert(58%) sepia(90%) saturate(1000%) hue-rotate(350deg) brightness(100%) contrast(90%);
+}
+
+.icons-cyan {
+    filter: invert(48%) sepia(83%) saturate(749%) hue-rotate(181deg) brightness(95%) contrast(92%);
+}
+
+.icons-red {
+    filter: invert(18%) sepia(97%) saturate(7483%) hue-rotate(356deg) brightness(96%) contrast(120%);
+}
+
+/* =================================================== */
+
+/* ===================== TIMELINE ======================= */
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: #E5E7EB;
+}
+
+.timeline-item:last-child::before {
+    height: 50%;
+}
+
+.timeline-item::after {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 12px;
+    width: 14px;
+    height: 14px;
+    background-color: #4A90E2;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* =================================================== */

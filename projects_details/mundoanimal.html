@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mundo Animal - Sistema de Gestão para Petshop | Sávio Soares</title>
+    <title>Mundo Animal - Detalhes do Projeto</title>
 
+    <link rel="stylesheet" href="../css/global.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
       tailwind.config = {
@@ -101,7 +101,9 @@
           class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
         >
           <li>
-            <a href="../index.html" class="text-white hover:text-primary">Home</a>
+            <a href="../index.html" class="text-white hover:text-primary"
+              >Home</a
+            >
           </li>
           <li>
             <a href="../projetos.html" class="text-primary hover:text-white"
@@ -109,7 +111,9 @@
             >
           </li>
           <li>
-            <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+            <a href="../sobre.html" class="text-white hover:text-primary"
+              >Sobre</a
+            >
           </li>
           <li>
             <a href="../contato.html" class="text-white hover:text-primary"
@@ -131,75 +135,130 @@
             class="h-36 md:h-56 w-auto drop-shadow-lg transition-transform duration-500 hover:scale-105"
           />
         </div>
-        
-      <h1
-        class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 border-b-4 border-primary pb-2 inline-block"
-      >
-        Mundo Animal: Sistema para Petshop
-      </h1>
-      <p class="text-gray-600 text-lg mb-8">
-        O Mundo Animal é um sistema \textbf{Desktop} desenvolvido em \textbf{JavaFX} e \textbf{PostgreSQL} para otimizar a gestão de Petshops, garantindo o controle total sobre agendamentos, clientes, serviços e secretários. Focado em estabilidade e uma interface intuitiva.
-      </p>
 
-      <div class="flex justify-center flex-wrap gap-4 mt-10">
-        <a
-          href="https://github.com/EngStrategy/MundoAnimal"
-          target="_blank"
-          class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+        <h1
+          class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 border-b-4 border-primary pb-2 inline-block"
         >
-          <i data-lucide="github" class="w-5 h-5 mr-2"></i>
-          Ver no GitHub
-        </a>
-      </div>
+          Mundo Animal: Sistema para Petshop
+        </h1>
+        <p class="text-gray-600 text-lg mb-8">
+          O Mundo Animal é um sistema <strong>Desktop</strong> desenvolvido em
+          <strong>JavaFX</strong> e <strong>PostgreSQL</strong> para otimizar a gestão de
+          Petshops, garantindo o controle total sobre agendamentos, clientes,
+          serviços e secretários. Focado em estabilidade e uma interface
+          intuitiva.
+        </p>
+
+        <div class="flex justify-center flex-wrap gap-4 mt-10">
+          <a
+            href="https://github.com/EngStrategy/MundoAnimal"
+            target="_blank"
+            class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+          >
+            <img
+              src="../assets/icons/github.svg"
+              alt="Ícone do GitHub"
+              class="w-5 h-5 mr-2 icons-white"
+            />
+            Ver no GitHub (Código)
+          </a>
+        </div>
       </header>
 
       <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2">
+        <h2
+          class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2"
+        >
           Funcionalidades Principais
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
-            <i data-lucide="lock" class="w-6 h-6 text-primary mt-1"></i>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
+          >
+            <img
+              src="../assets/icons/lock.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-blue"
+            />
             <div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Autenticação e Permissões</h3>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Autenticação e Permissões
+              </h3>
               <p class="text-gray-600 text-sm">
-                Login seguro para diferentes níveis de acesso: Administradores (gestão total) e Secretários (gestão de agenda e clientes).
+                Login seguro para diferentes níveis de acesso: Administradores
+                (gestão total) e Secretários (gestão de agenda e clientes).
               </p>
             </div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
-            <i data-lucide="calendar-check" class="w-6 h-6 text-primary mt-1"></i>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
+          >
+            <img
+              src="../assets/icons/calendar-check.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-blue"
+            />
             <div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Agendamento Dinâmico</h3>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Agendamento Dinâmico
+              </h3>
               <p class="text-gray-600 text-sm">
-                Gerenciamento de agendamentos de serviços com exibição dinâmica dos próximos atendimentos diretamente na tela inicial.
+                Gerenciamento de agendamentos de serviços com exibição dinâmica
+                dos próximos atendimentos diretamente na tela inicial.
               </p>
             </div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
-            <i data-lucide="paw-print" class="w-6 h-6 text-primary mt-1"></i>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
+          >
+            <img
+              src="../assets/icons/paw-print.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-blue"
+            />
             <div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Gestão de Clientes e Pets</h3>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Gestão de Clientes e Pets
+              </h3>
               <p class="text-gray-600 text-sm">
-                Cadastro e controle eficiente de clientes e seus respectivos animais (pets), mantendo um histórico detalhado.
+                Cadastro e controle eficiente de clientes e seus respectivos
+                animais (pets), mantendo um histórico detalhado.
               </p>
             </div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
-            <i data-lucide="file-text" class="w-6 h-6 text-primary mt-1"></i>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
+          >
+            <img
+              src="../assets/icons/file-text.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-blue"
+            />
             <div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Controle de Serviços e Relatórios</h3>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Controle de Serviços e Relatórios
+              </h3>
               <p class="text-gray-600 text-sm">
-                Controle de todos os serviços realizados e relatórios de operações para tomada de decisão.
+                Controle de todos os serviços realizados e relatórios de
+                operações para tomada de decisão.
               </p>
             </div>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
-            <i data-lucide="layers" class="w-6 h-6 text-primary mt-1"></i>
+          <div
+            class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
+          >
+            <img
+              src="../assets/icons/layers.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-blue"
+            />
             <div>
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">Interface Intuitiva (JavaFX)</h3>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                Interface Intuitiva (JavaFX)
+              </h3>
               <p class="text-gray-600 text-sm">
-                Interface de usuário moderna e intuitiva, desenvolvida em JavaFX, com foco em usabilidade desktop.
+                Interface de usuário moderna e intuitiva, desenvolvida em
+                JavaFX, com foco em usabilidade desktop.
               </p>
             </div>
           </div>
@@ -207,40 +266,80 @@
       </section>
 
       <section class="mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2">
+        <h2
+          class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2"
+        >
           Tecnologias Utilizadas
         </h2>
         <div class="flex flex-wrap gap-3">
-            <span class="bg-purple-100 text-purple-700 text-sm font-medium px-4 py-2 rounded-full">Java 23</span>
-            <span class="bg-orange-100 text-orange-700 text-sm font-medium px-4 py-2 rounded-full">JavaFX</span>
-          <span class="bg-red-100 text-red-700 text-sm font-medium px-4 py-2 rounded-full">PostgreSQL</span>
-          <span class="bg-pink-100 text-pink-700 text-sm font-medium px-4 py-2 rounded-full">Hibernate / JPA</span>
-          <span class="bg-gray-400 text-white text-sm font-medium px-4 py-2 rounded-full">Maven</span>
-          <span class="bg-gray-400 text-gray-800 text-sm font-medium px-4 py-2 rounded-full">Git / GitHub</span>
-          <span class="bg-amber-200 text-amber-700 text-sm font-medium px-4 py-2 rounded-full">SceneBuilder</span>
-          <span class="bg-blue-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full">CSS</span>
+          <span
+            class="bg-purple-100 text-purple-700 text-sm font-medium px-4 py-2 rounded-full"
+            >Java 23</span
+          >
+          <span
+            class="bg-orange-100 text-orange-700 text-sm font-medium px-4 py-2 rounded-full"
+            >JavaFX</span
+          >
+          <span
+            class="bg-red-100 text-red-700 text-sm font-medium px-4 py-2 rounded-full"
+            >PostgreSQL</span
+          >
+          <span
+            class="bg-gray-400 text-white text-sm font-medium px-4 py-2 rounded-full"
+            >Maven</span
+          >
+          <span
+            class="bg-gray-400 text-gray-800 text-sm font-medium px-4 py-2 rounded-full"
+            >Git / GitHub</span
+          >
+          <span
+            class="bg-amber-200 text-amber-700 text-sm font-medium px-4 py-2 rounded-full"
+            >SceneBuilder</span
+          >
+          <span
+            class="bg-blue-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full"
+            >CSS</span
+          >
         </div>
       </section>
 
       <section>
-        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2">
+        <h2
+          class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2"
+        >
           Screenshots e Execução
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img src="../assets/mundoanimal/print_mundo_animal_cadastrar_cliente.png" alt="Tela de Cadastro de Cliente" class="w-full h-auto object-cover" />
-            <p class="p-4 text-gray-700 text-sm">Tela de Cadastro de Clientes.</p>
+            <img
+              src="../assets/mundoanimal/print_mundo_animal_cadastrar_cliente.png"
+              alt="Tela de Cadastro de Cliente"
+              class="w-full h-auto object-cover"
+            />
+            <p class="p-4 text-gray-700 text-sm">
+              Tela de Cadastro de Clientes.
+            </p>
           </div>
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img src="../assets/mundoanimal/print_mundo_animal_dashboard_admin.png" alt="Tela de gerenciamento de clientes" class="w-full h-auto object-cover" />
-            <p class="p-4 text-gray-700 text-sm">Dashboard do Admin do Petshop.</p>
+            <img
+              src="../assets/mundoanimal/print_mundo_animal_dashboard_admin.png"
+              alt="Tela de gerenciamento de clientes"
+              class="w-full h-auto object-cover"
+            />
+            <p class="p-4 text-gray-700 text-sm">
+              Dashboard do Admin do Petshop.
+            </p>
           </div>
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img src="../assets/mundoanimal/print_mundo_animal_historico.png" alt="Tela de histórico de serviços" class="w-full h-auto object-cover" />
-            <p class="p-4 text-gray-700 text-sm">Histórico de Serviços do Cliente.</p>
+            <img
+              src="../assets/mundoanimal/print_mundo_animal_historico.png"
+              alt="Tela de histórico de serviços"
+              class="w-full h-auto object-cover"
+            />
+            <p class="p-4 text-gray-700 text-sm">
+              Histórico de Serviços do Cliente.
+            </p>
           </div>
-
         </div>
         <p class="text-center text-gray-600 mt-8">
           Para instalação e execução, consulte o repositório no GitHub.
@@ -254,9 +353,6 @@
       </p>
     </footer>
 
-    <script src="js/script.js"></script>
-    <script>
-      lucide.createIcons();
-    </script>
+    <script src="../js/script.js"></script>
   </body>
 </html>

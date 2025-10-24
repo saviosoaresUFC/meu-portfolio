@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ArenaHub - Detalhes do Projeto | Sávio Soares</title>
+    <title>ArenaHub - Detalhes do Projeto</title>
 
+    <link rel="stylesheet" href="../css/global.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
       tailwind.config = {
@@ -20,38 +20,6 @@
         },
       };
     </script>
-
-    <style>
-      /* Apenas o CSS necessário para o menu e animações */
-      .menu-toggle .bar {
-        display: block;
-        width: 24px;
-        height: 2px;
-        margin: 4px auto;
-        background-color: #374151;
-        transition: all 0.3s ease-in-out;
-      }
-
-      .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle.active .bar:nth-child(1) {
-        transform: translateY(10px) rotate(45deg);
-      }
-      .menu-toggle.active .bar:nth-child(3) {
-        transform: translateY(-10px) rotate(-45deg);
-      }
-
-      #mobileMenu {
-        opacity: 0.98;
-      }
-      .translate-x-0 {
-        transform: translateX(0) !important;
-      }
-      .no-scroll {
-        overflow: hidden;
-      }
-    </style>
   </head>
 
   <body class="bg-fundo-claro min-h-screen">
@@ -75,6 +43,11 @@
           href="../sobre.html"
           class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
           >Sobre</a
+        >
+        <a
+          href="../blog.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Blog</a
         >
         <a
           href="../contato.html"
@@ -101,7 +74,9 @@
           class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
         >
           <li>
-            <a href="../index.html" class="text-white hover:text-primary">Home</a>
+            <a href="../index.html" class="text-white hover:text-primary"
+              >Home</a
+            >
           </li>
           <li>
             <a href="../projetos.html" class="text-primary hover:text-white"
@@ -109,7 +84,14 @@
             >
           </li>
           <li>
-            <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+            <a href="../blog.html" class="text-white hover:text-primary"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a href="../sobre.html" class="text-white hover:text-primary"
+              >Sobre</a
+            >
           </li>
           <li>
             <a href="../contato.html" class="text-white hover:text-primary"
@@ -146,15 +128,23 @@
             target="_blank"
             class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
-            <i data-lucide="github" class="w-5 h-5 mr-2"></i>
+            <img
+              src="../assets/icons/github.svg"
+              alt="Ícone do GitHub"
+              class="w-5 h-5 mr-2 icons-white"
+            />
             Ver no GitHub
           </a>
           <a
             href="https://arenahub.app"
             target="_blank"
-            class="flex items-center text-primary border-2 border-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg"
+            class="flex items-center text-primary border-2 border-primary px-6 py-3 rounded-xl hover:bg-primary hover:text-white transition-all duration-300 shadow-md hover:shadow-lg button-visit-site"
           >
-            <i data-lucide="monitor" class="w-5 h-5 mr-2"></i>
+            <img
+              src="../assets/icons/monitor.svg"
+              alt="Ícone do Monitor"
+              class="w-5 h-5 mr-2 icons-blue"
+            />
             Visitar Site
           </a>
         </div>
@@ -170,10 +160,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i
-              data-lucide="calendar-check"
-              class="w-6 h-6 text-primary mt-1"
-            ></i>
+            <img
+              src="../assets/icons/calendar-check.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-green"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Agendamento Inteligente
@@ -188,7 +179,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="credit-card" class="w-6 h-6 text-primary mt-1"></i>
+            <img
+              src="../assets/icons/credit-card.svg"
+              alt="Ícone de Cartão de Crédito"
+              class="w-6 h-6 mt-1 icons-green"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Pagamento PIX Integrado
@@ -203,7 +198,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="users" class="w-6 h-6 text-primary mt-1"></i>
+            <img
+              src="../assets/icons/globe.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-green"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Jogos Abertos e Conexão
@@ -218,7 +217,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="bar-chart-2" class="w-6 h-6 text-primary mt-1"></i>
+            <img
+              src="../assets/icons/users.svg"
+              alt="Ícone de Usuários"
+              class="w-6 h-6 mt-1 icons-green"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Gestão de Clientes e Quadras
@@ -232,7 +235,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="star" class="w-6 h-6 text-primary mt-1"></i>
+            <img
+              src="../assets/icons/star.svg"
+              alt="Ícone de Avaliação"
+              class="w-6 h-6 mt-1 icons-green"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Avaliações e Feedback
@@ -246,7 +253,11 @@
           <div
             class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4"
           >
-            <i data-lucide="shuffle" class="w-6 h-6 text-primary mt-1"></i>
+            <img
+              src="../assets/icons/shuffle.svg"
+              alt="Ícone de Agendamento"
+              class="w-6 h-6 mt-1 icons-green"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-2">
                 Sorteio de Times
@@ -370,9 +381,12 @@
       </p>
     </footer>
 
-    <script src="js/script.js"></script>
-    <script>
-      lucide.createIcons();
-    </script>
+    <script src="../js/script.js"></script>
   </body>
+
+  <style>
+    .button-visit-site:hover .icons-blue {
+      filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
+    }
+  </style>
 </html>

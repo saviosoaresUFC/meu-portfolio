@@ -1,0 +1,28 @@
+[
+    {
+    "id": 1,
+    "titulo": "O Futuro do Java: Adeus ao 'public static void main'",
+    "slug": "java-unnamed-classes-main",
+    "data": "2025-10-23",
+    "autor": "Sávio Soares",
+    "categoria": "Java",
+    "resumo": "Análise da JEP 463, que simplifica o ponto de entrada de programas Java, permitindo que você execute código sem classes explícitas e sem o 'public static void main'.",
+    "imagem_principal": "./assets/posts/java_25.jpg",
+    "tags": ["Java", "JEP 463", "Simplificação", "Modern Java"],
+    "tempo_leitura_min": 6,
+    "link_post": "post_java_main.html"
+  },
+  {
+    "id": 0,
+    "titulo": "Guia para Iniciantes em Git e GitHub",
+    "slug": "guia-iniciantes-git-github",
+    "data": "2025-04-20",
+    "autor": "Sávio Soares",
+    "categoria": "Dev Tools",
+    "resumo": "Um passo a passo essencial para dominar os fundamentos do Git e como usar o GitHub para colaboração e controle de versão de código.",
+    "imagem_principal": "./assets/posts/git_github.png",
+    "tags": ["Git", "GitHub", "Versionamento", "Desenvolvimento"],
+    "tempo_leitura_min": 10,
+    "link_post": "post_git_github.html"
+  }
+]

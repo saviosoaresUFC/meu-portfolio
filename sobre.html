@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sobre Mim - Engenheiro de Software | Sávio Soares</title>
+    <title>Sobre Mim | Sávio Soares</title>
 
+    <link rel="stylesheet" href="./css/global.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
       tailwind.config = {
@@ -22,34 +22,6 @@
     </script>
 
     <style>
-      /* Estilos do menu mobile (hambúrguer) - Reutilizados */
-      .menu-toggle .bar {
-        display: block;
-        width: 24px;
-        height: 2px;
-        margin: 4px auto;
-        background-color: #374151;
-        transition: all 0.3s ease-in-out;
-      }
-      .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle.active .bar:nth-child(1) {
-        transform: translateY(10px) rotate(45deg);
-      }
-      .menu-toggle.active .bar:nth-child(3) {
-        transform: translateY(-10px) rotate(-45deg);
-      }
-      #mobileMenu {
-        opacity: 0.98;
-      }
-      .translate-x-0 {
-        transform: translateX(0) !important;
-      }
-      .no-scroll {
-        overflow: hidden;
-      }
-      /* Estilo para a imagem de perfil (opcional, se quiser um toque especial) */
       .profile-ring {
         box-shadow: 0 0 0 8px rgba(74, 144, 226, 0.3); /* primary com transparência */
       }
@@ -72,6 +44,11 @@
           href="projetos.html"
           class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
           >Projetos</a
+        >
+        <a
+          href="blog.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Blog</a
         >
         <a
           href="sobre.html"
@@ -111,6 +88,9 @@
             >
           </li>
           <li>
+            <a href="blog.html" class="text-white hover:text-primary">Blog</a>
+          </li>
+          <li>
             <a href="sobre.html" class="text-primary hover:text-white">Sobre</a>
           </li>
           <li>
@@ -123,8 +103,10 @@
     </header>
 
     <main class="max-w-6xl mx-auto p-6 md:py-16">
+      <!-- ======= INICIO ======= -->
+
       <section
-        class="bg-white p-8 md:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-10 mb-16"
+        class="md:p-12 rounded-2xl flex flex-col md:flex-row items-center gap-10 mb-16"
       >
         <div class="flex-shrink-0">
           <img
@@ -154,6 +136,8 @@
         </div>
       </section>
 
+      <!-- ======= HARD SKILLS ======= -->
+
       <section class="mb-16">
         <h2
           class="text-3xl font-bold text-gray-900 mb-8 border-b-4 border-primary pb-3"
@@ -165,58 +149,383 @@
           <div
             class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
           >
-            <i data-lucide="code" class="w-8 h-8 text-yellow-500 mb-3"></i>
+            <img
+              src="./assets/icons/coffee.svg"
+              alt="Ícone de Coffee"
+              class="w-8 h-8 mb-3 icons-brown"
+            />
+            <p class="font-semibold text-gray-800 text-center">Spring</p>
+            <span class="text-xs text-gray-500">APIs Escaláveis JAVA</span>
+          </div>
+          <div
+            class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="./assets/icons/server.svg"
+              alt="Ícone de Server"
+              class="w-8 h-8 mb-3 icons-green"
+            />
+            <p class="font-semibold text-gray-800 text-center">Node.js</p>
+            <span class="text-xs text-gray-500">Framework JavaScript</span>
+          </div>
+          <div
+            class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="./assets/icons/code.svg"
+              alt="Ícone de Informações"
+              class="w-8 h-8 mb-3 icons-orange"
+            />
             <p class="font-semibold text-gray-800 text-center">JS/TS</p>
             <span class="text-xs text-gray-500">Back/Front-end</span>
           </div>
           <div
             class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
           >
-            <i data-lucide="atom" class="w-8 h-8 text-cyan-500 mb-3"></i>
+            <img
+              src="./assets/icons/atom.svg"
+              alt="Ícone de Atom"
+              class="w-8 h-8 mb-3 icons-cyan"
+            />
             <p class="font-semibold text-gray-800 text-center">React/RN</p>
             <span class="text-xs text-gray-500">Interfaces Modernas</span>
           </div>
           <div
             class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
           >
-            <i data-lucide="coffee" class="w-8 h-8 text-amber-900 mb-3"></i>
-            <p class="font-semibold text-gray-800 text-center">Spring</p>
-            <span class="text-xs text-gray-500">Framework Java</span>
+            <img
+              src="./assets/icons/braces.svg"
+              alt="Ícone de Server"
+              class="w-8 h-8 mb-3 icons-green"
+            />
+            <p class="font-semibold text-gray-800 text-center">Vue.js</p>
+            <span class="text-xs text-gray-500">Framework Typescript</span>
           </div>
           <div
             class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
           >
-            <i data-lucide="server" class="w-8 h-8 text-green-600 mb-3"></i>
-            <p class="font-semibold text-gray-800 text-center">Node.js</p>
-            <span class="text-xs text-gray-500">APIs Escaláveis</span>
-          </div>
-          <div
-            class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
-          >
-            <i data-lucide="database" class="w-8 h-8 text-primary mb-3"></i>
+            <img
+              src="./assets/icons/database.svg"
+              alt="Ícone de Database"
+              class="w-8 h-8 mb-3 icons-blue"
+            />
             <p class="font-semibold text-gray-800 text-center">SQL/NoSQL</p>
             <span class="text-xs text-gray-500">Modelagem de Dados</span>
           </div>
+
           <div
             class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
           >
-            <i data-lucide="cloud" class="w-8 h-8 text-orange-500 mb-3"></i>
-            <p class="font-semibold text-gray-800 text-center">AWS/Azure</p>
+            <img
+              src="./assets/icons/smartphone.svg"
+              alt="Ícone de Database"
+              class="w-8 h-8 mb-3 icons-green"
+            />
+            <p class="font-semibold text-gray-800 text-center">Kotlin</p>
+            <span class="text-xs text-gray-500">Desenvolvimento Android</span>
+          </div>
+
+          <div
+            class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
+          >
+            <img
+              src="./assets/icons/cloud.svg"
+              alt="Ícone de Cloud"
+              class="w-8 h-8 mb-3 icons-orange"
+            />
+            <p class="font-semibold text-gray-800 text-center">AWS</p>
             <span class="text-xs text-gray-500">Cloud & Deploy</span>
           </div>
           <div
             class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
           >
-            <i data-lucide="check-circle" class="w-8 h-8 text-red-600 mb-3"></i>
+            <img
+              src="./assets/icons/circle-check.svg"
+              alt="Ícone de Informações"
+              class="w-8 h-8 mb-3 icons-red"
+            />
             <p class="font-semibold text-gray-800 text-center">Testes</p>
-            <span class="text-xs text-gray-500">TDD & QA</span>
+            <span class="text-xs text-gray-500">TDD/BDD & QA</span>
           </div>
           <div
             class="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 hover:scale-[1.02]"
           >
-            <i data-lucide="container" class="w-8 h-8 text-cyan-600 mb-3"></i>
+            <img
+              src="./assets/icons/container.svg"
+              alt="Ícone de Informações"
+              class="w-8 h-8 mb-3 icons-cyan"
+            />
             <p class="font-semibold text-gray-800 text-center">Docker</p>
             <span class="text-xs text-gray-500">Containerização</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======= HABILIDADES ======= -->
+
+      <section class="mb-16">
+        <h2
+          class="text-3xl font-bold text-gray-900 mb-10 border-b-4 border-primary pb-3"
+        >
+          Experiência Profissional e Formação
+        </h2>
+
+        <div class="space-y-12 pl-6">
+          <div class="timeline-item">
+            <p class="text-sm font-semibold text-gray-500 mb-1">
+              Jan 2023 – Dez 2026 (Previsão)
+            </p>
+            <h3 class="text-2xl font-bold text-primary mb-1">
+              Graduação em Engenharia de Software
+            </h3>
+
+            <a
+              href="https://www.quixada.ufc.br/"
+              target="_blank"
+              class="text-lg font-medium mb-4 inline-block underline text-gray-800 hover:text-blue-600 transition duration-300"
+            >
+              UFC (Universidade Federal do Ceará - Campus Quixadá)
+            </a>
+
+            <div class="text-gray-700 space-y-6">
+              <p>
+                Minha formação é focada na aplicação prática de metodologias e
+                arquitetura de sistemas, preparando-me para todo o ciclo de vida
+                do software, desde a concepção até a entrega e manutenção.
+              </p>
+
+              <h4
+                class="text-xl font-bold text-gray-900 border-b border-gray-300 pb-1 mt-6"
+              >
+                Engenharia e Qualidade de Software
+              </h4>
+              <p class="text-sm">
+                Disciplinas que formam a espinha dorsal da minha carreira,
+                garantindo que os projetos não sejam apenas funcionais, mas
+                sustentáveis, escaláveis e de alta qualidade:
+              </p>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                  >Introdução a ES</span
+                >
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                  >Processos de Software</span
+                >
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                  >Requisitos de Software</span
+                >
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                  >Análise e Projeto de Sistemas</span
+                >
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                  >Arquitetura de Software</span
+                >
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                  >Gerência de Projetos</span
+                >
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                  >Qualidade de Software</span
+                >
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                  >Verificação e Validação (TDD/BDD)</span
+                >
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
+                  >Gerência de Configuração</span
+                >
+                <span
+                  class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full"
+                  >Projeto Detalhado em ES (1, 2 e 3)</span
+                >
+              </div>
+
+              <h4
+                class="text-xl font-bold text-gray-900 border-b border-gray-300 pb-1 mt-6"
+              >
+                Desenvolvimento e Arquitetura
+              </h4>
+              <p class="text-sm">
+                Foco no código limpo e na infraestrutura robusta, abrangendo
+                desde o backend até a experiência do usuário final:
+              </p>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"
+                  >POO (Programação Orientada a Objetos)</span
+                >
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"
+                  >Estrutura de Dados (C++)</span
+                >
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"
+                  >Projeto e Análise de Algoritmos</span
+                >
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"
+                  >Programação Funcional (Haskell)</span
+                >
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"
+                  >Desenvolvimento Web (1 e 2)</span
+                >
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"
+                  >Desenvolvimento Móvel (Kotlin)</span
+                >
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full"
+                  >Interação Humano-Computador (IHC)</span
+                >
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full"
+                  >User Experience (UX)</span
+                >
+                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"
+                  >Banco de Dados e Redes</span
+                >
+                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"
+                  >Sistemas Operacionais</span
+                >
+                <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"
+                  >Arquitetura de Computadores</span
+                >
+              </div>
+
+              <h4
+                class="text-xl font-bold text-gray-900 border-b border-gray-300 pb-1 mt-6"
+              >
+                Fundamentos e Inovação
+              </h4>
+              <p class="text-sm">
+                Base matemática e teórica, além de contato com áreas avançadas:
+              </p>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full"
+                  >Matemática Básica e Discreta</span
+                >
+                <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full"
+                  >Probabilidade e Estatística</span
+                >
+                <span
+                  class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full"
+                  >Inteligência Artificial</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <p class="text-sm font-semibold text-gray-500 mb-1">
+              Jan 2023 – Atualmente
+            </p>
+            <h3 class="text-2xl font-bold text-primary mb-1">
+              Engenheiro de Software Pleno
+            </h3>
+
+            <a
+              href="http://www.funcap.ce.gov.br/"
+              target="_blank"
+              class="text-lg font-medium mb-4 inline-block underline text-gray-800 hover:text-blue-600 transition duration-300"
+            >
+              FUNCAP (Fundação Cearense de Apoio ao Desenvolvimento Científico e
+              Tecnológico)
+            </a>
+            <ul class="list-disc space-y-2 text-gray-700 ml-5">
+              <li>
+                Liderança técnica (Tech Lead) e desenvolvimento de
+                <strong>microsserviços</strong> e
+                <strong>API REST</strong> utilizando
+                <strong>Java/Spring Boot</strong>, garantindo alta
+                disponibilidade para integração de serviços.
+              </li>
+              <li>
+                Desenvolvimento <strong>Full-Stack</strong> com foco em
+                interfaces de usuário modernas usando
+                <strong>React e Next.js</strong>, aprimorando a experiência do
+                usuário.
+              </li>
+              <li>
+                Implementação e adesão à metodologia <strong>Scrum</strong>
+                para entregas de valor contínuo e gestão transparente de
+                projetos.
+              </li>
+              <li>
+                Utilização de <strong>RabbitMQ</strong> para comunicação
+                assíncrona (mensageria) e <strong>Git/GitHub</strong> para
+                controle de versão e colaboração.
+              </li>
+              <li>
+                Implementação de práticas de <strong>DevOps</strong> (Docker e
+                CI/CD) para automatizar o <strong>deploy</strong> e reduzir o
+                tempo de lançamento de novas funcionalidades.
+              </li>
+              <li>
+                Atuação em todas as fases do ciclo de desenvolvimento, desde a
+                <strong>decisão da arquitetura de sistema</strong> até o
+                monitoramento em produção com <strong>AWS</strong>.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <p class="text-sm font-semibold text-gray-500 mb-1">2022 – 2023</p>
+            <h3 class="text-2xl font-bold text-gray-900 mb-1">
+              Desenvolvedor Front-end Júnior
+            </h3>
+
+            <a
+              href="http://engstrategy.com.br/"
+              target="_blank"
+              class="text-lg font-medium mb-4 inline-block underline text-gray-800 hover:text-blue-600 transition duration-300"
+            >
+              EngStrategy
+            </a>
+
+            <ul class="list-disc space-y-2 text-gray-700 ml-5">
+              <li>
+                Minha primeira experiência profissional na área de
+                desenvolvimento, onde tive o meu primeiro contato com
+                <strong>Cliente Real</strong>.
+              </li>
+              <li>
+                Responsável pela conversão de layouts em código
+                <strong>HTML, CSS e JavaScript</strong> seguindo os padrões de
+                acessibilidade.
+              </li>
+              <li>
+                Gerenciamento de dados e lógica com <strong>Node.js</strong>.
+              </li>
+              <li>
+                Colaboração em equipe ágil utilizando <strong>Scrum</strong> e
+                práticas de <strong>Git Flow</strong>.
+              </li>
+              <li>
+                Otimização de performance de carregamento, reduzindo o tempo de
+                latência inicial.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <p class="text-sm font-semibold text-gray-500 mb-1">2019 – 2021</p>
+            <h3 class="text-2xl font-bold text-gray-900 mb-1">
+              Técnico em Informática
+            </h3>
+
+            <a
+              href="http://www.ufpi.br/"
+              target="_blank"
+              class="text-lg font-medium mb-4 inline-block underline text-gray-800 hover:text-blue-600 transition duration-300"
+            >
+              UFPI (Universidade Federal do Piauí)
+            </a>
+            <ul class="list-disc space-y-2 text-gray-700 ml-5">
+              <li>Lógica de programação (<strong>Portugol</strong>)</li>
+              <li>Programação orientada a objetos (<strong>Java</strong>)</li>
+              <li>
+                Desenvolvimento web (<strong>HTML/CSS</strong>,
+                <strong>PHP</strong>)
+              </li>
+              <li>Bancos de dados (<strong>PostgreSQL</strong>)</li>
+              <li>
+                Segurança de Dados, Análise de Sistemas, Inglês Técnico e etc.
+              </li>
+              <li>
+                Este foi o meu primeiro contato formal com a área de tecnologia.
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -230,29 +539,31 @@
 
         <div class="space-y-8 text-gray-700 text-lg">
           <div class="flex items-start gap-4">
-            <i
-              data-lucide="layout-grid"
-              class="w-6 h-6 text-primary mt-1 flex-shrink-0"
-            ></i>
+            <img
+              src="./assets/icons/layout-grid.svg"
+              alt="Ícone de Layout"
+              class="w-6 h-6 icons-cyan mt-1 flex-shrink-0"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-1">
                 Arquitetura Sólida e Planejamento
               </h3>
               <p>
                 Acredito que a fase de planejamento e a escolha arquitetural
-                inicial fazem <strong>total diferença no projeto</strong>. Investir tempo em
-                modelar a solução corretamente desde o início previne dívidas
-                técnicas caras e garante que o sistema seja escalável e
-                resiliente ao longo do tempo.
+                inicial fazem <strong>total diferença no projeto</strong>.
+                Investir tempo em modelar a solução corretamente desde o início
+                previne dívidas técnicas caras e garante que o sistema seja
+                escalável e resiliente ao longo do tempo.
               </p>
             </div>
           </div>
 
           <div class="flex items-start gap-4">
-            <i
-              data-lucide="git-branch"
-              class="w-6 h-6 text-primary mt-1 flex-shrink-0"
-            ></i>
+            <img
+              src="./assets/icons/git-branch.svg"
+              alt="Ícone de Branch"
+              class="w-6 h-6 icons-cyan mt-1 flex-shrink-0"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-1">
                 Código como Ativo de Negócio
@@ -261,36 +572,38 @@
                 Vejo o código-fonte não apenas como linhas de comando, mas como
                 o ativo mais valioso de uma empresa. Por isso, a manutenção, a
                 clareza e a escalabilidade são minhas prioridades. Adoto o
-                princípio <strong>"Clean Code"</strong> para facilitar a vida da equipe no
-                futuro.
+                princípio <strong>"Clean Code"</strong> para facilitar a vida da
+                equipe no futuro.
               </p>
             </div>
           </div>
 
           <div class="flex items-start gap-4">
-            <i
-              data-lucide="gantt-chart"
-              class="w-6 h-6 text-primary mt-1 flex-shrink-0"
-            ></i>
+            <img
+              src="./assets/icons/chart-gantt.svg"
+              alt="Ícone de Gráfico de Gantt"
+              class="w-6 h-6 icons-cyan mt-1 flex-shrink-0"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-1">
                 Metodologia Ágil (Scrum)
               </h3>
               <p>
                 Para garantir entregas de valor de forma incremental e
-                adaptável, utilizo o <strong>Scrum</strong>. Esta metodologia me ajuda a
-                manter o foco nas prioridades, a gerenciar riscos de forma
-                transparente e a promover a colaboração constante com o cliente
-                e a equipe.
+                adaptável, utilizo o <strong>Scrum</strong>. Esta metodologia me
+                ajuda a manter o foco nas prioridades, a gerenciar riscos de
+                forma transparente e a promover a colaboração constante com o
+                cliente e a equipe.
               </p>
             </div>
           </div>
 
           <div class="flex items-start gap-4">
-            <i
-              data-lucide="globe"
-              class="w-6 h-6 text-primary mt-1 flex-shrink-0"
-            ></i>
+            <img
+              src="./assets/icons/globe.svg"
+              alt="Ícone de Globo"
+              class="w-6 h-6 icons-cyan mt-1 flex-shrink-0"
+            />
             <div>
               <h3 class="text-xl font-semibold text-gray-900 mb-1">
                 Inglês Técnico e Comunicação Global
@@ -315,8 +628,5 @@
     </footer>
 
     <script src="js/script.js"></script>
-    <script>
-      lucide.createIcons();
-    </script>
   </body>
 </html>
