@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metodologias Ágeis | Scrum, XP e Shape Up em Comparação</title>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4A90E2",
+            "fundo-claro": "#F5F5F5",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .post-content p,
+    .post-content ul,
+    .post-content ol {
+      margin-bottom: 1.5rem;
+      line-height: 1.75;
+      font-size: 1.125rem;
+      color: #374151;
+    }
+
+    .post-content h2,
+    .post-content h3,
+    .post-content h4 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .post-content h2 {
+      font-size: 1.875rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.5rem;
+    }
+
+    .post-content h4 {
+      font-size: 1.25rem;
+    }
+
+    .post-content table {
+      width: 100%;
+      margin-bottom: 1.5rem;
+      border-collapse: collapse;
+    }
+
+    .post-content th,
+    .post-content td {
+      border: 1px solid #e5e7eb;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    .post-content th {
+      background-color: #f3f4f6;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    .post-content pre {
+      background-color: #1f2937;
+      color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    .note-box {
+      border-left: 4px solid #4A90E2;
+      background-color: #e3f2fd;
+      padding: 1rem 1.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 0.25rem;
+    }
+  </style>
+</head>
+
+<body class="bg-fundo-claro min-h-screen">
+  <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+    <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+
+    <nav class="hidden md:flex space-x-8" id="navMenu">
+      <a href="../index.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+      <a href="../projetos.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Projetos</a>
+      <a href="../sobre.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+      <a href="../blog.html" class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Blog</a>
+      <a href="../contato.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+    </nav>
+
+    <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+      aria-label="Toggle Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav id="mobileMenu"
+      class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40">
+      <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
+        <li>
+          <a href="../index.html" class="text-white hover:text-primary">Home</a>
+        </li>
+        <li>
+          <a href="../projetos.html" class="text-white hover:text-primary">Projetos</a>
+        </li>
+        <li>
+          <a href="../blog.html" class="text-primary hover:text-white">Blog</a>
+        </li>
+        <li>
+          <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+        </li>
+        <li>
+          <a href="../contato.html" class="text-white hover:text-primary">Contato</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-6 md:py-16">
+    <article class="bg-white p-6 md:p-10 rounded-xl shadow-2xl">
+      <div class="mb-8 border-b pb-4">
+        <span class="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase">
+          Metodologias Ágeis
+        </span>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+          Scrum, XP e Shape Up: Guia de Aplicação e Comparação
+        </h1>
+        <p class="text-gray-500 text-sm flex items-center space-x-3">
+          <img src="../assets/icons/calendar.svg" alt="Ícone de Calendário"
+            class="w-4 h-4 inline-block mr-1 icons-gray-500" />
+          25 de Out. de 2025</span>
+          <span>|</span>
+          <span>
+            <img src="../assets/icons/user.svg" alt="Ícone de Usuário"
+              class="w-4 h-4 inline-block mr-1 icons-gray-500" />
+            Por Sávio Soares</span>
+          <span>|</span>
+          <span>
+            <img src="../assets/icons/clock.svg" alt="Ícone de Relógio"
+              class="w-4 h-4 inline-block mr-1 icons-gray-500" />
+            10 min de leitura</span>
+        </p>
+      </div>
+
+      <figure class="mb-8">
+        <img src="../assets/posts/scrum_xp_shapeup.svg" alt="Infográfico comparando Scrum, XP e Shape Up"
+          class="w-full h-auto rounded-lg shadow-md" />
+        <figcaption class="text-center text-sm text-gray-500 mt-2">
+          Três abordagens ágeis com focos distintos: Gerenciamento (Scrum), Engenharia (XP) e Planejamento Focado (Shape
+          Up).
+        </figcaption>
+      </figure>
+
+      <div class="post-content">
+        <p>
+          O desenvolvimento de software moderno exige flexibilidade e rapidez.
+          Neste artigo, vamos mergulhar em três das metodologias ágeis mais influentes
+          — <strong>Scrum</strong>, <strong>eXtreme Programming (XP)</strong> e <strong>Shape Up</strong> —
+          comparando seus focos, papéis e como elas se encaixam no ciclo de vida de um projeto.
+        </p>
+
+        <h2>Visão Geral Comparativa</h2>
+        <p>
+          Embora todas sejam ágeis, a principal diferença reside em onde cada uma
+          coloca sua energia:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Metodologia</th>
+              <th>Foco Principal</th>
+              <th>Tempo de Iteração Típico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Scrum</strong></td>
+              <td>Gerenciamento de Projetos e Organização da Equipe (O que e Quando).</td>
+              <td>1 a 4 Semanas (Sprints)</td>
+            </tr>
+            <tr>
+              <td><strong>XP</strong></td>
+              <td>Práticas de Engenharia e Qualidade de Código (Como construir).</td>
+              <td>Semanas/Dias (Pequenas Entregas)</td>
+            </tr>
+            <tr>
+              <td><strong>Shape Up</strong></td>
+              <td>Planejamento e Execução Focada (Definir e Construir sem Interrupções).</td>
+              <td>6 Semanas (Ciclos)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>1. Scrum: O Framework de Gerenciamento</h2>
+
+        <figure class="mb-8">
+          <img src="../assets/posts/scrum.png" alt="Diagrama do Fluxo Scrum"
+            class="w-full h-auto rounded-lg shadow-md" />
+          <figcaption class="text-center text-sm text-gray-500 mt-2">
+            O ciclo do Scrum. <strong>[Fonte: tecnicon.com.br]</strong>
+          </figcaption>
+        </figure>
+
+        <p>
+          O Scrum é um <span class="text-blue-500">framework</span> leve que ajuda pessoas, equipes e organizações a
+          gerar valor através de soluções
+          adaptativas para problemas complexos. Ele se baseia em <strong>transparência, inspeção e adaptação</strong>,
+          estruturando o
+          trabalho em iterações curtas e fixas chamadas <strong>Sprints</strong>.
+        </p>
+
+        <h3>Papéis Essenciais do Scrum</h3>
+        <p>
+          O Scrum define três conjuntos de responsabilidades (Papéis) que formam o Time Scrum, trabalhando em conjunto
+          para entregar valor em cada Sprint:
+        </p>
+        <ul class="list-disc pl-5">
+          <li>
+            <strong>Product Owner (PO):</strong> Representante do cliente e do mercado. É o <strong>único responsável
+              por
+              maximizar o valor do produto</strong> resultante do trabalho do Time de Desenvolvimento. Isso é feito
+            através do
+            gerenciamento eficaz do <strong>Product Backlog</strong> (priorização, clareza e ordenação dos itens).
+          </li>
+          <li>
+            <strong>Scrum Master (SM):</strong> Um <strong>líder servidor</strong> para o Time Scrum e para a
+            organização. O SM é
+            responsável por <strong>promover e apoiar o Scrum</strong>, ajudando a todos a entender a teoria, as
+            práticas e as
+            regras. Ele remove impedimentos e garante que os eventos sejam produtivos.
+          </li>
+          <li>
+            <strong>Desenvolvedores (<span class="text-blue-500">Developers</span>):</strong> São as pessoas no Time
+            Scrum que estão comprometidas em
+            criar qualquer aspecto de um Incremento utilizável em cada Sprint. Eles são
+            <strong>auto-gerenciáveis</strong> e
+            responsáveis pela qualidade técnica e pela criação do "Done" (Trabalho Concluído).
+          </li>
+        </ul>
+
+        <h3>Eventos e a Estrutura da Sprint</h3>
+        <p>
+          A <strong>Sprint</strong> é um contêiner para todos os outros eventos e tem uma duração fixa (geralmente de 1
+          a 4 semanas).
+        </p>
+        <ul class="list-disc pl-5">
+          <li>
+            <strong>Sprint Planning:</strong> Reunião no início da Sprint para definir o <strong>Objetivo da
+              Sprint</strong> e
+            selecionar os itens do <strong>Product Backlog</strong> que o time se compromete a entregar (criando o
+            <strong>Sprint
+              Backlog</strong>).
+          </li>
+          <li>
+            <strong>Daily Scrum (Stand-up):</strong> Reunião diária de <strong>15 minutos</strong> para o Time de
+            Desenvolvimento
+            inspecionar o progresso em relação ao Objetivo da Sprint e adaptar o plano de trabalho para as próximas 24
+            horas.
+          </li>
+          <li>
+            <strong>Sprint Review:</strong> Evento no final da Sprint para inspecionar o <strong>Incremento</strong> (o
+            produto de
+            software "Done") e obter <span class="text-blue-400">feedback</span> dos <span
+              class="text-blue-400">stakeholders</span> (interessados). É uma demonstração do que foi
+            construído.
+          </li>
+          <li>
+            <strong>Sprint Retrospective:</strong> Evento no final da Sprint para inspecionar o <strong>Time Scrum e o
+              processo</strong>. O objetivo é identificar melhorias no processo, ferramentas e relacionamentos para
+            aplicar na
+            próxima Sprint.
+          </li>
+        </ul>
+
+        <h3>Artefatos do Scrum</h3>
+        <p>
+          Os Artefatos do Scrum (Product Backlog, Sprint Backlog e Incremento) representam o trabalho ou o valor. Eles
+          são projetados para maximizar a transparência da informação chave.
+        </p>
+        <ul class="list-disc pl-5">
+          <li>
+            <strong>Product Backlog:</strong> Uma lista ordenada de tudo o que é conhecido por ser necessário no
+            produto. É a <strong>única fonte</strong> de trabalho para o Time Scrum, mantida e priorizada pelo Product
+            Owner.
+          </li>
+          <li>
+            <strong>Sprint Backlog:</strong> O conjunto de Itens do Product Backlog selecionados para a Sprint, mais o
+            plano viável para entregar o <strong>Incremento</strong> e alcançar o <strong>Objetivo da Sprint</strong>.
+          </li>
+          <li>
+            <strong>Incremento:</strong> Um passo concreto em direção à Visão do Produto. É a soma de todos os Itens do
+            Product Backlog concluídos durante uma Sprint e de todas as Sprints anteriores. Deve ser
+            <strong>utilizável</strong> e
+            atender à <strong>Definição de Pronto (Definition of Done)</strong>.
+          </li>
+        </ul>
+
+        <h2>2. XP (eXtreme Programming): O Foco na Engenharia</h2>
+
+        <figure class="mb-8">
+          <img src="../assets/posts/xp.svg" alt="Práticas de eXtreme Programming (XP)"
+            class="w-full h-auto rounded-lg shadow-md" />
+          <figcaption class="text-center text-sm text-gray-500 mt-2">
+            O XP foca na qualidade do código através de práticas técnicas. <strong>[Fonte: artia.com]</strong>
+          </figcaption>
+        </figure>
+
+        <p>
+          O XP é uma metodologia ágil focada em produzir software de <strong>alta qualidade</strong> através de um
+          conjunto de
+          práticas de engenharia de software. Ele complementa frameworks de gestão como o Scrum, garantindo a
+          <strong>sustentabilidade técnica</strong> do produto, especialmente na fase de
+          <strong>Desenvolvimento</strong> do ciclo de vida.
+        </p>
+        <p>
+          As práticas do XP são organizadas em torno de cinco valores: <strong>Comunicação, Simplicidade, Feedback,
+            Coragem e
+            Respeito</strong>.
+        </p>
+
+        <h3>Práticas Essenciais do XP</h3>
+        <p>
+          As práticas são a essência do XP e podem ser divididas em:
+        </p>
+
+        <h4>Práticas Técnicas (Foco na Qualidade do Código)</h4>
+        <ul>
+          <li>
+            <strong>Test-Driven Development (TDD):</strong> É a regra de ouro: escrever o teste automatizado <span
+              class="text-blue-500">antes</span> de
+            escrever o código de produção. O ciclo <strong>Red/Green/Refactor</strong> (falha no teste, escrever código,
+            teste passa,
+            refatorar) garante um código robusto, com cobertura de testes completa e focado na funcionalidade mínima
+            necessária.
+          </li>
+          <li>
+            <strong>Programação em Par (Pair Programming):</strong> Dois desenvolvedores trabalham lado a lado em um
+            único computador. Este método não só detecta erros imediatamente (revisão contínua) como também
+            <strong>espalha o
+              conhecimento</strong> do código por toda a equipe e melhora a qualidade do design.
+          </li>
+          <li>
+            <strong>Refatoração (Refactoring):</strong> É a <strong>melhoria contínua da estrutura interna e do design
+              do
+              código</strong> (tornando-o mais limpo e simples) <strong>sem alterar seu comportamento externo</strong>.
+            A refatoração é feita em pequenos passos, com testes de unidade rodando para garantir que nada foi quebrado.
+
+            <div class="note-box">
+              <strong>Diferença Chave de Reescrever:</strong> <span class="text-blue-500">Reescrever</span> (<span
+                class="text-blue-500">Rewriting</span>) significa descartar o código
+              antigo e construir
+              um novo do zero, o que é um esforço arriscado e demorado. <span class="text-blue-500">Refatorar</span> é
+              uma abordagem ágil e segura, pois
+              o código
+              sempre continua funcionando durante o processo.
+            </div>
+          </li>
+          <li>
+            <strong>Integração Contínua (Continuous Integration - CI):</strong> Prática de integrar o código no
+            repositório principal várias vezes ao dia. Cada integração é verificada por um <span
+              class="text-blue-500">build</span> automatizado,
+            permitindo que a equipe <strong>detecte e resolva conflitos</strong> e erros rapidamente.
+          </li>
+          <li>
+            <strong>Design Simples:</strong> A meta é sempre implementar a solução mais simples que satisfaça os
+            requisitos atuais, evitando funcionalidades desnecessárias. A complexidade é tratada apenas quando for
+            <span class="text-blue-500">realmente</span> necessária (YAGNI - You Ain't Gonna
+              Need It).
+          </li>
+        </ul>
+
+        <h4>Práticas de Gestão e Planejamento</h4>
+        <ul>
+          <li>
+            <strong>Cliente em Tempo Integral:</strong> Um representante do cliente (similar ao Product Owner no Scrum)
+            está disponível para o time em tempo integral, garantindo <strong>respostas imediatas</strong> sobre
+            requisitos,
+            prioridades e testes de aceitação.
+          </li>
+          <li>
+            <strong>Pequenas Entregas (<span class="text-blue-500">Small Releases</span>):</strong> A entrega de versões
+            funcionais do software para os
+            usuários finais deve ser feita em <strong>intervalos curtos</strong> (de semanas ou meses, dependendo do
+            contexto). Isso
+            garante <span class="text-blue-500">feedback</span> rápido e constante.
+          </li>
+          <li>
+            <strong>Metáfora:</strong> Criar um sistema de nomes e uma <strong>narrativa comum e simples</strong> para
+            descrever o
+            sistema. Ajuda todos os membros da equipe e <span class="text-blue-500">stakeholders</span> a entenderem o
+            design e o fluxo do projeto.
+          </li>
+        </ul>
+
+        <h2>3. Shape Up: O Foco e a Estrutura da Basecamp</h2>
+
+        <figure class="mb-8">
+          <img src="../assets/posts/shapeup.png" alt="Diagrama de Ciclos de 6 Semanas do Shape Up"
+            class="w-full h-auto rounded-lg shadow-md" />
+          <figcaption class="text-center text-sm text-gray-500 mt-2">
+            O Shape Up estrutura o trabalho em ciclos de 6 semanas de foco, seguidos por 2 semanas de Cool-down.
+            <strong>[Fonte: franklindias.medium.com]</strong>
+          </figcaption>
+        </figure>
+
+        <p>
+          O Shape Up, desenvolvido pela Basecamp, é uma alternativa ágil que se afasta da gestão baseada em tarefas e
+          foca em entregar <strong>"pedaços de trabalho"</strong> significativos em um <strong>tempo fixo de 6
+            semanas</strong>. Sua filosofia
+          central é <strong>fixar o tempo e o recurso, mas flexibilizar o escopo</strong>, garantindo que a equipe
+          trabalhe com foco
+          e profundidade, ideal para ambientes remotos.
+        </p>
+
+        <h3>As Três Fases e a Rodada de Apostas (<span class="text-blue-500">Betting</span>)</h3>
+        <p>
+          O Shape Up divide o processo de desenvolvimento em etapas claras com objetivos bem definidos.
+        </p>
+
+        <h4>Fase 1: Shaping (Modelagem)</h4>
+        <p>
+          Esta é a fase de pré-planejamento crucial. O objetivo é transformar problemas vagos ou ideias em soluções
+          concretas e definidas. O <span class="text-blue-500">Shaping</span> responde à pergunta: "O que vamos
+          construir e como isso se encaixa em 6
+          semanas?".
+        </p>
+        <ul class="list-disc pl-5">
+          <li>
+            <strong>Produto Final: Pitch.</strong> Uma proposta de projeto que define o problema, a solução de alto
+            nível, os limites (<span class="text-blue-400">boundaries</span>) e a evidência de que a solução é viável no
+            prazo.
+          </li>
+          <li>
+            <strong>Ferramenta Principal: Fat Marker Sketch.</strong> O <span class="text-blue-400">shaper</span> usa um
+            "marcador gordo" (grossura) para
+            esboçar a solução intencionalmente com <span class="text-blue-400">baixo nível de detalhe</span>. Isso evita
+            especificações prematuras e dá
+            liberdade de design ao time de construção.
+          </li>
+          <li>
+            <strong>Papel Principal: Shaper (Modelador).</strong> Geralmente líderes técnicos ou gerentes de produto que
+            desenvolvem o <span class="text-blue-400">pitch</span>.
+          </li>
+        </ul>
+
+        <h4><strong>Rodada de Apostas (<span class="text-blue-500">Betting</span>)</strong></h4>
+        <p>
+          É o momento de decisão da Liderança (o <strong>Bettor</strong>). Em vez de priorizar uma lista de tarefas,
+          eles decidem
+          <strong>quais <span class="text-blue-400">pitches</span> de 6 semanas merecem a "aposta"</strong> do tempo e
+          recurso da empresa. Uma vez apostado, o projeto
+          é intocável e focado durante todo o ciclo.
+        </p>
+        <ul class="list-disc pl-5">
+          <li>
+            <strong>Decisão Estratégica:</strong> O <span class="text-blue-400">Bettor</span> não prioriza tarefas
+            pequenas, mas sim <strong>blocos grandes de
+              tempo</strong>.
+          </li>
+          <li>
+            <strong>Papel Principal: Bettor (Liderança).</strong> Responsável por alocar o tempo fixo (as 6 semanas) nos
+            projetos de maior valor.
+          </li>
+        </ul>
+
+        <h4>Fase 2: Ciclos (Construção)</h4>
+        <p>
+          Período de 6 semanas onde o <strong>Time de Construção</strong> (Desenvolvedores e Designers) recebe o <span
+            class="text-blue-500">pitch</span> e trabalha
+          com <strong>autonomia total</strong> (sem interrupções de gerentes) para entregar a solução. Se o tempo
+          acabar, o trabalho
+          para, forçando a equipe a fazer ajustes (escopo flexível) para entregar algo funcional.
+        </p>
+        <ul class="list-disc pl-5">
+          <li>
+            <strong>Princípio: Tempo Fixo e Escopo Flexível.</strong> O tempo não se move; o escopo é o que é reduzido
+            se necessário.
+          </li>
+          <li>
+            <strong>Papel Principal: Team (Time de Construção).</strong> Responsável por desdobrar o <span
+              class="text-blue-500">pitch</span> (a solução
+            de alto nível) em tarefas diárias e gerenciar a entrega no prazo.
+          </li>
+        </ul>
+
+        <h4>Fase 3: Cool-down (Pausa Estratégica)</h4>
+        <p>
+          Período de 2 semanas entre os ciclos de trabalho. Não é tempo livre, mas um tempo dedicado a <strong>trabalho
+            de
+            rotina</strong>, como:
+        </p>
+        <ul class="list-disc pl-5">
+          <li>Corrigir <span class="text-blue-500">bugs</span> pequenos e pontuais.</li>
+          <li>Refatorar o código (<span class="text-blue-500">pay down debt</span>), pagando a dívida técnica acumulada.
+          </li>
+          <li>Explorar ideias para futuros <span class="text-blue-500">pitches</span>.</li>
+        </ul>
+        <p>
+          Este período garante que a equipe retorne ao próximo ciclo de 6 semanas descansada e focada, combatendo o
+          esgotamento.
+        </p>
+
+        <h2>Conclusão: Qual Metodologia Escolher?</h2>
+        <p>
+          Na prática, muitas equipes combinam essas abordagens: usam o <strong>Scrum</strong> para o gerenciamento geral
+          das Sprints,
+          adotam práticas de <strong>XP</strong> (como TDD e Pair Programming) para garantir a qualidade técnica, e
+          podem usar a
+          filosofia de <strong>Shape Up</strong> para garantir que o planejamento seja mais aprofundado e os ciclos de
+          trabalho sejam
+          mais focados. A escolha ideal depende sempre da cultura da sua empresa, do tipo de produto e do nível de
+          incerteza do seu projeto.
+        </p>
+      </div>
+
+      <div class="mt-8 pt-4 border-t flex flex-wrap gap-2">
+        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Scrum</span>
+        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">XP</span>
+        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Shape Up</span>
+        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Agile</span>
+      </div>
+
+      <div class="mt-8">
+        <a href="../blog.html" class="inline-flex items-center text-primary hover:text-blue-600 font-semibold">
+          <img src="../assets/icons/arrow-left.svg" alt="Icon Arrow Left" class="w-4 h-4 mr-2 icons-blue" />
+          Voltar para o Blog
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+    <p class="text-sm text-gray-500">
+      &copy; 2025 Sávio Soares. Todos os direitos reservados.
+    </p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+
+</html>

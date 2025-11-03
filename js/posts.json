@@ -1,6 +1,6 @@
 [
     {
-    "id": 1,
+    "id": 0,
     "titulo": "O Futuro do Java: Adeus ao 'public static void main'",
     "slug": "java-unnamed-classes-main",
     "data": "2025-10-23",
@@ -13,16 +13,16 @@
     "link_post": "post_java_main.html"
   },
   {
-    "id": 0,
-    "titulo": "Guia para Iniciantes em Git e GitHub",
-    "slug": "guia-iniciantes-git-github",
-    "data": "2025-04-20",
+    "id": 1,
+    "titulo": "Metodologias Ágeias: Scrum, XP e ShapeUp",
+    "slug": "metodologias-ageis-scrum-xp-shapeup",
+    "data": "2025-11-03",
     "autor": "Sávio Soares",
-    "categoria": "Dev Tools",
-    "resumo": "Um passo a passo essencial para dominar os fundamentos do Git e como usar o GitHub para colaboração e controle de versão de código.",
-    "imagem_principal": "./assets/posts/git_github.png",
-    "tags": ["Git", "GitHub", "Versionamento", "Desenvolvimento"],
+    "categoria": "Metodologias Ágeias",
+    "resumo": "Exploração das principais metodologias ágeis usadas no desenvolvimento de software, incluindo Scrum, Extreme Programming (XP) e ShapeUp, destacando suas características e benefícios.",
+    "imagem_principal": "./assets/posts/metodologiasageis.svg",
+    "tags": ["Metodologias Ágeis", "Scrum", "XP", "ShapeUp"],
     "tempo_leitura_min": 10,
-    "link_post": "post_git_github.html"
+    "link_post": "post_metodologias_ageis.html"
   }
 ]
