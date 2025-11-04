@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="../css/global.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../assets/icons/icone.png" type="image/x-icon" />
 
   <script>
     tailwind.config = {
@@ -57,6 +58,7 @@
       width: 100%;
       margin-bottom: 1.5rem;
       border-collapse: collapse;
+      table-layout: auto;
     }
 
     .post-content th,
@@ -64,6 +66,8 @@
       border: 1px solid #e5e7eb;
       padding: 0.75rem;
       text-align: left;
+      vertical-align: top;
+      word-wrap: break-word;
     }
 
     .post-content th {
@@ -101,9 +105,9 @@
         class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
       <a href="../projetos.html"
         class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Projetos</a>
+      <a href="../blog.html" class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Blog</a>
       <a href="../sobre.html"
         class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
-      <a href="../blog.html" class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Blog</a>
       <a href="../contato.html"
         class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
     </nav>
@@ -137,8 +141,8 @@
     </nav>
   </header>
 
-  <main class="max-w-4xl mx-auto p-6 md:py-16">
-    <article class="bg-white p-6 md:p-10 rounded-xl shadow-2xl">
+  <main class="max-w-4xl mx-auto md:py-16">
+    <article class="p-6 md:p-10 rounded-xl">
       <div class="mb-8 border-b pb-4">
         <span class="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase">
           Metodologias Ágeis
@@ -185,38 +189,39 @@
           Embora todas sejam ágeis, a principal diferença reside em onde cada uma
           coloca sua energia:
         </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Metodologia</th>
-              <th>Foco Principal</th>
-              <th>Tempo de Iteração Típico</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Scrum</strong></td>
-              <td>Gerenciamento de Projetos e Organização da Equipe (O que e Quando).</td>
-              <td>1 a 4 Semanas (Sprints)</td>
-            </tr>
-            <tr>
-              <td><strong>XP</strong></td>
-              <td>Práticas de Engenharia e Qualidade de Código (Como construir).</td>
-              <td>Semanas/Dias (Pequenas Entregas)</td>
-            </tr>
-            <tr>
-              <td><strong>Shape Up</strong></td>
-              <td>Planejamento e Execução Focada (Definir e Construir sem Interrupções).</td>
-              <td>6 Semanas (Ciclos)</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="overflow-x-auto -mx-6 md:mx-0 px-6">
+          <table class="bg-white">
+            <thead>
+              <tr>
+                <th>Metodologia</th>
+                <th>Foco Principal</th>
+                <th>Tempo de Iteração Típico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Scrum</strong></td>
+                <td>Gerenciamento de Projetos e Organização da Equipe (O que e Quando).</td>
+                <td>1 a 4 Semanas (Sprints)</td>
+              </tr>
+              <tr>
+                <td><strong>XP</strong></td>
+                <td>Práticas de Engenharia e Qualidade de Código (Como construir).</td>
+                <td>Semanas/Dias (Pequenas Entregas)</td>
+              </tr>
+              <tr>
+                <td><strong>Shape Up</strong></td>
+                <td>Planejamento e Execução Focada (Definir e Construir sem Interrupções).</td>
+                <td>6 Semanas (Ciclos)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <h2>1. Scrum: O Framework de Gerenciamento</h2>
 
         <figure class="mb-8">
-          <img src="../assets/posts/scrum.png" alt="Diagrama do Fluxo Scrum"
-            class="w-full h-auto rounded-lg shadow-md" />
+          <img src="../assets/posts/scrum.png" alt="Diagrama do Fluxo Scrum" class="w-full h-auto" />
           <figcaption class="text-center text-sm text-gray-500 mt-2">
             O ciclo do Scrum. <strong>[Fonte: tecnicon.com.br]</strong>
           </figcaption>
@@ -319,8 +324,7 @@
         <h2>2. XP (eXtreme Programming): O Foco na Engenharia</h2>
 
         <figure class="mb-8">
-          <img src="../assets/posts/xp.svg" alt="Práticas de eXtreme Programming (XP)"
-            class="w-full h-auto rounded-lg shadow-md" />
+          <img src="../assets/posts/xp.svg" alt="Práticas de eXtreme Programming (XP)" class="w-full h-auto" />
           <figcaption class="text-center text-sm text-gray-500 mt-2">
             O XP foca na qualidade do código através de práticas técnicas. <strong>[Fonte: artia.com]</strong>
           </figcaption>
@@ -386,7 +390,7 @@
             <strong>Design Simples:</strong> A meta é sempre implementar a solução mais simples que satisfaça os
             requisitos atuais, evitando funcionalidades desnecessárias. A complexidade é tratada apenas quando for
             <span class="text-blue-500">realmente</span> necessária (YAGNI - You Ain't Gonna
-              Need It).
+            Need It).
           </li>
         </ul>
 

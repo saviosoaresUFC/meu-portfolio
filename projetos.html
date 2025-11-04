@@ -1,470 +1,319 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projetos | Sávio Soares</title>
 
-    <link rel="stylesheet" href="./css/global.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projetos | Sávio Soares</title>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#4A90E2",
-              "fundo-claro": "#F5F5F5",
-            },
+  <link rel="stylesheet" href="./css/global.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="./assets/icons/icone.png" type="image/x-icon" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4A90E2",
+            "fundo-claro": "#F5F5F5",
           },
         },
-      };
-    </script>
-  </head>
+      },
+    };
+  </script>
+</head>
 
-  <body class="bg-fundo-claro min-h-screen">
-    <header
-      class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50"
-    >
-      <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+<body class="bg-fundo-claro min-h-screen">
+  <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+    <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
 
-      <nav class="hidden md:flex space-x-8" id="navMenu">
-        <a
-          href="index.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Home</a
-        >
-        <a
-          href="projetos.html"
-          class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active"
-          >Projetos</a
-        >
-        <a
-          href="blog.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Blog</a
-        >
-        <a
-          href="sobre.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Sobre</a
-        >
-        <a
-          href="contato.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Contato</a
-        >
-      </nav>
+    <nav class="hidden md:flex space-x-8" id="navMenu">
+      <a href="index.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+      <a href="projetos.html"
+        class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Projetos</a>
+      <a href="blog.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Blog</a>
+      <a href="sobre.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+      <a href="contato.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+    </nav>
 
-      <button
-        class="md:hidden flex flex-col justify-center items-center menu-toggle z-50"
-        id="menuToggle"
-        aria-label="Toggle Menu"
-      >
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
+    <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+      aria-label="Toggle Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
 
-      <nav
-        id="mobileMenu"
-        class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
-      >
-        <ul
-          class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
-        >
-          <li>
-            <a href="index.html" class="text-white hover:text-primary">Home</a>
-          </li>
-          <li>
-            <a href="projetos.html" class="text-primary hover:text-white"
-              >Projetos</a
-            >
-          </li>
-          <li>
-            <a href="blog.html" class="text-white hover:text-primary">Blog</a>
-          </li>
-          <li>
-            <a href="sobre.html" class="text-white hover:text-primary">Sobre</a>
-          </li>
-          <li>
-            <a href="contato.html" class="text-white hover:text-primary"
-              >Contato</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <nav id="mobileMenu"
+      class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40">
+      <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
+        <li>
+          <a href="index.html" class="text-white hover:text-primary">Home</a>
+        </li>
+        <li>
+          <a href="projetos.html" class="text-primary hover:text-white">Projetos</a>
+        </li>
+        <li>
+          <a href="blog.html" class="text-white hover:text-primary">Blog</a>
+        </li>
+        <li>
+          <a href="sobre.html" class="text-white hover:text-primary">Sobre</a>
+        </li>
+        <li>
+          <a href="contato.html" class="text-white hover:text-primary">Contato</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <main class="max-w-6xl mx-auto p-6 md:py-16">
-      <h1
-        class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 border-b-4 border-primary pb-2 inline-block"
-      >
-        Meus Projetos
-      </h1>
+  <main class="max-w-6xl mx-auto p-6 md:py-16">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 border-b-4 border-primary pb-2 inline-block">
+      Meus Projetos
+    </h1>
 
-      <section class="mb-16">
-        <h2
-          class="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-red-500 pl-3"
-        >
-          🎯 Avançado
-        </h2>
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-red-500 pl-3">
+        🎯 Avançado
+      </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
-          >
-            <div class="p-6">
-              <span
-                class="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4"
-              >
-                Spring + NextJs
-              </span>
-              <img
-                src="./assets/arenahub/print_arenahub_home.png"
-                alt="Mockup do ArenaHub"
-                class="w-full h-auto rounded-md mb-4 shadow-md"
-              />
-              <h2 class="text-2xl font-bold text-gray-900 mb-3">ArenaHub</h2>
-              <p class="text-gray-600 mb-6">
-                Plataforma completa para gestão de arenas e agendamento de
-                quadras, incluindo pagamentos PIX, jogos abertos, avaliações e
-                gestão de clientes.
-              </p>
-              <div class="flex justify-between items-center">
-                <a
-                  href="./projects_details/arenahub.html"
-                  class="text-primary hover:text-blue-600 font-semibold flex items-center"
-                >
-                  Ver detalhes
-                  <img
-                    src="./assets/icons/info.svg"
-                    alt="Ícone de Informações"
-                    class="w-4 h-4 ml-2 icons-blue"
-                  />
-                </a>
-                <a
-                  href="https://arenahub.app"
-                  class="text-gray-500 hover:text-primary"
-                  title="Visitar ArenaHub"
-                  target="_blank"
-                >
-                  <img
-                    src="./assets/icons/external-link.svg"
-                    alt="Ícone de Agendamento"
-                    class="w-5 h-5 icons-blue"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
-          >
-            <div
-              class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
-            >
-              <div class="p-6">
-                <span
-                  class="inline-block bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full mb-4"
-                >
-                  React Native / TypeScript
-                </span>
-                <img
-                  src="./assets/cofeeshop/print_coffee_app_reactnative_2.png"
-                  alt="Mockup do CoffeeShop"
-                  class="w-full h-auto rounded-md mb-4 shadow-md"
-                />
-                <h2 class="text-2xl font-bold text-gray-900 mb-3">
-                  CoffeeShop
-                </h2>
-                <p class="text-gray-600 mb-6">
-                  Aplicação mobile de compras de café com carrinho, checkout e
-                  sistema de recompensas. Desenvolvido com React Native para
-                  experiência nativa.
-                </p>
-                <div class="flex justify-between items-center">
-                  <a
-                    href="./projects_details/coffeeshop.html"
-                    class="text-primary hover:text-blue-600 font-semibold flex items-center"
-                  >
-                    Ver Detalhes
-                    <img
-                      src="./assets/icons/info.svg"
-                      alt="Ícone de Informações"
-                      class="w-4 h-4 ml-2 icons-blue"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
-          >
-            <div class="p-6">
-              <span
-                class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-4"
-              >
-                JavaFX / Desktop
-              </span>
-              <img
-                src="./assets/mundoanimal/print_mundo_animal_dashboard_admin.png"
-                alt="Mockup do Mundo Animal"
-                class="w-full h-auto rounded-md mb-4 shadow-md"
-              />
-              <h2 class="text-2xl font-bold text-gray-900 mb-3">
-                Mundo Animal (Petshop)
-              </h2>
-              <p class="text-gray-600 mb-6">
-                Sistema desktop em JavaFX para gestão completa de Petshops,
-                incluindo agendamento de serviços, cadastro de clientes,
-                animais, histórico e relatórios de atendimento.
-              </p>
-              <div class="flex justify-between items-center">
-                <a
-                  href="./projects_details/mundoanimal.html"
-                  class="text-primary hover:text-blue-600 font-semibold flex items-center"
-                >
-                  Ver Detalhes
-                  <img
-                    src="./assets/icons/info.svg"
-                    alt="Ícone de Informações"
-                    class="w-4 h-4 ml-2 icons-blue"
-                  />
-                </a>
-              </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+          <div class="p-6">
+            <span class="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              Spring + NextJs
+            </span>
+            <img src="./assets/arenahub/print_arenahub_home.png" alt="Mockup do ArenaHub"
+              class="w-full h-auto rounded-md mb-4 shadow-md" />
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">ArenaHub</h2>
+            <p class="text-gray-600 mb-6">
+              Plataforma completa para gestão de arenas e agendamento de
+              quadras, incluindo pagamentos PIX, jogos abertos, avaliações e
+              gestão de clientes.
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="./projects_details/arenahub.html"
+                class="text-primary hover:text-blue-600 font-semibold flex items-center">
+                Ver detalhes
+                <img src="./assets/icons/info.svg" alt="Ícone de Informações" class="w-4 h-4 ml-2 icons-blue" />
+              </a>
+              <a href="https://arenahub.app" class="text-gray-500 hover:text-primary" title="Visitar ArenaHub"
+                rel="noopener" target="_blank">
+                <img src="./assets/icons/external-link.svg" alt="Ícone de Agendamento" class="w-5 h-5 icons-blue" />
+              </a>
             </div>
           </div>
         </div>
-      </section>
 
-      <hr class="my-12 border-gray-300" />
-
-      <section class="mb-16">
-        <h2
-          class="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-yellow-500 pl-3"
-        >
-          💡 Intermediário
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
-          >
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+          <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
             <div class="p-6">
-              <span
-                class="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full mb-4"
-              >
+              <span class="inline-block bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full mb-4">
                 React Native / TypeScript
               </span>
-              <img
-                src="./assets/hildafinance/venda.png"
-                alt="Mockup do Hilda Finance App"
-                class="w-full h-auto rounded-md mb-4 shadow-md"
-              />
+              <img src="./assets/cofeeshop/print_coffee_app_reactnative_2.png" alt="Mockup do CoffeeShop"
+                class="w-full h-auto rounded-md mb-4 shadow-md" />
               <h2 class="text-2xl font-bold text-gray-900 mb-3">
-                Hilda Finance
+                CoffeeShop
               </h2>
               <p class="text-gray-600 mb-6">
-                Aplicativo mobile desenvolvido para uma espetaria em Floriano,
-                PI. Ele oferece controle total do <strong>estoque</strong> e
-                <strong>registro de vendas diárias</strong>, otimizando a gestão
-                financeira do restaurante.
+                Aplicação mobile de compras de café com carrinho, checkout e
+                sistema de recompensas. Desenvolvido com React Native para
+                experiência nativa.
               </p>
               <div class="flex justify-between items-center">
-                <a
-                  href="./projects_details/hildafinance.html"
-                  class="text-primary hover:text-blue-600 font-semibold flex items-center"
-                >
+                <a href="./projects_details/coffeeshop.html"
+                  class="text-primary hover:text-blue-600 font-semibold flex items-center">
                   Ver Detalhes
-                  <img
-                    src="./assets/icons/info.svg"
-                    alt="Ícone de Informações"
-                    class="w-4 h-4 ml-2 icons-blue"
-                  />
+                  <img src="./assets/icons/info.svg" alt="Ícone de Informações" class="w-4 h-4 ml-2 icons-blue" />
                 </a>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <hr class="my-12 border-gray-300" />
-
-      <section class="mb-16">
-        <h2
-          class="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-green-500 pl-3"
-        >
-          🌱 Básico
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
-          >
-            <div class="p-6">
-              <span
-                class="inline-block bg-lime-100 text-lime-700 text-xs font-semibold px-3 py-1 rounded-full mb-4"
-              >
-                Kotlin / Android
-              </span>
-              <img
-                src="./assets/calculadoraimc/result.png"
-                alt="Mockup da Calculadora de IMC"
-                class="w-full h-auto rounded-md mb-4 shadow-md"
-              />
-              <h2 class="text-2xl font-bold text-gray-900 mb-3">
-                Calculadora IMC
-              </h2>
-              <p class="text-gray-600 mb-6">
-                Praticar os fundamentos do Jetpack Compose e o uso de layouts
-                simples (Row e Column), além de aplicar Modifiers básicos.
-              </p>
-              <div class="flex justify-between items-center">
-                <a
-                  href="#"
-                  class="text-primary hover:text-blue-600 font-semibold flex items-center"
-                >
-                  <!-- Ver Detalhes -->
-                  Em breve
-                  <img
-                    src="./assets/icons/info.svg"
-                    alt="Ícone de Informações"
-                    class="w-4 h-4 ml-2 icons-blue"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
-          >
-            <div class="p-6">
-              <span
-                class="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4"
-              >
-                Vue.js / TypeScript
-              </span>
-              <img
-                src="./assets/conversordetemperatura/home_result.png"
-                alt="Mockup do Conversor de Temperatura"
-                class="w-full h-auto rounded-md mb-4 shadow-md"
-              />
-              <h2 class="text-2xl font-bold text-gray-900 mb-3">
-                Conversor de Temperatura
-              </h2>
-              <p class="text-gray-600 mb-6">
-                Essa aplicação permite que o usuário digite um valor em uma
-                escala (Celsius, Fahrenheit ou Kelvin) e visualize a conversão
-                automática para as outras duas escalas.
-              </p>
-              <div class="flex justify-between items-center">
-                <a
-                  href="#"
-                  class="text-primary hover:text-blue-600 font-semibold flex items-center"
-                >
-                  <!-- Ver Detalhes -->
-                  Em breve
-                  <img
-                    src="./assets/icons/info.svg"
-                    alt="Ícone de Informações"
-                    class="w-4 h-4 ml-2 icons-blue"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
-          >
-            <div class="p-6">
-              <span
-                class="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4"
-              >
-                Vue.js / TypeScript
-              </span>
-              <img
-                src="./assets/sitedereceitas/receita_details.png"
-                alt="Mockup do Site de Receitas"
-                class="w-full h-auto rounded-md mb-4 shadow-md"
-              />
-              <h2 class="text-2xl font-bold text-gray-900 mb-3">
-                Site de Receitas
-              </h2>
-              <p class="text-gray-600 mb-6">
-                Essa aplicação permite que o usuário busque receitas com base em
-                ingredientes disponíveis, além de visualizar informações
-                detalhadas sobre cada receita.
-              </p>
-              <div class="flex justify-between items-center">
-                <a
-                  href="#"
-                  class="text-primary hover:text-blue-600 font-semibold flex items-center"
-                >
-                  <!-- Ver Detalhes -->
-                  Em breve
-                  <img
-                    src="./assets/icons/info.svg"
-                    alt="Ícone de Informações"
-                    class="w-4 h-4 ml-2 icons-blue"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300"
-          >
-            <div class="p-6">
-              <span
-                class="inline-block bg-lime-100 text-lime-700 text-xs font-semibold px-3 py-1 rounded-full mb-4"
-              >
-                Kotlin / Android
-              </span>
-              <img
-                src="./assets/listacompras/list_compras.png"
-                alt="Mockup da Lista de Compras"
-                class="w-full h-auto rounded-md mb-4 shadow-md"
-              />
-              <h2 class="text-2xl font-bold text-gray-900 mb-3">
-                Lista de Compras
-              </h2>
-              <p class="text-gray-600 mb-6">
-                Praticar o uso de listas dinâmicas (LazyColumn), gerenciamento
-                de estado e manipulação de dados em Compose.
-              </p>
-              <div class="flex justify-between items-center">
-                <a
-                  href="#"
-                  class="text-primary hover:text-blue-600 font-semibold flex items-center"
-                >
-                  <!-- Ver Detalhes -->
-                  Em breve
-                  <img
-                    src="./assets/icons/info.svg"
-                    alt="Ícone de Informações"
-                    class="w-4 h-4 ml-2 icons-blue"
-                  />
-                </a>
-              </div>
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+          <div class="p-6">
+            <span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              JavaFX / Desktop
+            </span>
+            <img src="./assets/mundoanimal/print_mundo_animal_dashboard_admin.png" alt="Mockup do Mundo Animal"
+              class="w-full h-auto rounded-md mb-4 shadow-md" />
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">
+              Mundo Animal (Petshop)
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Sistema desktop em JavaFX para gestão completa de Petshops,
+              incluindo agendamento de serviços, cadastro de clientes,
+              animais, histórico e relatórios de atendimento.
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="./projects_details/mundoanimal.html"
+                class="text-primary hover:text-blue-600 font-semibold flex items-center">
+                Ver Detalhes
+                <img src="./assets/icons/info.svg" alt="Ícone de Informações" class="w-4 h-4 ml-2 icons-blue" />
+              </a>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
-      <p class="text-sm text-gray-500">
-        &copy; 2025 Sávio Soares. Todos os direitos reservados.
-      </p>
-    </footer>
+    <hr class="my-12 border-gray-300" />
 
-    <script src="js/script.js"></script>
-  </body>
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-yellow-500 pl-3">
+        💡 Intermediário
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+          <div class="p-6">
+            <span class="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              React Native / TypeScript
+            </span>
+            <img src="./assets/hildafinance/venda.png" alt="Mockup do Hilda Finance App"
+              class="w-full h-auto rounded-md mb-4 shadow-md" />
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">
+              Hilda Finance
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Aplicativo mobile desenvolvido para uma espetaria em Floriano,
+              PI. Ele oferece controle total do <strong>estoque</strong> e
+              <strong>registro de vendas diárias</strong>, otimizando a gestão
+              financeira do restaurante.
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="./projects_details/hildafinance.html"
+                class="text-primary hover:text-blue-600 font-semibold flex items-center">
+                Ver Detalhes
+                <img src="./assets/icons/info.svg" alt="Ícone de Informações" class="w-4 h-4 ml-2 icons-blue" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-12 border-gray-300" />
+
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-green-500 pl-3">
+        🌱 Básico
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+          <div class="p-6">
+            <span class="inline-block bg-lime-100 text-lime-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              Kotlin / Android
+            </span>
+            <img src="./assets/calculadoraimc/result.png" alt="Mockup da Calculadora de IMC"
+              class="w-full h-auto rounded-md mb-4 shadow-md" />
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">
+              Calculadora IMC
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Praticar os fundamentos do Jetpack Compose e o uso de layouts
+              simples (Row e Column), além de aplicar Modifiers básicos.
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="#" class="text-primary hover:text-blue-600 font-semibold flex items-center">
+                <!-- Ver Detalhes -->
+                Em breve
+                <img src="./assets/icons/info.svg" alt="Ícone de Informações" class="w-4 h-4 ml-2 icons-blue" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+          <div class="p-6">
+            <span class="inline-block bg-lime-100 text-lime-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              Kotlin / Android
+            </span>
+            <img src="./assets/listacompras/list_compras.png" alt="Mockup da Lista de Compras"
+              class="w-full h-auto rounded-md mb-4 shadow-md" />
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">
+              Lista de Compras
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Praticar o uso de listas dinâmicas (LazyColumn), gerenciamento
+              de estado e manipulação de dados em Compose.
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="#" class="text-primary hover:text-blue-600 font-semibold flex items-center">
+                <!-- Ver Detalhes -->
+                Em breve
+                <img src="./assets/icons/info.svg" alt="Ícone de Informações" class="w-4 h-4 ml-2 icons-blue" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+          <div class="p-6">
+            <span class="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              Vue.js / TypeScript
+            </span>
+            <img src="./assets/conversordetemperatura/home_result.png" alt="Mockup do Conversor de Temperatura"
+              class="w-full h-auto rounded-md mb-4 shadow-md" />
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">
+              Conversor de Temperatura
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Essa aplicação permite que o usuário digite um valor em uma
+              escala (Celsius, Fahrenheit ou Kelvin) e visualize a conversão
+              automática para as outras duas escalas.
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="#" class="text-primary hover:text-blue-600 font-semibold flex items-center">
+                <!-- Ver Detalhes -->
+                Em breve
+                <img src="./assets/icons/info.svg" alt="Ícone de Informações" class="w-4 h-4 ml-2 icons-blue" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-300">
+          <div class="p-6">
+            <span class="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+              Vue.js / TypeScript
+            </span>
+            <img src="./assets/sitedereceitas/receita_details.png" alt="Mockup do Site de Receitas"
+              class="w-full h-auto rounded-md mb-4 shadow-md" />
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">
+              Site de Receitas
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Essa aplicação permite que o usuário busque receitas com base em
+              ingredientes disponíveis, além de visualizar informações
+              detalhadas sobre cada receita.
+            </p>
+            <div class="flex justify-between items-center">
+              <a href="#" class="text-primary hover:text-blue-600 font-semibold flex items-center">
+                <!-- Ver Detalhes -->
+                Em breve
+                <img src="./assets/icons/info.svg" alt="Ícone de Informações" class="w-4 h-4 ml-2 icons-blue" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+    <p class="text-sm text-gray-500">
+      &copy; 2025 Sávio Soares. Todos os direitos reservados.
+    </p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
 </html>
