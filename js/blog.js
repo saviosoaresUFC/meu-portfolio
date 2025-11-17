@@ -36,13 +36,12 @@ async function fetchPosts() {
     }
 }
 
-// 2. Função para criar o elemento HTML (Card do Post)
 function createPostCard(post) {
     const card = document.createElement('div');
 
     card.className = 'bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden';
 
-    // Formatação da Data (15 de Mai. de 2025)
+    // Formatação da Data
     const dataFormatada = new Date(post.data).toLocaleDateString('pt-BR', {
         year: 'numeric',
         month: 'short',
@@ -51,7 +50,7 @@ function createPostCard(post) {
 
     // Estrutura interna do Card
     card.innerHTML = `
-        <a href="./posts_details/${post.link_post || '#'}" class="block">
+        <a href="./posts-details/${post.link_post || '#'}" class="block">
             <img 
                 src="${post.imagem_principal}" 
                 alt="Imagem de destaque para ${post.titulo}" 
@@ -63,7 +62,7 @@ function createPostCard(post) {
                 ${post.categoria}
             </span>
             <h2 class="text-xl font-bold text-gray-900 mb-2 hover:text-primary transition duration-300">
-                <a href="./posts_details/${post.link_post || '#'}">${post.titulo}</a>
+                <a href="./posts-details/${post.link_post || '#'}">${post.titulo}</a>
             </h2>
             <p class="text-gray-600 mb-4 text-sm">
                 ${post.resumo}

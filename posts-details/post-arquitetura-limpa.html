@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arquitetura Limpa - Sávio Soares Blog</title>
+
+
+    <link rel="stylesheet" href="../css/global.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" href="../assets/icons/icone.png" type="image/x-icon" />
+
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4A90E2",
+                        "fundo-claro": "#F5F5F5",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        .post-content p,
+        .post-content ul,
+        .post-content ol {
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+            font-size: 1.125rem;
+            color: #374151;
+        }
+
+        .post-content h2,
+        .post-content h3,
+        .post-content h4 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .post-content h2 {
+            font-size: 1.875rem;
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+        }
+
+        .post-content h4 {
+            font-size: 1.25rem;
+        }
+
+        .post-content table {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            border-collapse: collapse;
+            table-layout: auto;
+        }
+
+        .post-content th,
+        .post-content td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+            word-wrap: break-word;
+        }
+
+        .post-content th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .post-content pre {
+            background-color: #1f2937;
+            color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .note-box {
+            border-left: 4px solid #4A90E2;
+            background-color: #e3f2fd;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.25rem;
+        }
+
+        .post-content .code-java {
+            color: #f8981d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-fundo-claro min-h-screen">
+    <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+        <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+        <nav class="hidden md:flex space-x-8" id="navMenu">
+            <a href="../index.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+            <a href="../projetos.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Projetos</a>
+            <a href="../blog.html"
+                class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Blog</a>
+            <a href="../sobre.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+            <a href="../contato.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+        </nav>
+        <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+            aria-label="Toggle Menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+    </header>
+
+    <main class="max-w-4xl mx-auto md:py-16">
+        <article class="p-6 md:p-10 rounded-xl">
+            <div class="mb-8 border-b pb-4">
+                <span
+                    class="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase">
+                    Arquitetura
+                </span>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Clean Architecture: O Guia Completo para Sistemas Independentes
+                </h1>
+
+                <p class="text-gray-500 text-sm flex items-center space-x-3">
+                    <span class="flex items-center">
+                        <img src="../assets/icons/calendar.svg" alt="Ícone de Calendário"
+                            class="w-4 h-4 inline-block mr-1 icons-gray-500" />
+                        16 de Nov. de 2025
+                    </span>
+                    <span>|</span>
+
+                    <span class="flex items-center">
+                        <img src="../assets/icons/user.svg" alt="Ícone de Usuário"
+                            class="w-4 h-4 inline-block mr-1 icons-gray-500" />
+                        Por Sávio Soares
+                    </span>
+                    <span>|</span>
+
+                    <span class="flex items-center">
+                        <img src="../assets/icons/clock.svg" alt="Ícone de Relógio"
+                            class="w-4 h-4 inline-block mr-1 icons-gray-500" />
+                        15 min de leitura
+                    </span>
+                </p>
+            </div>
+
+            <figure class="mb-8">
+                <img src="../assets/posts/arquitetura_limpa.png" alt="Diagrama comparativo Microkernel e Hexagonal"
+                    class="w-full h-auto rounded-lg shadow-md" />
+                <figcaption class="text-center text-sm text-gray-500 mt-2">
+                    Livro Arquitetura Limpa de Robert C. Martin.
+                </figcaption>
+            </figure>
+
+            <div class="post-content">
+                <h2>1. Clean Architecture: O Guia do Artesão para a Estrutura de Software</h2>
+                <p>
+                    A <strong>Clean Architecture (Arquitetura Limpa)</strong>, popularizada por Robert C. Martin (Uncle
+                    Bob), é um estilo arquitetural que nasceu da necessidade de construir sistemas que são
+                    <span class="text-blue-500">testáveis, flexíveis e independentes de fatores externos</span>.
+                </p>
+
+                <h3>A Motivação: Por Que a Produtividade Cai?</h3>
+                <p>
+                    A principal motivação para esta arquitetura é combater a queda de produtividade em projetos de
+                    software maduros. Em muitos sistemas, fazer uma pequena alteração pode levar semanas, quebrar outras
+                    partes do sistema e gerar um estresse enorme.
+                </p>
+                <p>
+                    Segundo Uncle Bob, o problema não são os desenvolvedores que não trabalham duro; o problema é a
+                    <strong>estrutura (arquitetura)</strong> do software. A arquitetura falha em manter a adaptabilidade
+                    ao longo do tempo.
+                </p>
+
+                <h3>Os Quatro Pilares da Independência (O Objetivo)</h3>
+                <p>
+                    O objetivo fundamental da Clean Architecture é entregar um sistema que seja:
+                </p>
+                <ul class="list-disc pl-5">
+                    <li>
+                        <strong>Independente de Frameworks:</strong> O sistema não deve ser escravo de frameworks (como
+                        Spring, Rails, ou Angular). Você pode trocar o framework sem reescrever o código de negócio.
+                    </li>
+                    <li>
+                        <strong>Testável:</strong> As regras de negócio podem ser testadas sem a necessidade de um Banco
+                        de Dados, Servidor Web ou UI.
+                    </li>
+                    <li>
+                        <strong>Independente de UI:</strong> A interface de usuário pode ser alterada facilmente, sem
+                        mudar as regras de negócio.
+                    </li>
+                    <li>
+                        <strong>Independente de Banco de Dados:</strong> Você pode trocar o banco de dados (de SQL para
+                        NoSQL, por exemplo) sem alterar as Entidades e Casos de Uso.
+                    </li>
+                </ul>
+
+                <hr>
+
+                <h2>2. O Princípio Central: A Regra de Dependência</h2>
+                <p>
+                    A Clean Architecture é definida por uma estrutura de <span class="text-blue-500">camadas
+                        concêntricas (anéis)</span>.
+                    O princípio fundamental que governa essa estrutura e garante a independência é a <strong>Regra de
+                        Dependência</strong>.
+                </p>
+                <figure class="mb-8">
+                    <img src="../assets/posts/camadas_concentricas.png"
+                        alt="Diagrama de anéis concêntricos da Clean Architecture" class="w-full h-auto" />
+                    <figcaption class="text-center text-sm text-gray-500 mt-2">
+                        Diagrama de anéis concêntricos da Clean Architecture.
+                    </figcaption>
+                </figure>
+
+                <div class="note-box bg-blue-50 border-blue-200">
+                    <p class="text-lg font-semibold text-blue-700">
+                        A Regra de Dependência: As dependências devem sempre apontar para dentro.
+                    </p>
+                    <p class="text-sm text-gray-700 mt-2">
+                        Isso significa que o código nos círculos internos <strong>não pode saber absolutamente
+                            nada</strong> sobre o código nos círculos externos.
+                    </p>
+                </div>
+
+
+                <hr>
+
+                <h2>3. Detalhamento das Camadas (Os Quatro Anéis)</h2>
+                <p>
+                    O diagrama é tipicamente dividido em quatro anéis principais. Cada anel representa um nível
+                    diferente de abstração e especificidade (do mais interno para o mais externo):
+                </p>
+
+                <ul class="list-disc pl-5">
+                    <li>
+                        <h4>1. Entidades (Entities)</h4>
+                        <p>
+                            A camada mais interna. Contém as <spam class="text-blue-500">regras de negócio mais
+                                essenciais e gerais</spam>
+                            (regras de domínio). São objetos de domínio puros que não dependem de nada externo (não
+                            conhecem frameworks, nem banco de dados).
+                        </p>
+                        <p>
+                            <strong>Exemplo:</strong> As classes `Product` ou `Order` e as regras de que um produto tem
+                            um preço e um estoque.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>2. Casos de Uso (Use Cases)</h4>
+                        <p>
+                            Contêm as <spam class="text-blue-500">regras de negócio específicas da aplicação</spam>.
+                            Eles orquestram o
+                            fluxo de dados entre as Entidades e as Interfaces/Adaptadores.
+                        </p>
+                        <p>
+                            <strong>Função:</strong> Definir e gerenciar a forma como os dados se movem para dentro e
+                            para fora das Entidades. É aqui que definimos a ação "Criar Produto" ou "Processar Pedido".
+                        </p>
+                    </li>
+                    <li>
+                        <h4>3. Interfaces e Adaptadores (Interface Adapters)</h4>
+                        <p>
+                            Camada responsável por <spam class="text-blue-500">adaptar o formato de dados</spam> das
+                            estruturas externas
+                            (DB, Web) para o formato conveniente para os Casos de Uso e vice-versa.
+                        </p>
+                        <ul class="list-none ml-4">
+                            <li><strong>Controllers (Entrada):</strong> Recebem requisições HTTP e adaptam os dados de
+                                entrada para o Caso de Uso.</li>
+                            <li><strong>Presenters (Saída):</strong> Formatam os dados de saída do Caso de Uso para a UI
+                                (JSON, HTML).</li>
+                            <li><strong>Gateways (Repositórios):</strong> São as interfaces que os Casos de Uso chamam
+                                para acessar o mundo externo, como o banco de dados.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>4. Frameworks e Drivers</h4>
+                        <p>
+                            A camada mais externa, composta pela tecnologia concreta: frameworks de UI, o banco de dados
+                            real (PostgreSQL, MongoDB), servidores web.
+                        </p>
+                        <p>
+                            <strong>Importância:</strong> É a camada <strong>menos importante</strong> do ponto de vista
+                            do negócio. Se o negócio não mudar, esta camada pode ser trocada inteiramente (trocar a UI
+                            de Web para CLI ou o DB de MySQL para Oracle).
+                        </p>
+                    </li>
+                </ul>
+
+                <hr>
+
+                <h2>4. Implementação em Código: Inversão de Dependência (DIP)</h2>
+                <p>
+                    Para que a Regra de Dependência seja respeitada, usamos o <strong>Princípio da Inversão de
+                        Dependência
+                        (DIP)</strong>. Este princípio afirma que módulos de alto nível (os Casos de Uso, internos) não
+                    devem
+                    depender de módulos de baixo nível (os Adapters, externos).
+                </p>
+                <p>
+                    Em vez disso, ambos devem depender de <strong>abstrações (Interfaces)</strong>. Assim, a seta de
+                    dependência é invertida.
+                </p>
+
+                <h3>Exemplo Prático: Persistência de Produto</h3>
+
+                <h4>1. Porta (Contrato na Camada Interna)</h4>
+                <p>
+                    A interface `ProductRepository` é a <span class="text-blue-500">Porta</span> que o Caso de Uso
+                    precisa para salvar dados. Ela vive
+                    na camada de <strong>Casos de Uso</strong> ou <span
+                        class="text-blue-500">Interfaces/Adaptadores</span> (dependendo da
+                    interpretação do autor, mas sempre interna ao Banco de Dados).
+                </p>
+                <pre><code>// Camada: Casos de Uso - Define o Contrato (Porta)
+public interface ProductRepository {
+    // Casos de Uso dependem deste contrato, não da implementação do DB.
+    void save(Product product);
+    Product findById(String id);
+}</code></pre>
+
+                <h4>2. Adaptador (Implementação na Camada Externa)</h4>
+                <p>
+                    A classe `DatabaseProductRepository` é o <span class="text-blue-500">Adaptador</span>. Ela
+                    implementa o contrato e lida com a
+                    tecnologia específica (ex: JDBC, JPA, ORM), vivendo na camada de <strong>Frameworks e
+                        Drivers</strong>.
+                </p>
+                <pre><code>// Camada: Frameworks/Drivers - Implementação Concreta (Adaptador)
+public class DatabaseProductRepository implements ProductRepository {
+    // Implementa o contrato definido na camada interna,
+    // lidando com a tecnologia de banco de dados real.
+    
+    @Override
+    public void save(Product product) {
+        // Lógica de persistência real (Ex: entityManager.persist(product))
+    }
+    // ... outros métodos
+}</code></pre>
+
+                <h4>3. Caso de Uso (Injetando a Dependência)</h4>
+                <p>
+                    O `CreateProductUseCase` (Caso de Uso) aceita a injeção de qualquer classe que satisfaça a interface
+                    `ProductRepository`. Ele não se importa se a persistência é em MySQL, MongoDB ou em memória,
+                    garantindo a <span class="text-blue-500">independência</span>.
+                </p>
+                <pre><code>// Camada: Casos de Uso - Regra de Negócio Específica
+public class CreateProductUseCase {
+    private final ProductRepository repository; // Depende da Interface!
+
+    // Injeção de Dependência via construtor
+    public CreateProductUseCase(ProductRepository repository) {
+        this.repository = repository;
+    }
+
+    public void execute(String id, String name) {
+        // 1. Regra de Negócio (Ex: Validação, criação da Entidade)
+        Product product = new Product(id, name); 
+        
+        // 2. Orquestração (Chama a abstração do repositório)
+        repository.save(product); 
+    }
+}</code></pre>
+            </div>
+
+            <div class="mt-8 pt-4 border-t flex flex-wrap gap-2">
+                <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Clean
+                    Architecture</span>
+                <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">DIP</span>
+                <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Entidades</span>
+                <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Casos de Uso</span>
+                <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Arquitetura
+                    Limpa</span>
+                <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Teste</span>
+            </div>
+
+            <section class="mt-12 pt-6 border-t border-gray-200">
+                <div class="note-box bg-blue-50 border-blue-200">
+                    <p class="text-sm text-gray-700">
+                        <strong>Fonte Principal e Agradecimento:</strong> Este artigo foi construído com base nos
+                        conceitos, exemplos e diagramas discutidos na disciplina de <span
+                            class="text-blue-500">Arquitetura de Software</span> do curso de Engenharia de Software da
+                        <strong>UFC/Quixadá</strong>, ministrada pelo Professor <strong>Sidartha Carvalho</strong>.
+                    </p>
+                    <p class="text-xs text-gray-600 mt-2">
+                        O material base também utiliza referências do livro <strong>"Arquitetura Limpa - O Guia do
+                            Artesão para Estrutura e Design de Software"</strong>, de Robert C. Martin.
+                    </p>
+                </div>
+            </section>
+
+            <div class="mt-8">
+                <a href="../blog.html" class="inline-flex items-center text-primary hover:text-blue-600 font-semibold">
+                    <img src="../assets/icons/arrow-left.svg" alt="Icon Arrow Left" class="w-4 h-4 mr-2 icons-blue" />
+                    Voltar para o Blog
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+        <p class="text-sm text-gray-500">
+            &copy; 2025 Sávio Soares. Todos os direitos reservados.
+        </p>
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

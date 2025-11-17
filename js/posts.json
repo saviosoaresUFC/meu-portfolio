@@ -10,7 +10,7 @@
     "imagem_principal": "./assets/posts/java_25.jpg",
     "tags": ["Java", "JEP 463", "Simplificação", "Modern Java"],
     "tempo_leitura_min": 6,
-    "link_post": "post_java_main.html"
+    "link_post": "post-java-main.html"
   },
   {
     "id": 1,
@@ -23,6 +23,32 @@
     "imagem_principal": "./assets/posts/metodologiasageis.svg",
     "tags": ["Metodologias Ágeis", "Scrum", "XP", "ShapeUp"],
     "tempo_leitura_min": 10,
-    "link_post": "post_metodologias_ageis.html"
+    "link_post": "post-metodologias-ageis.html"
+  },
+  {
+    "id": 2,
+    "titulo": "Microkernel vs Hexagonal: Escolhendo a Arquitetura Certa",
+    "slug": "microkernel-vs-hexagonal-arquitetura",
+    "data": "2025-11-17",
+    "autor": "Sávio Soares",
+    "categoria": "Arquitetura",
+    "resumo": "Uma comparação aprofundada das arquiteturas Microkernel (foco em extensibilidade por plugins) e Hexagonal (foco no isolamento do domínio da infraestrutura).",
+    "imagem_principal": "assets/posts/arquitetura_hexagonal.png",
+    "tags": ["Microkernel", "Hexagonal", "Arquitetura", "Design"],
+    "tempo_leitura_min": 12,
+    "link_post": "post-microkernel-hexagonal.html"
+  },
+  {
+    "id": 3,
+    "titulo": "Clean Architecture: O Guia Completo para Sistemas Independentes",
+    "slug": "clean-architecture-guia-completo",
+    "data": "2025-11-17",
+    "autor": "Sávio Soares",
+    "categoria": "Arquitetura",
+    "resumo": "Análise aprofundada da Clean Architecture, focando nos Quatro Pilares da Independência, na Regra de Dependência e em como o Princípio da Inversão (DIP) protege a lógica de negócio.",
+    "imagem_principal": "assets/posts/arquitetura_limpa.png",
+    "tags": ["Clean Architecture", "DIP", "Uncle Bob", "Arquitetura", "Teste"],
+    "tempo_leitura_min": 15,
+    "link_post": "post-arquitetura-limpa.html"
   }
 ]
