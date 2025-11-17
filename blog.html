@@ -1,132 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog | Sávio Soares</title>
 
-    <link rel="stylesheet" href="./css/global.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="./assets/icons/icone.png" type="image/x-icon" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Sávio Soares</title>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#4A90E2",
-              "fundo-claro": "#F5F5F5",
-            },
+  <link rel="stylesheet" href="./css/global.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="./assets/icons/icone.png" type="image/x-icon" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4A90E2",
+            "fundo-claro": "#F5F5F5",
           },
         },
-      };
-    </script>
-  </head>
+      },
+    };
+  </script>
+</head>
 
-  <body class="bg-fundo-claro min-h-screen">
-    <header
-      class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50"
-    >
-      <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+<body class="bg-fundo-claro min-h-screen">
+  <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+    <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
 
-      <nav class="hidden md:flex space-x-8" id="navMenu">
-        <a
-          href="index.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Home</a
-        >
-        <a
-          href="projetos.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Projetos</a
-        >
-        <a
-          href="blog.html"
-          class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active"
-          >Blog</a
-        >
-        <a
-          href="sobre.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Sobre</a
-        >
-        <a
-          href="contato.html"
-          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
-          >Contato</a
-        >
-      </nav>
+    <nav class="hidden md:flex space-x-8" id="navMenu" aria-label="Desktop Menu">
+      <a href="index.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+      <a href="projetos.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Projetos</a>
+      <a href="blog.html" class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Blog</a>
+      <a href="sobre.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+      <a href="contato.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+    </nav>
 
-      <button
-        class="md:hidden flex flex-col justify-center items-center menu-toggle z-50"
-        id="menuToggle"
-        aria-label="Toggle Menu"
-      >
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
+    <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+      aria-label="Toggle Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
 
-      <nav
-        id="mobileMenu"
-        class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
-      >
-        <ul
-          class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
-        >
-          <li>
-            <a href="index.html" class="text-white hover:text-primary">Home</a>
-          </li>
-          <li>
-            <a href="projetos.html" class="text-white hover:text-primary"
-              >Projetos</a
-            >
-          </li>
-          <li>
-            <a href="blog.html" class="text-primary hover:text-white">Blog</a>
-          </li>
-          <li>
-            <a href="sobre.html" class="text-white hover:text-primary">Sobre</a>
-          </li>
-          <li>
-            <a href="contato.html" class="text-white hover:text-primary"
-              >Contato</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <nav id="mobileMenu"
+      class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+      aria-label="Mobile Menu">
+      <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
+        <li>
+          <a href="index.html" class="text-white hover:text-primary">Home</a>
+        </li>
+        <li>
+          <a href="projetos.html" class="text-white hover:text-primary">Projetos</a>
+        </li>
+        <li>
+          <a href="blog.html" class="text-primary hover:text-white">Blog</a>
+        </li>
+        <li>
+          <a href="sobre.html" class="text-white hover:text-primary">Sobre</a>
+        </li>
+        <li>
+          <a href="contato.html" class="text-white hover:text-primary">Contato</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <main class="max-w-6xl mx-auto p-6 md:py-16">
-      <h1
-        class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 border-b-4 border-primary pb-2 inline-block"
-      >
-        Meu Blog
-      </h1>
+  <main class="max-w-6xl mx-auto p-6 md:py-16">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 border-b-4 border-primary pb-2 inline-block">
+      Meu Blog
+    </h1>
 
-      <p class="text-gray-700 text-lg mb-10 w-full">
-        Bem-vindo ao meu espaço de compartilhamento! Aqui você encontrará
-        artigos e tutoriais sobre Engenharia de Software, as últimas tendências
-        e melhores práticas.
+    <p class="text-gray-700 text-lg mb-10 w-full">
+      Bem-vindo ao meu espaço de compartilhamento! Aqui você encontrará
+      artigos e tutoriais sobre Engenharia de Software, as últimas tendências
+      e melhores práticas.
+    </p>
+
+    <section id="postsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <p id="loadingMessage" class="text-center col-span-full text-gray-500">
+        Carregando posts...
       </p>
+    </section>
+  </main>
 
-      <section
-        id="postsContainer"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-      >
-        <p id="loadingMessage" class="text-center col-span-full text-gray-500">
-          Carregando posts...
-        </p>
-      </section>
-    </main>
+  <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+    <p class="text-sm text-gray-500">
+      &copy; 2025 Sávio Soares. Todos os direitos reservados.
+    </p>
+  </footer>
 
-    <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
-      <p class="text-sm text-gray-500">
-        &copy; 2025 Sávio Soares. Todos os direitos reservados.
-      </p>
-    </footer>
+  <script src="js/script.js"></script>
+  <script src="js/blog.js"></script>
+</body>
 
-    <script src="js/script.js"></script>
-    <script src="js/blog.js"></script>
-  </body>
 </html>

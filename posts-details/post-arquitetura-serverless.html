@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serverless: Abstraindo Servidores | Sávio Soares Blog</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../assets/icons/icone.png" type="image/x-icon" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4A90E2",
+                        "fundo-claro": "#F5F5F5",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        .post-content p,
+        .post-content ul,
+        .post-content ol {
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+            font-size: 1.125rem;
+            color: #374151;
+        }
+
+        .post-content h2,
+        .post-content h3,
+        .post-content h4 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .post-content h2 {
+            font-size: 1.875rem;
+        }
+
+        .post-content h3 {
+            font-size: 1.5rem;
+        }
+
+        .post-content h4 {
+            font-size: 1.25rem;
+        }
+
+        .post-content table {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            border-collapse: collapse;
+            table-layout: auto;
+        }
+
+        .post-content th,
+        .post-content td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+            word-wrap: break-word;
+        }
+
+        .post-content th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .post-content pre {
+            background-color: #1f2937;
+            color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .note-box {
+            border-left: 4px solid #4A90E2;
+            background-color: #e3f2fd;
+            padding: 1rem 1rem;
+            margin-top: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .note-box p {
+            font-size: small;
+        }
+
+        .post-content .code-java {
+            color: #f8981d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-fundo-claro min-h-screen">
+    <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+        <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+        <nav class="hidden md:flex space-x-8" id="navMenu" aria-label="Desktop Menu">
+            <a href="../index.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+            <a href="../projetos.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Projetos</a>
+            <a href="../blog.html"
+                class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Blog</a>
+            <a href="../sobre.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+            <a href="../contato.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+        </nav>
+
+        <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+            aria-label="Toggle Menu">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+
+        <nav id="mobileMenu"
+            class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+            aria-label="Mobile Menu">
+            <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
+                <li>
+                    <a href="../index.html" class="text-white hover:text-primary">Home</a>
+                </li>
+                <li>
+                    <a href="../projetos.html" class="text-white hover:text-primary">Projetos</a>
+                </li>
+                <li>
+                    <a href="../blog.html" class="text-primary hover:text-white">Blog</a>
+                </li>
+                <li>
+                    <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+                </li>
+                <li>
+                    <a href="../contato.html" class="text-white hover:text-primary">Contato</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto md:py-16">
+        <article class="p-6 md:p-10 rounded-xl">
+            <div class="mb-8 border-b pb-4">
+                <span
+                    class="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase">
+                    Arquitetura
+                </span>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Serverless: Abstraindo Servidores e o Custo da Infraestrutura
+                </h1>
+
+                <p class="text-gray-500 text-sm flex items-center space-x-3">
+                    <span class="flex items-center">
+                        <img src="../assets/icons/calendar.svg" alt="Ícone de Calendário"
+                            class="w-4 h-4 inline-block mr-1 icons-gray-500" />
+                        16 de Nov. de 2025
+                    </span>
+                    <span>|</span>
+
+                    <span class="flex items-center">
+                        <img src="../assets/icons/user.svg" alt="Ícone de Usuário"
+                            class="w-4 h-4 inline-block mr-1 icons-gray-500" />
+                        Por Sávio Soares
+                    </span>
+                    <span>|</span>
+
+                    <span class="flex items-center">
+                        <img src="../assets/icons/clock.svg" alt="Ícone de Relógio"
+                            class="w-4 h-4 inline-block mr-1 icons-gray-500" />
+                        8 min de leitura
+                    </span>
+                </p>
+            </div>
+
+            <figure class="mb-8">
+                <img src="../assets/posts/arquitetura_serverless.png"
+                    alt="Diagrama comparativo Microkernel e Hexagonal" class="w-full h-auto rounded-lg shadow-md" />
+                <figcaption class="text-center text-sm text-gray-500 mt-2">
+                    Exemplos de Plataformas Serverless: AWS, Google Cloud e Azure.
+                </figcaption>
+            </figure>
+
+            <div class="post-content">
+
+                <p>
+                    A <strong>Arquitetura Serverless</strong> representa uma evolução no modelo de <span
+                        class="text-blue-500">cloud computing</span>.
+                    Neste estilo, a criação e execução de módulos que compõem o sistema são abstraídas,
+                    <strong>não sendo necessário o gerenciamento dos servidores</strong>.
+                </p>
+                <p>
+                    O Serverless é inerentemente altamente escalável, pois o
+                    provisionamento, escalonamento e manutenção dos servidores são responsabilidade da nuvem hospedeira,
+                    e não do <strong>time de desenvolvimento</strong>.
+                </p>
+
+                <figure class="mb-8">
+                    <img src="../assets/posts/arquitetura_serverless_lambda.png"
+                        alt="Diagrama de anéis concêntricos da Clean Architecture" class="w-full h-auto" />
+                    <figcaption class="text-center text-sm text-gray-500 mt-2">
+                        Diagrama ilustrando o modelo de Funções como Serviço (FaaS) com AWS Lambda.
+                    </figcaption>
+                </figure>
+
+                <h2>Os Dois Modelos do Serverless</h2>
+                <p>A arquitetura Serverless se manifesta em dois modelos principais:</p>
+
+                <h3>1. Funções como Serviço (FaaS)</h3>
+                <ul class="list-disc pl-5">
+                    <li>
+                        <strong>Definição:</strong> Funções isoladas que são executadas sob
+                        demanda em resposta a eventos (como requisições HTTP, alterações em DB ou mensagens).
+                    </li>
+                    <li>
+                        <strong>Exemplos:</strong> AWS Lambda, Google Cloud Functions, ou Azure
+                        Functions.
+                    </li>
+                </ul>
+                <h3>2. Backend como Serviço (BaaS)</h3>
+                <ul class="list-disc pl-5">
+                    <li>
+                        <strong>Definição:</strong> Serviços prontos e gerenciados para
+                        funcionalidades específicas, como autenticação, banco de dados (DynamoDB, Firestore) e
+                        armazenamento de arquivos (S3).
+                    </li>
+                    <li>
+                        <strong>Exemplos:</strong> Firebase, Supabase ou AWS Amplify.
+                    </li>
+                </ul>
+
+                <h2>Vantagens Chave</h2>
+                <ul class="list-disc pl-5">
+                    <li>
+                        <strong>Custo-Eficiência:</strong> Você paga apenas pelo
+                        tempo de execução do código e pelos recursos usados (<span
+                            class="text-blue-500">pay-per-use</span>), sem custos fixos para
+                        manter servidores ociosos.
+                    </li>
+                    <li>
+                        <strong>Escalabilidade Automática:</strong> A infraestrutura
+                        ajusta automaticamente os recursos para atender à demanda (desde picos altos até baixa
+                        atividade).
+                    </li>
+                    <li>
+                        <strong>Foco no Negócio:</strong> Redução de sobrecarga operacional,
+                        pois não é necessário configurar, monitorar ou atualizar servidores manualmente. O
+                        <span class="text-blue-500">time foca na lógica do negócio</span>.
+                    </li>
+                </ul>
+                <div class="note-box bg-blue-50 border-blue-200">
+                    <p class="text-sm text-gray-700">
+                        Um exemplo prático é o caso da Coca-Cola, que alcançou uma redução de <strong>40%
+                            nos custos com infraestrutura</strong> ao migrar para uma arquitetura Serverless na
+                        AWS.
+                    </p>
+                </div>
+
+                <h2>Desvantagens e Desafios</h2>
+                <ul class="list-disc pl-5">
+                    <li>
+                        <strong>Cold Starts:</strong> As funções <span class="text-blue-500">serverless</span> podem
+                        demorar mais para responder na primeira execução após ficarem inativas (<span
+                            class="text-blue-500">adormecidas</span>) para
+                        economizar recursos.
+                    </li>
+                    <li>
+                        <strong>Dependência de Provedor (Vendor Lock-in):</strong>
+                        Pode ser difícil migrar sua aplicação para outro provedor, pois muitos serviços utilizam APIs e
+                        <span class="text-blue-500">extensions</span> específicas (ex: AWS Lambda).
+                    </li>
+                    <li>
+                        <strong>Debugging Complexo:</strong> A natureza distribuída
+                        da arquitetura pode tornar o <span class="text-blue-500">rastreamento de problemas</span> e a
+                        leitura de logs de diferentes
+                        serviços mais complexa.
+                    </li>
+                </ul>
+
+                <hr>
+
+                <h2>4. Serverless vs. Microservices</h2>
+                <div class="overflow-x-auto -mx-6 md:mx-0 px-6">
+                    <table class="bg-white">
+                        <thead>
+                            <tr>
+                                <th>Aspecto</th>
+                                <th>Microserviços</th>
+                                <th>Serverless (FaaS)</th>
+                                <th>Relação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Unidade Lógica</strong></td>
+                                <td>Serviço</td>
+                                <td><span class="text-blue-500">Função</span></td>
+                                <td>Uma função pode ser vista como o "menor tipo" de microserviço</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Infraestrutura</strong></td>
+                                <td><span class="text-blue-500">Containers</span> (gerenciados por você)</td>
+                                <td><span class="text-blue-500">Funções</span> (gerenciadas pela nuvem)</td>
+                                <td>Serverless abstrai a infraestrutura</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Escalabilidade</strong></td>
+                                <td>Manual ou via orquestrador (ex: <span class="text-blue-500">Kubernetes</span>)</td>
+                                <td>Automática por <span class="text-blue-500">evento</span></td>
+                                <td>Serverless é mais <span class="text-blue-500">granular</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Estado</strong></td>
+                                <td>Pode ser <span class="text-blue-500">stateful</span> (banco acoplado)</td>
+                                <td><span class="text-blue-500">Stateless</span> (dados externos)</td>
+                                <td>Funções precisam reconstituir o contexto a cada execução</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Comunicação</strong></td>
+                                <td><span class="text-blue-500">REST</span>, <span class="text-blue-500">gRPC</span>,
+                                    mensageria</td>
+                                <td><span class="text-blue-500">Event-driven</span> (filas, tópicos, gatilhos)</td>
+                                <td>Serverless é fortemente orientado a eventos</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Custos</strong></td>
+                                <td>Instâncias 24/7</td>
+                                <td>Pagamento por execução</td>
+                                <td>Serverless é mais econômico para baixa demanda</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Observabilidade</strong></td>
+                                <td>Log centralizado (<span class="text-blue-500">ELK</span>, <span
+                                        class="text-blue-500">Prometheus</span>)</td>
+                                <td>Logs distribuídos (<span class="text-blue-500">CloudWatch</span>, <span
+                                        class="text-blue-500">Stackdriver</span>)</td>
+                                <td>Difícil rastrear em Serverless</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gerenciamento</strong></td>
+                                <td><span class="text-blue-500">DevOps</span> / <span class="text-blue-500">SRE</span>
+                                </td>
+                                <td><span class="text-blue-500">Cloud provider</span> (AWS, GCP, Azure)</td>
+                                <td>Serverless delega a operação à nuvem</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-8 pt-4 border-t flex flex-wrap gap-2">
+                    <span
+                        class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Serverless</span>
+                    <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">FaaS</span>
+                    <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">BaaS</span>
+                    <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">AWS
+                        Lambda</span>
+                    <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Custos</span>
+                </div>
+
+                <section class="mt-8">
+                    <div class="note-box bg-blue-50 border-blue-200">
+                        <p class="text-gray-700">
+                            <strong>Fonte Principal e Agradecimento:</strong> Este artigo foi construído com base nos
+                            conceitos, exemplos e diagramas discutidos na disciplina de <span
+                                class="text-blue-500">Arquitetura de Software</span> do curso de Engenharia de Software
+                            da
+                            <strong>UFC/Quixadá</strong>, ministrada pelo Professor <strong>Sidartha Carvalho</strong>.
+                        </p>
+                    </div>
+                </section>
+
+                <div class="mt-8">
+                    <a href="../blog.html"
+                        class="inline-flex items-center text-primary hover:text-blue-600 font-semibold">
+                        <img src="../assets/icons/arrow-left.svg" alt="Icon Arrow Left"
+                            class="w-4 h-4 mr-2 icons-blue" />
+                        Voltar para o Blog
+                    </a>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+        <p class="text-sm text-gray-500">
+            &copy; 2025 Sávio Soares. Todos os direitos reservados.
+        </p>
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

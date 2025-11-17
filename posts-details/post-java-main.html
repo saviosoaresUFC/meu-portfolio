@@ -69,7 +69,7 @@
   <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
     <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
 
-    <nav class="hidden md:flex space-x-8" id="navMenu">
+    <nav class="hidden md:flex space-x-8" id="navMenu" aria-label="Desktop Menu">
       <a href="../index.html"
         class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
       <a href="../projetos.html"
@@ -89,7 +89,8 @@
     </button>
 
     <nav id="mobileMenu"
-      class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40">
+      class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+      aria-label="Mobile Menu">
       <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
         <li>
           <a href="../index.html" class="text-white hover:text-primary">Home</a>
@@ -137,7 +138,7 @@
       </div>
 
       <figure class="mb-8">
-        <img src="../assets/posts/java_25.jpg" alt="Imagem de destaque: Simplificação do Main em Java"
+        <img src="../assets/posts/java_25.jpg" alt="Destaque: Simplificação do Main em Java"
           class="w-full h-auto rounded-lg shadow-md" />
         <figcaption class="text-center text-sm text-gray-500 mt-2">
           A JEP 463 promete simplificar a codificação inicial em Java.
