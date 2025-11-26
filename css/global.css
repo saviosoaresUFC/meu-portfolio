@@ -78,6 +78,10 @@
     filter: invert(18%) sepia(97%) saturate(7483%) hue-rotate(356deg) brightness(96%) contrast(120%);
 }
 
+.icons-amber {
+    filter: invert(44%) sepia(89%) saturate(749%) hue-rotate(15deg) brightness(95%) contrast(92%);
+}
+
 /* =================================================== */
 
 /* ===================== TIMELINE ======================= */

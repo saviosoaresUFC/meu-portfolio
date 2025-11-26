@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyMenu - Detalhes do Projeto | Sávio Soares</title>
+
+
+    <link rel="stylesheet" href="../css/global.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" href="../assets/icons/icone.png" type="image/x-icon" />
+
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4A90E2",
+                        "fundo-claro": "#F5F5F5",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        /* (Mantenha o bloco <style> completo para o menu e animações) */
+        .menu-toggle .bar {
+            display: block;
+            width: 24px;
+            height: 2px;
+            margin: 4px auto;
+            background-color: #374151;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        #mobileMenu {
+            opacity: 0.98;
+        }
+
+        .translate-x-0 {
+            transform: translateX(0) !important;
+        }
+
+        .no-scroll {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="bg-fundo-claro min-h-screen">
+    <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+        <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+
+        <nav class="hidden md:flex space-x-8" id="navMenu" aria-label="Desktop Menu">
+            <a href="../index.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+            <a href="../projetos.html"
+                class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Projetos</a>
+            <a href="../blog.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Blog</a>
+            <a href="../sobre.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+            <a href="../contato.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+        </nav>
+
+        <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+            aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav id="mobileMenu"
+            class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+            aria-label="Mobile Menu">
+            <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
+                <li>
+                    <a href="../index.html" class="text-white hover:text-primary">Home</a>
+                </li>
+                <li>
+                    <a href="../projetos.html" class="text-primary hover:text-white">Projetos</a>
+                </li>
+                <li>
+                    <a href="../blog.html" class="text-white hover:text-primary">Blog</a>
+                </li>
+                <li>
+                    <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+                </li>
+                <li>
+                    <a href="../contato.html" class="text-white hover:text-primary">Contato</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-6 md:py-16">
+        <header class="mb-16 md:mb-20 text-center">
+            <div
+                class="inline-flex items-center justify-center p-6 rounded-2xl bg-white shadow-lg border-2 border-primary mb-8">
+                <img src="../assets/mymenu/icon.svg" alt="Ícone MyMenu"
+                    class="h-36 md:h-56 w-auto drop-shadow-lg transition-transform duration-500 hover:scale-105" />
+            </div>
+
+            <h1
+                class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 border-b-4 border-primary pb-2 inline-block">
+                MyMenu: Aplicação de Delivery com Vue.js e Strapi
+            </h1>
+            <p class="text-gray-600 text-lg mb-8">
+                O MyMenu é um projeto de <strong>Front-end completo</strong> para delivery de comida,
+                desenvolvido com <strong>Vue.js 3 e Vite</strong>. O desafio principal foi integrar o gerenciamento de
+                estado complexo (carrinho de compras) e o fluxo de autenticação via <strong>Strapi</strong>.
+            </p>
+
+            <div class="flex justify-center flex-wrap gap-4 mt-10">
+                <a href="https://github.com/saviosoaresUFC/MyMenu" target="_blank" rel="noopener"
+                    class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300">
+                    <img src="../assets/icons/github.svg" alt="Ícone do GitHub" class="w-5 h-5 mr-2 icons-white" />
+                    Ver no GitHub (Código)
+                </a>
+            </div>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2">
+                Funcionalidades Principais
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/shopping-cart.svg" alt="Ícone Carrinho" class="w-6 h-6 mt-1 icons-blue" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Gerenciamento de Estado (Carrinho)
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Implementação do carrinho de compras usando <strong>Pinia</strong>. Solução
+                            para o desafio de manter o estado global, permitindo adicionar, remover e calcular o total
+                            da compra dinamicamente.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/lock.svg" alt="Ícone Segurança" class="w-6 h-6 mt-1 icons-blue" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Autenticação JWT e Proteção de Rotas
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Conexão dos formulários de Login/Cadastro aos endpoints do
+                            <strong>Strapi</strong>. Utilização do <strong>Vue Router</strong> para proteger rotas
+                            sensíveis (Carrinho) verificando o estado de autenticação.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/route.svg" alt="Ícone Rota" class="w-6 h-6 mt-1 icons-blue" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Arquitetura Frontend Limpa
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Código organizado em camadas claras: <strong>Services</strong> (chamadas
+                            HTTP), <strong>Stores</strong> (Pinia/Estado) e <strong>Views/Components</strong> (UI),
+                            seguindo as boas práticas da comunidade Vue.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/workflow.svg" alt="Ícone API" class="w-6 h-6 mt-1 icons-blue" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Integração com CMS Headless (Strapi)
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Consumo da Collection <code>Product</code> do Strapi para exibir o cardápio
+                            real e gerenciamento do token JWT retornado no Login/Cadastro.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">
+                Tecnologias Utilizadas
+            </h2>
+            <div class="flex flex-wrap gap-3">
+                <span class="bg-green-100 text-green-700 text-sm font-medium px-4 py-2 rounded-full">Vue.js
+                    3</span>
+                <span class="bg-purple-100 text-purple-700 text-sm font-medium px-4 py-2 rounded-full">Pinia
+                    (Gerenciamento de Estado)</span>
+                <span class="bg-indigo-100 text-indigo-700 text-sm font-medium px-4 py-2 rounded-full">Vue
+                    Router (Proteção de Rotas)</span>
+                <span class="bg-blue-100 text-blue-700 text-sm font-medium px-4 py-2 rounded-full">Strapi (CMS
+                    Headless)</span>
+                <span class="bg-red-100 text-red-700 text-sm font-medium px-4 py-2 rounded-full">JWT
+                    Authentication</span>
+                <span class="bg-yellow-100 text-yellow-700 text-sm font-medium px-4 py-2 rounded-full">Tailwind
+                    CSS (Estilização)</span>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2">
+                Demonstrações
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/mymenu/MyMenuCardapioDeslogado.png" alt="Tela inicial com cardápio"
+                        class="w-full h-auto object-cover" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Visualização do cardápio e lista de produtos (Usuário Deslogado).
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/mymenu/MyMenuCardapioLogado.png" alt="Tela inicial com cardápio"
+                        class="w-full h-auto object-cover" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Visualização do cardápio e lista de produtos (Usuário Logado).
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/mymenu/MyMenuLoginCadastro.png" alt="Tela de Login"
+                        class="w-full h-auto object-cover" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Tela de Login e Cadastro (conectado ao Strapi).
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/mymenu/MyMenuCarrinho.png" alt="Tela de Carrinho de Compras"
+                        class="w-full h-auto object-cover" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Carrinho de compras com cálculo de total.
+                    </p>
+                </div>
+            </div>
+            <p class="text-center text-gray-600 mt-8">
+                Este projeto é o front-end. O back-end (API) é um Strapi rodando em
+                <code>http://localhost:8080</code>.
+            </p>
+        </section>
+    </main>
+
+    <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+        <p class="text-sm text-gray-500">
+            &copy; 2025 Sávio Soares. Todos os direitos reservados.
+        </p>
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
