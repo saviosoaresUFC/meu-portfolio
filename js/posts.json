@@ -6,6 +6,7 @@
     "data": "2025-10-23",
     "autor": "Sávio Soares",
     "categoria": "Java",
+    "color_tag": "bg-primary",
     "resumo": "Análise da JEP 463, que simplifica o ponto de entrada de programas Java, permitindo que você execute código sem classes explícitas e sem o 'public static void main'.",
     "imagem_principal": "./assets/posts/java_25.jpg",
     "tags": [
@@ -24,6 +25,7 @@
     "data": "2025-11-03",
     "autor": "Sávio Soares",
     "categoria": "Metodologias Ágeias",
+    "color_tag": "bg-green-500",
     "resumo": "Exploração das principais metodologias ágeis usadas no desenvolvimento de software, incluindo Scrum, Extreme Programming (XP) e ShapeUp, destacando suas características e benefícios.",
     "imagem_principal": "./assets/posts/metodologiasageis.svg",
     "tags": [
@@ -42,6 +44,7 @@
     "data": "2025-11-17",
     "autor": "Sávio Soares",
     "categoria": "Arquitetura",
+    "color_tag": "bg-yellow-500",
     "resumo": "Uma comparação aprofundada das arquiteturas Microkernel (foco em extensibilidade por plugins) e Hexagonal (foco no isolamento do domínio da infraestrutura).",
     "imagem_principal": "assets/posts/arquitetura_hexagonal.png",
     "tags": [
@@ -60,6 +63,7 @@
     "data": "2025-11-17",
     "autor": "Sávio Soares",
     "categoria": "Arquitetura",
+    "color_tag": "bg-yellow-500",
     "resumo": "Análise aprofundada da Clean Architecture, focando nos Quatro Pilares da Independência, na Regra de Dependência e em como o Princípio da Inversão (DIP) protege a lógica de negócio.",
     "imagem_principal": "assets/posts/arquitetura_limpa.png",
     "tags": [
@@ -79,6 +83,7 @@
     "data": "2025-11-17",
     "autor": "Sávio Soares",
     "categoria": "Arquitetura",
+    "color_tag": "bg-yellow-500",
     "resumo": "Análise comparativa detalhada entre Service-Based Architecture e Microservices, focando em granularidade, acoplamento, comunicação e quando usar cada estilo.",
     "imagem_principal": "assets/posts/arquitetura_baseada_em_microservices.png",
     "tags": [
@@ -98,6 +103,7 @@
     "data": "2025-11-17",
     "autor": "Sávio Soares",
     "categoria": "Arquitetura",
+    "color_tag": "bg-yellow-500",
     "resumo": "Exploração da Arquitetura Orientada a Eventos (EDA), suas topologias (Mediator e Broker) e como ela maximiza desempenho e tolerância a falhas através da comunicação assíncrona.",
     "imagem_principal": "assets/posts/arquitetura_baseada_em_eventos.png",
     "tags": ["EDA", "Assíncrono", "Scalability", "Broker", "Mediator"],
@@ -111,10 +117,50 @@
     "data": "2025-11-17",
     "autor": "Sávio Soares",
     "categoria": "Arquitetura",
+    "color_tag": "bg-yellow-500",
     "resumo": "Exploração do estilo Serverless (FaaS e BaaS), suas vantagens em custo/escalabilidade e os desafios de Cold Starts e alta dependência do provedor de nuvem.",
     "imagem_principal": "assets/posts/arquitetura_serverless.png",
     "tags": ["Serverless", "FaaS", "AWS Lambda", "Custos", "Escalabilidade"],
     "tempo_leitura_min": 8,
     "link_post": "post-arquitetura-serverless.html"
+  },
+  {
+    "id": 7,
+    "titulo": "Programação Orientada a Objetos: Como a POO salvou o mundo do código espaguete",
+    "slug": "programacao-orientada-objetos",
+    "data": "2025-12-04",
+    "autor": "Sávio Soares",
+    "categoria": "Programação",
+    "color_tag": "bg-purple-500",
+    "resumo": "Programação Orientada a Objetos (POO), seus quatro pilares fundamentais (Encapsulamento, Abstração, Herança e Polimorfismo) e os benefícios que traz para o desenvolvimento de software.",
+    "imagem_principal": "assets/posts/espaguete_vs_blocos.png",
+    "tags": [
+      "POO",
+      "Encapsulamento",
+      "Abstração",
+      "Herança",
+      "Polimorfismo"
+    ],
+    "tempo_leitura_min": 10,
+    "link_post": "post-programacao-orientada-objetos.html"
+  },
+  {
+    "id": 8,
+    "titulo": "Interface em Java: O Contrato que une Classes",
+    "slug": "interface-em-java",
+    "data": "2025-12-5",
+    "autor": "Sávio Soares",
+    "categoria": "Programação",
+    "color_tag": "bg-purple-500",
+    "resumo": "Exploração do conceito de Interfaces em Java, seu papel como contrato entre classes, e como elas promovem a abstração, flexibilidade e reutilização de código.",
+    "imagem_principal": "assets/posts/implements_pato.png",
+    "tags": [
+      "Java",
+      "Interface",
+      "Abstração",
+      "Polimorfismo"
+    ],
+    "tempo_leitura_min": 8,
+    "link_post": "post-interface-em-java.html"
   }
 ]

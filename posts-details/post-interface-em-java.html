@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Interfaces em Java: A Solução para Múltiplas Habilidades - Sávio Soares
+      Blog
+    </title>
+
+    <link rel="stylesheet" href="../css/global.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../assets/icons/icone.png" type="image/x-icon" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4A90E2",
+              "fundo-claro": "#F5F5F5",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .post-content p,
+      .post-content ul,
+      .post-content ol {
+        margin-bottom: 1.5rem;
+        line-height: 1.75;
+        font-size: 1.125rem;
+        color: #374151;
+      }
+
+      .post-content h2,
+      .post-content h3,
+      .post-content h4 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        color: #1f2937;
+      }
+
+      .post-content h2 {
+        font-size: 1.875rem;
+      }
+
+      .post-content h3 {
+        font-size: 1.5rem;
+      }
+
+      .post-content h4 {
+        font-size: 1.25rem;
+      }
+
+      .post-content th,
+      .post-content td {
+        border: 1px solid #e5e7eb;
+        padding: 0.75rem;
+        text-align: left;
+        vertical-align: top;
+        word-wrap: break-word;
+      }
+
+      .post-content th {
+        background-color: #f3f4f6;
+        font-weight: 600;
+        color: #1f2937;
+      }
+
+      .post-content pre {
+        background-color: #1f2937;
+        color: #f3f4f6;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .post-content table {
+        width: 100%;
+        margin-bottom: 1.5rem;
+        border-collapse: collapse;
+        table-layout: auto;
+      }
+
+      .note-box {
+        border-left: 4px solid #4a90e2;
+        background-color: #e3f2fd;
+        padding: 1rem 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 0.25rem;
+      }
+
+      .post-content .code-java {
+        color: #f8981d;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body class="bg-fundo-claro min-h-screen">
+    <header
+      class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50"
+    >
+      <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+      <nav
+        class="hidden md:flex space-x-8"
+        id="navMenu"
+        aria-label="Desktop Menu"
+      >
+        <a
+          href="../index.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Home</a
+        >
+        <a
+          href="../projetos.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Projetos</a
+        >
+        <a
+          href="../blog.html"
+          class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active"
+          >Blog</a
+        >
+        <a
+          href="../sobre.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Sobre</a
+        >
+        <a
+          href="../contato.html"
+          class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300"
+          >Contato</a
+        >
+      </nav>
+
+      <button
+        class="md:hidden flex flex-col justify-center items-center menu-toggle z-50"
+        id="menuToggle"
+        aria-label="Toggle Menu"
+      >
+        <span class="bar"></span><span class="bar"></span
+        ><span class="bar"></span>
+      </button>
+
+      <nav
+        id="mobileMenu"
+        class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+        aria-label="Mobile Menu"
+      >
+        <ul
+          class="flex flex-col items-center justify-center h-full text-2xl space-y-8"
+        >
+          <li>
+            <a href="../index.html" class="text-white hover:text-primary"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="../projetos.html" class="text-white hover:text-primary"
+              >Projetos</a
+            >
+          </li>
+          <li>
+            <a href="../blog.html" class="text-primary hover:text-white"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a href="../sobre.html" class="text-white hover:text-primary"
+              >Sobre</a
+            >
+          </li>
+          <li>
+            <a href="../contato.html" class="text-white hover:text-primary"
+              >Contato</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto md:py-16">
+      <article class="p-6 md:p-10 rounded-xl">
+        <div class="mb-8 border-b pb-4">
+          <span
+            class="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase"
+          >
+            Java | POO
+          </span>
+          <h1
+            class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"
+          >
+            O Poder dos Contratos: Dominando Interfaces para Múltiplas
+            Habilidades em Java
+          </h1>
+
+          <p class="text-gray-500 text-sm flex items-center space-x-3">
+            <span class="flex items-center">
+              <img
+                src="../assets/icons/calendar.svg"
+                alt="Ícone de Calendário"
+                class="w-4 h-4 inline-block mr-1 icons-gray-500"
+              />
+              4 de Dez. de 2025
+            </span>
+            <span>|</span>
+
+            <span class="flex items-center">
+              <img
+                src="../assets/icons/user.svg"
+                alt="Ícone de Usuário"
+                class="w-4 h-4 inline-block mr-1 icons-gray-500"
+              />
+              Por Sávio Soares
+            </span>
+            <span>|</span>
+
+            <span class="flex items-center">
+              <img
+                src="../assets/icons/clock.svg"
+                alt="Ícone de Relógio"
+                class="w-4 h-4 inline-block mr-1 icons-gray-500"
+              />
+              8 min de leitura
+            </span>
+          </p>
+        </div>
+
+        <figure class="mb-8">
+          <img
+            src="../assets/posts/implements_pato.png"
+            alt="Ilustração de um pato com múltiplas habilidades"
+            class="w-full h-auto rounded-lg shadow-md"
+          />
+          <figcaption class="text-center text-sm text-gray-500 mt-2">
+            O Pato: Uma Ave que Nada e Voa, graças aos contratos de habilidade.
+          </figcaption>
+        </figure>
+
+        <div class="post-content">
+          <h2>1. O Dilema do Pato: Por Que a Herança Simples Não Basta?</h2>
+          <p>
+            Para entender a genialidade das interfaces, precisamos ver o
+            problema que elas resolvem. Em Java, e em muitas linguagens
+            orientadas a objetos, uma classe só pode
+            <strong>herdar de uma única superclasse</strong>
+            (um único "pai").
+          </p>
+          <p>
+            Nosso desafio é modelar o Pato: ele é uma <strong>Ave</strong> (sua
+            identidade principal), mas ele também precisa ter as habilidades de
+            <strong>Nadar</strong> e <strong>Voar</strong>. Se o Pato já usou a
+            palavra-chave `extends` para herdar de `Ave`, como ele pode adquirir
+            as características de `Nadador` e `Voador` ao mesmo tempo?
+          </p>
+          <p>
+            É aqui que a <strong>Herança Múltipla de Comportamento</strong> se
+            torna crucial. A solução não é herdar múltiplas identidades, mas sim
+            <strong>assinar múltiplos contratos</strong>.
+          </p>
+
+          <hr />
+
+          <h2>2. Interface: O Contrato de Habilidades</h2>
+
+          <figure class="mb-8">
+            <img
+              src="../assets/posts/interface-contrato.png"
+              alt="Diagrama ilustrando objetos como blocos de construção interagindo"
+              class="w-full h-auto rounded-lg shadow-md"
+            />
+            <figcaption class="text-center text-sm text-gray-500 mt-2">
+              Interfaces em Java: O segredo para herdar identidades (Classe) e
+              adquirir múltiplas habilidades (Contratos).
+            </figcaption>
+          </figure>
+
+          <p>
+            Uma <strong>Interface</strong> é exatamente o que o nome sugere: um
+            <strong>contrato</strong> ou uma
+            <strong>lista de promessas</strong>. Ela estabelece o
+            <strong>o quê</strong> um objeto deve ser capaz de fazer, mas nunca
+            o <strong>como</strong> essa ação será executada.
+          </p>
+
+          <h3>Regras de Ouro de uma Interface:</h3>
+          <ul class="list-disc pl-5">
+            <li>
+              <strong>Define Comportamento, Não Implementação:</strong> A
+              interface define os métodos (`nadar()`, `voar()`), mas não contém
+              o código que os executa.
+            </li>
+            <li>
+              <strong>Tudo é Público:</strong> Todos os métodos e campos são
+              implicitamente `public`.
+            </li>
+            <li>
+              <strong>Sem Construtor:</strong> Não se pode criar uma interface
+              (instanciá-la), apenas <strong>implementá-la</strong>.
+            </li>
+          </ul>
+
+          <h3>Exemplo em Código: Definindo o Contrato</h3>
+          <p>
+            A interface usa a palavra-chave `interface` e apenas declara os
+            métodos sem corpo.
+          </p>
+          <pre><code>// 1. Interfaces: Definem o QUE o objeto PODE FAZER (Contratos)
+public interface AnimalNadador {
+    // Apenas a assinatura: o COMO será feito é responsabilidade da classe.
+    void nadar(); 
+}
+
+public interface AnimalVoador {
+    void voar();
+}</code></pre>
+
+          <hr />
+
+          <h2>3. Resolvendo o Dilema do Pato com `implements`</h2>
+
+          <p>
+            Para resolver o problema do nosso amigo Pato, usamos a palavra-chave
+            <strong>`implements`</strong> para assinar os contratos de
+            habilidade. Uma classe pode implementar quantas interfaces forem
+            necessárias.
+          </p>
+
+          <h3>Exemplo em Código: Assinando Múltiplos Contratos</h3>
+          <p>
+            O Pato define sua identidade principal (`extends Ave`) e, em
+            seguida, adquire suas habilidades separadamente (`implements
+            AnimalNadador, AnimalVoador`).
+          </p>
+          <pre><code>// 2. Classe Principal (Identidade)
+public class Ave {
+    public void botarOvo() {
+        System.out.println("Ave botando um ovo...");
+    }
+}
+
+// 3. Classe Pato: Herda Identidade E Implementa Habilidades
+public class Pato extends Ave implements AnimalNadador, AnimalVoador {
+    
+    // Implementação obrigatória dos métodos da interface
+    @Override
+    public void nadar() {
+        System.out.println("Pato está nadando com as patas.");
+    }
+
+    @Override
+    public void voar() {
+        System.out.println("Pato está voando baixo.");
+    }
+}</code></pre>
+
+          <div class="note-box">
+            <p class="text-sm text-gray-700">
+              <strong>O Pulo do Gato:</strong> A classe `Pato` pode herdar
+              apenas de `Ave`, mas pode <strong>implementar</strong>
+              múltiplos comportamentos. Assim, o Pato pode ser tratado como
+              `Ave`, `AnimalNadador` ou `AnimalVoador` em diferentes partes do
+              sistema.
+            </p>
+          </div>
+
+          <hr />
+
+          <h2>4. O Poder do Polimorfismo e da Flexibilidade</h2>
+          <p>
+            As interfaces vão muito além da herança múltipla. Elas são a base do
+            <strong>Polimorfismo</strong> e de um software flexível. Uma
+            interface permite que o código se concentre na
+            <strong>habilidade</strong> (o contrato), e não no tipo específico
+            do objeto.
+          </p>
+
+          <h3>Exemplo de Polimorfismo: O Contrato "Pagável"</h3>
+          <p>
+            Objetos totalmente diferentes, como uma `Fatura` e um `Funcionario`,
+            podem ser tratados da mesma forma se ambos implementarem a interface
+            `Pagavel`.
+          </p>
+          <pre><code>// Interface
+public interface Pagavel {
+    double getValorAPagar();
+    void processarPagamento();
+}
+
+// Classes que implementam (objetos diferentes)
+public class Fatura implements Pagavel { /* ... implementação ... */ }
+public class Funcionario implements Pagavel { /* ... implementação ... */ }
+
+// Código de processamento (focado na HABILIDADE, não no tipo)
+public void processar(Pagavel item) {
+    // Este código não se importa se o item é Fatura ou Funcionario!
+    System.out.println("Valor a pagar: " + item.getValorAPagar());
+    item.processarPagamento();
+}</code></pre>
+          <p>
+            Isso significa que você pode criar uma lista de `Pagavel` e
+            processar tudo de uma vez, sem se preocupar se o objeto é uma
+            fatura, um funcionário ou um fornecedor.
+            <strong>Flexibilidade na melhor forma!</strong>
+          </p>
+
+          <hr />
+
+          <h2>5. Interface vs. Classe Abstrata: Qual a Diferença?</h2>
+          <p>
+            Esta é uma dúvida clássica. Ambas lidam com abstração, mas têm
+            propósitos distintos:
+          </p>
+
+          <table class="bg-white">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>Interface</th>
+                <th>Classe Abstrata</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Relacionamento (O que representa)</strong></td>
+                <td>
+                  O que o objeto
+                  <strong>PODE FAZER</strong> (Contrato/Habilidade)
+                </td>
+                <td>O que o objeto <strong>É</strong> (Identidade/Modelo)</td>
+              </tr>
+              <tr>
+                <td><strong>Herança Múltipla</strong></td>
+                <td>Permitida (via `implements`)</td>
+                <td>Não Permitida (apenas uma `extends`)</td>
+              </tr>
+              <tr>
+                <td><strong>Implementação de Métodos</strong></td>
+                <td>Geralmente apenas declaração (métodos abstratos)</td>
+                <td>
+                  Pode ter métodos concretos (com código pronto) e abstratos
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Campos (Atributos)</strong></td>
+                <td>Apenas constantes (`public static final`)</td>
+                <td>Pode ter campos e estados normais</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            <strong>A Chave:</strong> Use uma
+            <strong>Classe Abstrata</strong> para compartilhar código e estado
+            entre classes relacionadas (o Pato é uma Ave). Use uma
+            <strong>Interface</strong> para definir um contrato de comportamento
+            para classes não relacionadas (o Pato pode Voar, assim como um
+            Avião).
+          </p>
+
+          <hr />
+
+          <h2>6. A Regra de Ouro: Programar para a Abstração</h2>
+          <p>
+            A lição mais importante no uso de interfaces é a
+            <strong>Regra de Ouro do Design de Software</strong>:
+            <br />
+            <strong
+              >"O código deve depender das abstrações (Interfaces), não dos
+              detalhes concretos (Classes)."</strong
+            >
+          </p>
+          <p>
+            Em vez de escrever código que usa diretamente o tipo concreto (ex:
+            `ArrayList`), você deve usar o tipo abstrato (ex: `List`). Isso
+            permite que você troque a implementação por baixo dos panos (de um
+            `ArrayList` para um `LinkedList`, por exemplo) sem quebrar o
+            restante do seu programa.
+            <strong>Depender do Contrato nos dá Liberdade!</strong>
+          </p>
+        </div>
+
+        <div class="mt-8 pt-4 border-t flex flex-wrap gap-2">
+          <span
+            class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full"
+            >Interfaces</span
+          >
+          <span
+            class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full"
+            >Java</span
+          >
+          <span
+            class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full"
+            >Polimorfismo</span
+          >
+          <span
+            class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full"
+            >Herança Múltipla</span
+          >
+          <span
+            class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full"
+            >Abstração</span
+          >
+          <span
+            class="bg-gray-200 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full"
+            >Classe Abstrata</span
+          >
+        </div>
+
+        <div class="mt-8">
+          <a
+            href="../blog.html"
+            class="inline-flex items-center text-primary hover:text-blue-600 font-semibold"
+          >
+            <img
+              src="../assets/icons/arrow-left.svg"
+              alt="Icon Arrow Left"
+              class="w-4 h-4 mr-2 icons-blue"
+            />
+            Voltar para o Blog
+          </a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+      <p class="text-sm text-gray-500">
+        &copy; 2025 Sávio Soares. Todos os direitos reservados.
+      </p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

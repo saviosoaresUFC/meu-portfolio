@@ -58,7 +58,7 @@ function createPostCard(post) {
             >
         </a>
         <div class="p-6">
-            <span class="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase">
+            <span class="inline-block ${post.color_tag} text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase">
                 ${post.categoria}
             </span>
             <h2 class="text-xl font-bold text-gray-900 mb-2 hover:text-primary transition duration-300">
