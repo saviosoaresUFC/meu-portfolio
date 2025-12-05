@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lanterna Inteligente - Detalhes do Projeto | Sávio Soares</title>
+
+    <link rel="stylesheet" href="../css/global.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../assets/icons/icone.png" type="image/x-icon" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4A90E2",
+                        "fundo-claro": "#F5F5F5",
+                        'ciano-destaque': '#06B6D4',
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        .menu-toggle .bar {
+            display: block;
+            width: 24px;
+            height: 2px;
+            margin: 4px auto;
+            background-color: #374151;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active .bar:nth-child(1) {
+            transform: translateY(10px) rotate(45deg);
+        }
+
+        .menu-toggle.active .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+
+        #mobileMenu {
+            opacity: 0.98;
+        }
+
+        .translate-x-0 {
+            transform: translateX(0) !important;
+        }
+
+        .no-scroll {
+            overflow: hidden;
+        }
+
+        .icons-ciano {
+            filter: invert(36%) sepia(87%) saturate(1476%) hue-rotate(180deg) brightness(97%) contrast(92%);
+        }
+
+        .text-ciano-destaque {
+            color: #06B6D4;
+        }
+    </style>
+</head>
+
+<body class="bg-fundo-claro min-h-screen">
+    <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+        <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+
+        <nav class="hidden md:flex space-x-8" id="navMenu" aria-label="Desktop Menu">
+            <a href="../index.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+            <a href="../projetos.html"
+                class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Projetos</a>
+            <a href="../blog.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Blog</a>
+            <a href="../sobre.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+            <a href="../contato.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+        </nav>
+
+        <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+            aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav id="mobileMenu"
+            class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+            aria-label="Mobile Menu">
+            <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
+                <li>
+                    <a href="../index.html" class="text-white hover:text-primary">Home</a>
+                </li>
+                <li>
+                    <a href="../projetos.html" class="text-primary hover:text-white">Projetos</a>
+                </li>
+                <li>
+                    <a href="../blog.html" class="text-white hover:text-primary">Blog</a>
+                </li>
+                <li>
+                    <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+                </li>
+                <li>
+                    <a href="../contato.html" class="text-white hover:text-primary">Contato</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-6 md:py-16">
+        <header class="mb-16 md:mb-20 text-center">
+            <div
+                class="inline-flex items-center justify-center p-2 rounded-2xl bg-white shadow-lg border-2 border-ciano-destaque mb-8">
+                <img src="../assets/icons/icon_lanterna_inteligente.svg" alt="Ícone de Lanterna"
+                    class="h-36 md:h-56 w-auto drop-shadow-lg transition-transform duration-500 hover:scale-105 icons-ciano" />
+            </div>
+
+            <h1
+                class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 border-b-4 border-ciano-destaque pb-2 inline-block">
+                Lanterna Inteligente: Controle por Sensores
+            </h1>
+            <p class="text-gray-600 text-lg mb-8">
+                Mini-aplicativo <strong>Mobile</strong> nativo desenvolvido em <strong>Kotlin</strong> e <strong>Jetpack
+                    Compose</strong>. O projeto
+                foca em <strong>Interação com Hardware</strong>, utilizando o <strong>Sensor de Luz</strong> para
+                automatizar o controle da
+                lanterna do dispositivo.
+            </p>
+
+            <div class="flex justify-center flex-wrap gap-4 mt-10">
+                <a href="https://github.com/saviosoaresUFC/Lanterna-Inteligente" target="_blank" rel="noopener"
+                    class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300">
+                    <img src="../assets/icons/github.svg" alt="Ícone do GitHub" class="w-5 h-5 mr-2 icons-white" />
+                    Ver no GitHub (Código)
+                </a>
+            </div>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-ciano-destaque pb-2">
+                Funcionalidades e Requisitos
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/sun.svg" alt="Ícone Sensor de Luz" class="w-6 h-6 mt-1 icons-ciano" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Controle Automático (Sensor)
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Detecta a <strong>luminosidade ambiente</strong> e liga/desliga a lanterna automaticamente
+                            se o ambiente estiver escuro.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/toggle-left.svg" alt="Ícone Manual" class="w-6 h-6 mt-1 icons-ciano" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Controle Manual e Display
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Permite ligar/desligar a lanterna via <strong>botão manual</strong> e exibe o nível atual
+                            de luminosidade detectado.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/shield-check.svg" alt="Ícone Permissões"
+                        class="w-6 h-6 mt-1 icons-ciano" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Gerenciamento de Permissões
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Gerenciamento de acesso à câmera/lanterna e ao sensor de luminosidade,
+                            conforme a <strong>API do Android</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-ciano-destaque pb-2">
+                Tecnologias Utilizadas
+            </h2>
+            <div class="flex flex-wrap gap-3">
+                <span class="bg-lime-100 text-lime-700 text-sm font-medium px-4 py-2 rounded-full">Kotlin
+                    (Natvio)</span>
+                <span class="bg-red-100 text-red-700 text-sm font-medium px-4 py-2 rounded-full">Android
+                    SDK</span>
+                <span class="bg-cyan-100 text-cyan-700 text-sm font-medium px-4 py-2 rounded-full">Jetpack
+                    Compose (UI)</span>
+                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full">Sensores de
+                    Hardware</span>
+                <span class="bg-amber-100 text-amber-700 text-sm font-medium px-4 py-2 rounded-full">API da
+                    Câmera (Flashlight)</span>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-ciano-destaque pb-2">
+                Demonstrações (Screenshots)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/lanternainteligente/lanint_dark_claro.png" alt="Modo Escuro, Lanterna Desligada"
+                        class="w-full h-auto object-cover" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Tema Escuro: Ambiente claro, lanterna desligada.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/lanternainteligente/lanint_dark_escuro.png" alt="Modo Escuro, Lanterna Ligada"
+                        class="w-full h-auto object-cover" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Tema Escuro: Ambiente escuro, lanterna ligada automaticamente.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/lanternainteligente/lanint_light_claro.png" alt="Modo Claro, Lanterna Desligada"
+                        class="w-full h-auto object-cover" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Tema Claro: Ambiente claro, lanterna desligada.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/lanternainteligente/lanint_light_escuro.png" alt="Modo Claro, Lanterna Ligada"
+                        class="w-full h-auto object-cover" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Tema Claro: Ambiente escuro, lanterna ligada automaticamente.
+                    </p>
+                </div>
+            </div>
+            <p class="text-center text-gray-600 mt-8">
+                Para instalação e execução, consulte o
+                <a class="text-ciano-destaque underline" href="https://github.com/saviosoaresUFC/Lanterna-Inteligente"
+                    target="_blank" rel="noopener" >
+                    repositório no GitHub
+                </a>.
+            </p>
+        </section>
+    </main>
+
+    <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+        <p class="text-sm text-gray-500">
+            &copy; 2025 Sávio Soares. Todos os direitos reservados.
+        </p>
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
