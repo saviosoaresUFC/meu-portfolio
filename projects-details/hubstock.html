@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HubStock - Detalhes do Projeto | Sávio Soares</title>
+
+    <link rel="stylesheet" href="../css/global.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../assets/icons/icone.png" type="image/x-icon" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#4A90E2",
+                        "fundo-claro": "#F5F5F5",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        .button-visit-site:hover .icons-blue {
+            filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
+        }
+    </style>
+</head>
+
+<body class="bg-fundo-claro min-h-screen">
+    <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+        <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+
+        <nav class="hidden md:flex space-x-8" id="navMenu" aria-label="Desktop Menu">
+            <a href="../index.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+            <a href="../projetos.html"
+                class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Projetos</a>
+            <a href="../blog.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Blog</a>
+            <a href="../sobre.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+            <a href="../contato.html"
+                class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+        </nav>
+
+        <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+            aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav id="mobileMenu"
+            class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+            aria-label="Mobile Menu">
+            <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
+                <li>
+                    <a href="../index.html" class="text-white hover:text-primary">Home</a>
+                </li>
+                <li>
+                    <a href="../projetos.html" class="text-primary hover:text-white">Projetos</a>
+                </li>
+                <li>
+                    <a href="../blog.html" class="text-white hover:text-primary">Blog</a>
+                </li>
+                <li>
+                    <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+                </li>
+                <li>
+                    <a href="../contato.html" class="text-white hover:text-primary">Contato</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-6 md:py-16">
+        <header class="mb-16 md:mb-20 text-center">
+            <div
+                class="inline-flex items-center justify-center p-6 rounded-2xl bg-white shadow-lg border-2 border-green-600 mb-8">
+                <!-- Placeholder for HubStock Icon/Logo -->
+                <h1 class="text-4xl font-bold text-green-600">HubStock</h1>
+            </div>
+
+            <p class="max-w-3xl mx-auto text-gray-600 mt-6 text-lg leading-relaxed">
+                O <strong class="text-green-600 font-semibold">HubStock</strong> é um gerenciador de estoque completo
+                para
+                restaurantes e bares. Desenvolvido com
+                <span class="text-gray-800 font-semibold">Vue 3 + Node.js (Express)</span>,
+                permite o controle preciso de entradas, saídas e vendas, oferecendo relatórios detalhados para tomada de
+                decisão.
+            </p>
+
+            <div class="flex justify-center flex-wrap gap-4 mt-10">
+                <a href="https://github.com/saviosoaresUFC/HubStock"
+                    class="flex items-center bg-black text-white px-6 py-3 rounded-xl" target="_blank">
+                    <img src="../assets/icons/github.svg" alt="Ícone do GitHub" class="w-5 h-5 mr-2 icons-white" />
+                    Código no GitHub
+                </a>
+            </div>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2">
+                Funcionalidades Principais
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/box.svg" alt="Ícone Estoque" class="w-6 h-6 mt-1 icons-green" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Controle de Estoque
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Gerenciamento completo de produtos, categorias e movimentações de entrada e saída.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/shopping-cart.svg" alt="Ícone Vendas" class="w-6 h-6 mt-1 icons-green" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Ponto de Venda (PDV)
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Interface para garçons e administradores registrarem vendas de forma rápida e eficiente.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/trending-up.svg" alt="Ícone Relatórios"
+                        class="w-6 h-6 mt-1 icons-green" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Relatórios de Vendas
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Visualização de lucros e vendas por período (dia, mês, ano) para análise de desempenho.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="../assets/icons/users.svg" alt="Ícone Usuários" class="w-6 h-6 mt-1 icons-green" />
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                            Gestão de Usuários
+                        </h3>
+                        <p class="text-gray-600 text-sm">
+                            Controle de acesso com diferentes perfis: Garçom, Administrador e SuperAdministrador.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2">
+                Tecnologias Utilizadas
+            </h2>
+            <div class="flex flex-wrap gap-3">
+                <span class="bg-green-100 text-green-700 text-sm font-medium px-4 py-2 rounded-full">Vue 3</span>
+                <span class="bg-blue-100 text-blue-700 text-sm font-medium px-4 py-2 rounded-full">TypeScript</span>
+                <span class="bg-yellow-100 text-yellow-700 text-sm font-medium px-4 py-2 rounded-full">Pinia</span>
+                <span class="bg-gray-200 text-gray-700 text-sm font-medium px-4 py-2 rounded-full">Node.js
+                    (Express)</span>
+                <span class="bg-indigo-100 text-indigo-700 text-sm font-medium px-4 py-2 rounded-full">TypeORM</span>
+                <span class="bg-purple-100 text-purple-700 text-sm font-medium px-4 py-2 rounded-full">SQLite</span>
+                <span class="bg-red-100 text-red-700 text-sm font-medium px-4 py-2 rounded-full">JWT</span>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2">
+                Demonstrações
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/hubstock/login.png" alt="Login HubStock"
+                        class="w-full h-auto object-cover bg-gray-200" style="min-height: 200px;" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Tela de Login do sistema.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/hubstock/register.png" alt="Cadastro HubStock"
+                        class="w-full h-auto object-cover bg-gray-200" style="min-height: 200px;" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Tela de Cadastro de Restaurante.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/hubstock/dashboard.png" alt="Dashboard HubStock"
+                        class="w-full h-auto object-cover bg-gray-200" style="min-height: 200px;" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Dashboard principal com visão geral do estoque e vendas.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/hubstock/products.png" alt="Lista de Produtos HubStock"
+                        class="w-full h-auto object-cover bg-gray-200" style="min-height: 200px;" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Listagem e cadastro de produtos com controle de quantidade.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/hubstock/tables.png" alt="Tela de Vendas HubStock"
+                        class="w-full h-auto object-cover bg-gray-200" style="min-height: 200px;" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Listagem de mesas do Restaurante.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/hubstock/sales.png" alt="Tela de Vendas HubStock"
+                        class="w-full h-auto object-cover bg-gray-200" style="min-height: 200px;" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Interface de registro de vendas (PDV).
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="../assets/hubstock/users.png" alt="Tela de Vendas HubStock"
+                        class="w-full h-auto object-cover bg-gray-200" style="min-height: 200px;" />
+                    <p class="p-4 text-gray-700 text-sm">
+                        Listagem de Usuários do Restaurante com controle de acesso.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+        <p class="text-sm text-gray-500">
+            &copy; 2025 Sávio Soares. Todos os direitos reservados.
+        </p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
