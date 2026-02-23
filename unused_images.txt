@@ -1,0 +1,7 @@
+assets\calculadoraimc\error_empty.png
+assets\calculadoraimc\typing.png
+assets\posts\arquitetura_baseada_em_servicos.png
+assets\posts\metodologiasageis.svg
+assets\sitedereceitas\ReceitasDetails.png
+assets\sitedereceitas\ReceitasPagination.png
+assets\sitedereceitas\ReceitasSobre.png
