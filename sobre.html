@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
@@ -15,8 +15,8 @@
       theme: {
         extend: {
           colors: {
-            primary: "#4A90E2", // Cor principal azul
-            "fundo-claro": "#F5F5F5", // Fundo claro
+            primary: "#4A90E2",
+            "fundo-claro": "#F5F5F5",
           },
         },
       },
@@ -26,7 +26,6 @@
   <style>
     .profile-ring {
       box-shadow: 0 0 0 8px rgba(74, 144, 226, 0.3);
-      /* primary com transparência */
     }
   </style>
 </head>
@@ -80,7 +79,7 @@
   <main class="max-w-6xl mx-auto p-6 md:py-16">
     <!-- ======= INICIO ======= -->
 
-    <section class="md:p-12 rounded-2xl flex flex-col md:flex-row items-center gap-10 mb-16">
+    <section id="inicio" class="scroll-mt-24 md:p-12 rounded-2xl flex flex-col md:flex-row items-center gap-10 mb-16">
       <div class="flex-shrink-0">
         <img src="./assets/img_savio_2.png" alt="Foto de Perfil de Sávio Soares"
           class="w-44 h-44 md:w-56 md:h-56 rounded-full object-cover border-4 border-white profile-ring transition-transform duration-500 hover:scale-105" />
@@ -106,7 +105,7 @@
 
     <!-- ======= HARD SKILLS ======= -->
 
-    <section class="mb-16">
+    <section id="hard-skills" class="scroll-mt-24 mb-16">
       <h2 class="text-3xl font-bold text-gray-900 mb-8 border-b-4 border-primary pb-3">
         Minhas Hard Skills
       </h2>
@@ -237,7 +236,7 @@
 
     <!-- ======= HABILIDADES ======= -->
 
-    <section class="mb-16">
+    <section id="experiencia" class="scroll-mt-24 mb-16">
       <h2 class="text-3xl font-bold text-gray-900 mb-10 border-b-4 border-primary pb-3">
         Experiência Profissional e Formação
       </h2>
@@ -464,7 +463,7 @@
 
     <!-- ======= CERTIFICAÇÕES ======= -->
 
-    <section class="mb-16">
+    <section id="certificacoes" class="scroll-mt-24 mb-16">
       <h2 class="text-3xl font-bold text-gray-900 mb-10 border-b-4 border-primary pb-3">
         Certificações
       </h2>
@@ -473,11 +472,53 @@
         <div
           class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-2xl shadow-md border-l-4 border-primary hover:shadow-lg transition duration-300">
           <div class="flex-shrink-0 flex justify-center md:justify-start items-center">
+            <img src="./assets/certifications/image.png" alt="Selo Working with relational data in Azure"
+              class="w-32 h-32 md:w-48 md:h-48 object-contain hover:scale-105 transition-transform duration-300 drop-shadow-sm">
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900">Microsoft Certified: Working with relational data in Azure</h3>
+            <p class="text-sm font-semibold text-gray-500 mb-3">Microsoft</p>
+
+            <p class="text-gray-700 mb-4">
+              Conquistei a certificação 'Working with relational data in Azure', aprofundando meus conhecimentos em
+              bancos de dados relacionais na nuvem. Durante o curso, aprendi a provisionar e gerenciar o Banco de Dados
+              SQL do Azure, compreendendo os modelos de preços (DTU e vCore) e o uso do Azure Cloud Shell. Estudei a
+              migração de dados com o Serviço de migração de banco de dados do Azure, explorei o Banco de Dados do Azure
+              para PostgreSQL e a implementação de pools elásticos de SQL para otimizar desempenho e custos. Além disso,
+              consolidei práticas de segurança como regras de firewall, autenticação, criptografia de dados e auditoria
+              contra violações.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span class="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">#Azure</span>
+              <span class="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">#SQLDatabase</span>
+              <span class="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">#PostgreSQL</span>
+              <span class="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">#CloudSecurity</span>
+              <span
+                class="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">#DatabaseMigration</span>
+            </div>
+            <a href="https://drive.google.com/file/d/1MuwXEx9xQZNCVwDw6rLu5FmwxSuRMOLd/view?usp=drive_link"
+              target="_blank" rel="noopener"
+              class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition duration-300">
+              Ver Certificado Original
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+
+        <div
+          class="flex flex-col md:flex-row gap-6 bg-white p-6 rounded-2xl shadow-md border-l-4 border-primary hover:shadow-lg transition duration-300">
+          <div class="flex-shrink-0 flex justify-center md:justify-start items-center">
             <img src="./assets/certifications/armazenar_dados_azure.png" alt="Selo Armazenar Dados no Azure"
               class="w-32 h-32 md:w-48 md:h-48 object-contain hover:scale-105 transition-transform duration-300 drop-shadow-sm">
           </div>
           <div>
-            <h3 class="text-2xl font-bold text-gray-900">Armazenar Dados no Azure</h3>
+            <h3 class="text-2xl font-bold text-gray-900">Microsoft Certified: Store Data in Azure</h3>
             <p class="text-sm font-semibold text-gray-500 mb-3">Microsoft</p>
 
             <p class="text-gray-700 mb-4">
@@ -501,8 +542,8 @@
                 Architecture</span>
             </div>
 
-            <a href="https://ead.escoladotrabalhador40.com.br/storage/certificates/Certificate_528135_110_y74es.pdf?sv=2019-07-07&sr=b&sig=bSn7GnvF0xILaMJr5eNNmzjZlJTOC0EvJdofa9mxLl0%3D&se=2026-03-05T19%3A20%3A16Z&sp=r"
-              target="_blank" rel="noopener"
+            <a href="https://drive.google.com/file/d/1RtQdWW2cdeRwTz17mPxiHQDePz8c7ba9/view?usp=sharing" target="_blank"
+              rel="noopener"
               class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition duration-300">
               Ver Certificado Original
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
@@ -546,8 +587,8 @@
               <span class="bg-gray-100 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">#BigData</span>
             </div>
 
-            <a href="https://ead.escoladotrabalhador40.com.br/storage/certificates/Certificate_528135_109_eq207.pdf?sv=2019-07-07&sr=b&sig=6VHof39NIC7mE1aENI%2BkMOGnFjGvdN7kpxy7ShAlC3w%3D&se=2026-03-05T19%3A53%3A06Z&sp=r"
-              target="_blank" rel="noopener"
+            <a href="https://drive.google.com/file/d/1enOba8y1tnHxEMXSY5Y_b7YIY6c1Qifk/view?usp=sharing" target="_blank"
+              rel="noopener"
               class="inline-flex items-center text-primary font-semibold hover:text-blue-700 transition duration-300">
               Ver Certificado Original
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24"
