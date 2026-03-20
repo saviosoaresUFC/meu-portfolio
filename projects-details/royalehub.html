@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoyaleHub - Detalhes do Projeto</title>
+
+  <link rel="stylesheet" href="../css/global.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../assets/icons/icone.png" type="image/x-icon" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4A90E2",
+            "fundo-claro": "#F5F5F5",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .button-visit-site:hover .icons-blue {
+      filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
+    }
+  </style>
+</head>
+
+<body class="bg-fundo-claro min-h-screen">
+  <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+    <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+
+    <nav class="hidden md:flex space-x-8" id="navMenu" aria-label="Desktop Menu">
+      <a href="../index.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+      <a href="../projetos.html"
+        class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Projetos</a>
+      <a href="../blog.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Blog</a>
+      <a href="../sobre.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+      <a href="../contato.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+    </nav>
+
+    <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+      aria-label="Toggle Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav id="mobileMenu"
+      class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+      aria-label="Mobile Menu">
+      <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
+        <li>
+          <a href="../index.html" class="text-white hover:text-primary">Home</a>
+        </li>
+        <li>
+          <a href="../projetos.html" class="text-primary hover:text-white">Projetos</a>
+        </li>
+        <li>
+          <a href="../blog.html" class="text-white hover:text-primary">Blog</a>
+        </li>
+        <li>
+          <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+        </li>
+        <li>
+          <a href="../contato.html" class="text-white hover:text-primary">Contato</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6 md:py-16">
+    <header class="mb-16 md:mb-20 text-center">
+      <div
+        class="inline-flex items-center justify-center p-6 rounded-2xl bg-white shadow-lg border-2 border-purple-600 mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 flex items-center">
+          <img src="../assets/icons/award.svg" alt="Ícone" class="w-12 h-12 mr-4 icons-purple" />
+          RoyaleHub
+        </h1>
+      </div>
+
+      <p class="max-w-3xl mx-auto text-gray-600 mt-6 text-lg leading-relaxed text-justify">
+        O <strong class="text-purple-700 font-semibold">RoyaleHub</strong> é uma aplicação voltada para jogadores de
+        Clash
+        Royale que desejam organizar e analisar seu desempenho no jogo de forma prática. O projeto permite ao usuário
+        criar e editar decks personalizados, armazenando a composição de cartas de cada um. A ideia é centralizar as
+        informações de desempenho dos decks em um único lugar, facilitando a comparação entre estratégias e auxiliando o
+        jogador a entender quais combinações funcionam melhor em suas partidas.
+      </p>
+
+      <div class="mt-8 bg-white p-6 rounded-lg shadow-md inline-block text-left">
+        <h3 class="text-lg font-bold text-gray-900 mb-3 border-b pb-2">Equipe do Projeto</h3>
+        <ul class="text-gray-700 space-y-2">
+          <li class="flex items-center"><img src="../assets/icons/user.svg" class="w-4 h-4 mr-2" alt="icon-person" />
+            Sávio de Carvalho
+            Soares</li>
+          <li class="flex items-center"><img src="../assets/icons/user.svg" class="w-4 h-4 mr-2" alt="icon-person" />
+            Douglas Eduardo dos
+            Santos Sousa</li>
+        </ul>
+      </div>
+
+      <div class="flex justify-center flex-wrap gap-4 mt-10">
+        <a href="https://github.com/saviosoaresUFC/royalehub" target="_blank" rel="noopener"
+          class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+          <img src="../assets/icons/github.svg" alt="Ícone do GitHub" class="w-5 h-5 mr-2 icons-white" />
+          Frontend no GitHub
+        </a>
+        <a href="https://github.com/saviosoaresUFC/royalehub-backend" target="_blank" rel="noopener"
+          class="flex items-center bg-gray-800 text-white px-6 py-3 rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+          <img src="../assets/icons/github.svg" alt="Ícone do GitHub" class="w-5 h-5 mr-2 icons-white" />
+          Backend no GitHub
+        </a>
+      </div>
+    </header>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2">
+        Funcionalidades Principais
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-purple-600">
+          <img src="../assets/icons/layers.svg" alt="Ícone" class="w-6 h-6 mt-1 icons-purple" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Gestão de Decks
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Criação, visualização e exclusão de decks. Permite que o usuário monte decks personalizados com as cartas
+              disponíveis no jogo.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-purple-600">
+          <img src="../assets/icons/info.svg" alt="Ícone" class="w-6 h-6 mt-1 icons-purple" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Status das Cartas
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Consulta detalhada de cada carta presente nos decks, como valor de elixir, raridade e nome, puxados
+              automaticamente.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-purple-600">
+          <img src="../assets/icons/calendar-check.svg" alt="Ícone" class="w-6 h-6 mt-1 icons-purple" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Registro de Partidas
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Adição de resultados de vitórias e derrotas associadas a cada deck, além de visualização do histórico.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-purple-600">
+          <img src="../assets/icons/trending-up.svg" alt="Ícone" class="w-6 h-6 mt-1 icons-purple" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Cálculo de Win Rate
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Cálculo automático e exibição da taxa de vitórias de cada deck com base nos resultados registrados.
+              Modificar cartas apaga o histórico do deck.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-purple-600">
+          <img src="../assets/icons/monitor.svg" alt="Ícone" class="w-6 h-6 mt-1 icons-purple" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Interface Intuitiva
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Experiência de uso simples, com visual limpo, responsivo e funcional em dispositivos móveis Android.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-purple-600">
+          <img src="../assets/icons/database.svg" alt="Ícone" class="w-6 h-6 mt-1 icons-purple" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Armazenamento Local
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Salva os decks e estatísticas no dispositivo do usuário utilizando Room, permitindo acesso rápido e
+              offline.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-purple-600 pb-2">
+        Tecnologias Utilizadas
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="bg-purple-100 text-purple-700 text-sm font-medium px-4 py-2 rounded-full">Kotlin</span>
+        <span class="bg-indigo-100 text-indigo-700 text-sm font-medium px-4 py-2 rounded-full">Jetpack Compose</span>
+        <span class="bg-blue-100 text-blue-700 text-sm font-medium px-4 py-2 rounded-full">Room (Database)</span>
+        <span class="bg-teal-100 text-teal-700 text-sm font-medium px-4 py-2 rounded-full">Retrofit (API)</span>
+        <span class="bg-green-100 text-green-700 text-sm font-medium px-4 py-2 rounded-full">Node.js</span>
+        <span class="bg-gray-200 text-gray-800 text-sm font-medium px-4 py-2 rounded-full">Express</span>
+        <span class="bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-full">Git / GitHub</span>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-purple-600 pb-2">
+        Instruções para Execução
+      </h2>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg overflow-hidden">
+        <h3 class="text-white font-semibold mb-3">1. Backend (Node.js + Express)</h3>
+        <pre class="bg-black text-green-400 p-4 rounded text-sm overflow-x-auto mb-6"><code># Clone o repositório do backend
+git clone https://github.com/saviosoaresUFC/royalehub-backend.git
+cd royalehub-backend
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor
+node index.js
+# O servidor Express agora estará rodando em http://localhost:3000</code></pre>
+
+        <h3 class="text-white font-semibold mb-3">2. Frontend (Android / Kotlin)</h3>
+        <pre class="bg-black text-green-400 p-4 rounded text-sm overflow-x-auto"><code># Clone o repositório do frontend
+git clone https://github.com/saviosoaresUFC/royalehub.git
+cd royalehub
+
+# Vá até a pasta principal do projeto
+cd app/src/main/java/com/saviosoaresUFC/royalehub
+
+# Altere a URL do Retrofit no arquivo RoyaleHubApp.kt:
+# Localize o seguinte bloco:
+private val retrofit by lazy {
+    Retrofit.Builder()
+        // Substitua o IP abaixo pelo da máquina onde o backend está rodando
+        .baseUrl("http://192.168.0.7:3000/") 
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+}
+
+# Após a alteração, abra o projeto no Android Studio e execute no seu emulador ou dispositivo.</code></pre>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-purple-600 pb-2">
+        Demonstrações
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="../assets/royalehub/royalehub-home.png" alt="Screenshot do Agendamento"
+            class="w-full h-auto object-cover" />
+          <p class="p-4 text-gray-700 text-sm">
+            Tela inicial do RoyaleHub.
+          </p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="../assets/royalehub/royalehub-estatistica-deck.png" alt="Screenshot do Dashboard da Arena"
+            class="w-full h-auto object-cover" />
+          <p class="p-4 text-gray-700 text-sm">
+            Tela de estatísticas do deck.
+          </p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="../assets/royalehub/royalehub-registrar-partida.png" alt="Screenshot do Dashboard da Arena"
+            class="w-full h-auto object-cover" />
+          <p class="p-4 text-gray-700 text-sm">
+            Tela de registro de partida.
+          </p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="../assets/royalehub/royalehub-detalhes-carta.png" alt="Screenshot do Dashboard da Arena"
+            class="w-full h-auto object-cover" />
+          <p class="p-4 text-gray-700 text-sm">
+            Tela de detalhes da carta.
+          </p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="../assets/royalehub/royalehub-registrar-deck.png" alt="Screenshot do Dashboard da Arena"
+            class="w-full h-auto object-cover" />
+          <p class="p-4 text-gray-700 text-sm">
+            Tela de registro de deck.
+          </p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="../assets/royalehub/royalehub-estatistica-geral.png" alt="Screenshot do Dashboard da Arena"
+            class="w-full h-auto object-cover" />
+          <p class="p-4 text-gray-700 text-sm">
+            Tela de estatísticas geral.
+          </p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="../assets/royalehub/royalehub-config.png" alt="Screenshot do Dashboard da Arena"
+            class="w-full h-auto object-cover" />
+          <p class="p-4 text-gray-700 text-sm">
+            Tela de configurações.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
+    <p class="text-sm text-gray-500">
+      &copy; 2026 Sávio Soares. Todos os direitos reservados.
+    </p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+
+</html>
