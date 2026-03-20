@@ -15,8 +15,9 @@
       theme: {
         extend: {
           colors: {
-            primary: "#4A90E2",
-            "fundo-claro": "#F5F5F5",
+            primary: "var(--color-cta)",
+            dark: "var(--color-primary)",
+            "fundo-claro": "var(--color-background)",
           },
         },
       },
@@ -32,7 +33,9 @@
 
 <body class="bg-fundo-claro min-h-screen">
   <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
-    <div class="text-2xl font-bold text-gray-800">Sávio Soares</div>
+    <div class="text-2xl font-bold">
+      <span class="">Sávio</span><span class="bg-blue-600 text-white px-1 rounded-md">Soares</span>
+    </div>
 
     <nav class="hidden md:flex space-x-8" id="navMenu" aria-label="Desktop Menu">
       <a href="index.html" class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary">Home</a>
@@ -76,9 +79,9 @@
     </nav>
   </header>
 
-  <main class="max-w-6xl mx-auto p-6 md:py-20 flex flex-col md:flex-row items-center justify-between">
+  <main class="max-w-6xl mx-auto p-6 md:py-20 flex flex-col md:flex-row items-center justify-between fade-in-up">
     <section class="md:w-1/2 mb-10 md:mb-0">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-dark leading-tight font-heading">
         Olá,<br />eu sou <span class="text-primary">Sávio Soares</span><br />Engenheiro de Software
       </h1>
       <p class="text-xl text-gray-600 mt-4 mb-8">
@@ -86,8 +89,7 @@
         <strong>TypeScript</strong> e <strong>PHP</strong>.
       </p>
 
-      <a href="contato.html"
-        class="inline-block bg-primary text-white py-3 px-8 rounded-lg text-lg font-semibold shadow-lg hover:bg-blue-600 transition duration-300">
+      <a href="contato.html" class="btn-primary mt-4">
         Fale Comigo
       </a>
 
@@ -116,13 +118,14 @@
     </div>
   </main>
 
-  <section class="max-w-6xl mx-auto px-8 pt-10 pb-12 bg-white shadow-xl rounded-xl mt-10">
-    <h2 class="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-primary pb-2 inline-block mx-auto block w-fit">
+  <section class="max-w-6xl mx-auto px-8 pt-10 pb-12 bg-white card fade-in-up mt-10">
+    <h2
+      class="text-4xl font-bold text-dark mb-8 border-b-2 border-primary pb-2 inline-block mx-auto block w-fit font-heading">
       Experiência e Formação de Destaque
     </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-      <div class="p-6 border border-gray-200 rounded-lg shadow-sm bg-fundo-claro">
+      <div class="card fade-in-up stagger-1">
         <p class="text-xs font-semibold text-gray-500 mb-1">
           Jan 2023 – Dez 2026 (Previsão)
         </p>
@@ -150,7 +153,7 @@
         </div>
       </div>
 
-      <div class="p-6 border border-gray-200 rounded-lg shadow-sm">
+      <div class="card fade-in-up stagger-2">
         <p class="text-xs font-semibold text-gray-500 mb-1">
           Mar 2026 – Atualmente
         </p>
@@ -179,7 +182,7 @@
         </div>
       </div>
 
-      <div class="p-6 border border-gray-200 rounded-lg shadow-sm">
+      <div class="card fade-in-up stagger-3">
         <p class="text-xs font-semibold text-gray-500 mb-1">
           Jan 2023 – Jan 2026
         </p>
@@ -209,7 +212,7 @@
         </div>
       </div>
 
-      <div class="p-6 border border-gray-200 rounded-lg shadow-sm">
+      <div class="card fade-in-up stagger-4">
         <p class="text-xs font-semibold text-gray-500 mb-1">2022 – 2023</p>
         <h3 class="text-xl font-semibold text-primary mb-2">
           Desenvolvedor Júnior
@@ -234,7 +237,7 @@
         </div>
       </div>
 
-      <div class="p-6 border border-gray-200 rounded-lg shadow-sm bg-fundo-claro">
+      <div class="card fade-in-up stagger-1">
         <p class="text-xs font-semibold text-gray-500 mb-1">2019 – 2021</p>
         <h3 class="text-xl font-semibold text-primary mb-2">
           Técnico em Informática
@@ -274,10 +277,57 @@
     </div>
   </section>
 
-  <footer class="bg-white text-center p-4 border-t border-gray-200 mt-10">
-    <p class="text-sm text-gray-500">
-      &copy; 2025 Sávio Soares. Todos os direitos reservados.
-    </p>
+  <footer class="bg-sky-900 text-white py-12 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-b border-white/10 pb-8 mb-8">
+        <!-- Brand -->
+        <div>
+          <h3 class="text-2xl font-heading font-bold text-white mb-2">
+            Sávio Soares
+          </h3>
+          <p class="text-white/70 max-w-xs text-sm">
+            Engenheiro de Software. Construindo experiências digitais excepcionais e robustas.
+          </p>
+        </div>
+        <!-- Social -->
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/saviosoaresUFC" target="_blank"
+            class="p-3 bg-white/5 rounded-full hover:bg-dark transition-colors flex items-center justify-center"
+            aria-label="GitHub">
+            <img src="./assets/icons/github.svg" alt="GitHub" class="w-5 h-5 filter invert" />
+          </a>
+          <a href="https://www.linkedin.com/in/saviosoaresc/" target="_blank"
+            class="p-3 bg-white/5 rounded-full hover:bg-dark transition-colors flex items-center justify-center"
+            aria-label="LinkedIn">
+            <img src="./assets/icons/linkedin.svg" alt="LinkedIn" class="w-5 h-5 filter invert" />
+          </a>
+          <a href="mailto:saviosoares0402@gmail.com"
+            class="p-3 bg-white/5 rounded-full hover:bg-dark transition-colors flex items-center justify-center"
+            aria-label="Email">
+            <img src="./assets/icons/mail.svg" alt="Email" class="w-5 h-5 filter invert" />
+          </a>
+        </div>
+        <!-- Back to top -->
+        <div class="flex justify-end">
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors group">
+            Voltar ao topo
+            <span
+              class="p-2 bg-white/10 rounded-full group-hover:bg-dark transition-colors transform group-hover:-translate-y-1 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-up text-white">
+                <path d="m5 12 7-7 7 7" />
+                <path d="M12 19V5" />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row justify-center items-center text-sm text-white/50">
+        <p>&copy; 2025 Sávio Soares. Todos os direitos reservados.</p>
+      </div>
+    </div>
   </footer>
 
   <script src="js/script.js"></script>

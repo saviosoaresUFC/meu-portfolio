@@ -39,7 +39,7 @@ async function fetchPosts() {
 function createPostCard(post) {
     const card = document.createElement('div');
 
-    card.className = 'bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden';
+    card.className = 'card overflow-hidden p-0 stagger-1';
 
     // Formatação da Data
     const dataFormatada = new Date(post.data).toLocaleDateString('pt-BR', {
@@ -61,7 +61,7 @@ function createPostCard(post) {
             <span class="inline-block ${post.color_tag} text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase">
                 ${post.categoria}
             </span>
-            <h2 class="text-xl font-bold text-gray-900 mb-2 hover:text-primary transition duration-300">
+            <h2 class="text-xl font-bold text-dark mb-2 hover:text-primary transition duration-300 font-heading">
                 <a href="./posts-details/${post.link_post || '#'}">${post.titulo}</a>
             </h2>
             <p class="text-gray-600 mb-4 text-sm">
