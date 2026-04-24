@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog | Sávio Soares</title>
+  <title>Acadêmico | Sávio Soares</title>
 
   <link rel="stylesheet" href="./css/global.css" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -36,9 +36,10 @@
         class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
       <a href="projetos.html"
         class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Projetos</a>
-      <a href="blog.html" class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Blog</a>
+      <a href="blog.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Blog</a>
       <a href="academico.html"
-        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Acadêmico</a>
+        class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Acadêmico</a>
       <a href="sobre.html"
         class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
       <a href="contato.html"
@@ -63,10 +64,10 @@
           <a href="projetos.html" class="text-white hover:text-primary">Projetos</a>
         </li>
         <li>
-          <a href="blog.html" class="text-primary hover:text-white">Blog</a>
+          <a href="blog.html" class="text-white hover:text-primary">Blog</a>
         </li>
         <li>
-          <a href="academico.html" class="text-white hover:text-primary">Acadêmico</a>
+          <a href="academico.html" class="text-primary hover:text-white">Acadêmico</a>
         </li>
         <li>
           <a href="sobre.html" class="text-white hover:text-primary">Sobre</a>
@@ -79,21 +80,49 @@
   </header>
 
   <main class="max-w-6xl mx-auto p-6 md:py-16 fade-in-up">
-    <h1
-      class="text-4xl md:text-5xl font-extrabold text-dark mb-12 border-b-4 border-primary pb-2 inline-block font-heading">
-      Meu Blog
-    </h1>
-
-    <p class="text-gray-700 text-lg mb-10 w-full">
-      Bem-vindo ao meu espaço de compartilhamento! Aqui você encontrará
-      artigos e tutoriais sobre Engenharia de Software, as últimas tendências
-      e melhores práticas.
-    </p>
-
-    <section id="postsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      <p id="loadingMessage" class="text-center col-span-full text-gray-500">
-        Carregando posts...
+    <header class="mb-16">
+      <h1
+        class="text-4xl md:text-5xl font-extrabold text-dark mb-6 border-b-4 border-primary pb-2 inline-block font-heading">
+        Produção Acadêmica
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl">
+        Aplicação da metodologia Scrum no desenvolvimento de um sistema de gestão para arenas esportivas
       </p>
+    </header>
+
+    <section class="stagger-container grid gap-8">
+      <!-- Artigo ArenaHub -->
+      <article class="card flex flex-col md:flex-row gap-8 items-center p-8">
+        <div class="md:w-1/4">
+          <div
+            class="aspect-[4/3] rounded-lg flex items-center justify-center border-2 border-red-300 group-hover:border-primary transition-colors">
+            <img src="./assets/articles/encontros_universitarios_2025.png" alt="Logo UFC"
+              class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div class="md:w-3/4">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded">ARTIGO APRESENTADO</span>
+            <span class="text-gray-500 text-sm">Semana Acadêmica UFC</span>
+          </div>
+          <h2 class="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors">ArenaHub: Plataforma
+            Integrada de Gestão e Agendamento para Arenas Esportivas</h2>
+          <p class="text-gray-600 mb-6 line-clamp-3">
+            Apresentação do projeto ArenaHub durante a Semana Acadêmica da Universidade Federal do Ceará (Encontros
+            Universitários). O artigo aborda a implementação técnica e o impacto de uma plataforma completa para a
+            gestão de arenas, englobando agendamentos, pagamentos e controle de clientes.
+          </p>
+          <a href="./docs/Artigo_EU_Arenahub_2.pdf" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center text-primary font-bold hover:underline">
+            Ler Artigo Completo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </article>
     </section>
   </main>
 
@@ -151,7 +180,6 @@
   </footer>
 
   <script src="js/script.js"></script>
-  <script src="js/blog.js"></script>
 </body>
 
 </html>
