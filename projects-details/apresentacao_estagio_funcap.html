@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação de Estágio - FUNCAP | Sávio (UFC Quixadá)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Dark Mode Premium Tokens (Aurora Palette) */
+            --bg-primary: #0b0f19;
+            --bg-secondary: #0f172a;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #6366f1;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #c084fc 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-hover: rgba(255, 255, 255, 0.09);
+            --card-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+            --code-bg: #1e1e2e;
+            --progress-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] {
+            /* Light Mode Tokens */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-primary: #4f46e5;
+            --accent-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%);
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(15, 23, 42, 0.1);
+            --glass-hover: rgba(255, 255, 255, 0.95);
+            --card-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
+            --code-bg: #282c34;
+            --progress-bg: rgba(15, 23, 42, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            position: relative;
+        }
+
+        /* Ambient Glow Background */
+        .ambient-glow,
+        .ambient-glow-2 {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .ambient-glow {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            top: -200px;
+            right: -150px;
+        }
+
+        .ambient-glow-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(192, 132, 252, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: -200px;
+            left: -150px;
+        }
+
+        /* Presentation Container */
+        .presentation-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+
+        /* Slide Styles */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 5rem 6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(25px) scale(0.97);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Overview Mode (Slide Sorter) */
+        body.overview-mode {
+            overflow-y: auto;
+            background: var(--bg-secondary);
+        }
+
+        body.overview-mode .presentation-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 3rem;
+            height: auto;
+        }
+
+        body.overview-mode .slide {
+            position: relative;
+            opacity: 1;
+            transform: scale(1);
+            height: 240px;
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 2px solid var(--glass-border);
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        body.overview-mode .slide:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+        }
+
+        body.overview-mode .slide.active {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+        }
+
+        body.overview-mode .slide * {
+            pointer-events: none;
+        }
+
+        body.overview-mode .slide h1 {
+            font-size: 1.5rem;
+        }
+
+        body.overview-mode .slide h2 {
+            font-size: 1.2rem;
+        }
+
+        body.overview-mode .slide p,
+        body.overview-mode .slide .code-container,
+        body.overview-mode .slide .grid-cards {
+            display: none;
+        }
+
+        body.overview-mode .progress-container,
+        body.overview-mode .footer-controls,
+        body.overview-mode .ambient-glow,
+        body.overview-mode .ambient-glow-2 {
+            display: none !important;
+        }
+
+        /* Print Media for PDF Export */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .ambient-glow,
+            .ambient-glow-2,
+            .progress-container,
+            .footer-controls,
+            .speaker-notes-modal {
+                display: none !important;
+            }
+
+            .presentation-container {
+                display: block;
+                position: static;
+            }
+
+            .slide {
+                position: relative;
+                opacity: 1 !important;
+                transform: none !important;
+                page-break-after: always;
+                height: 100vh;
+                background: white !important;
+                color: black !important;
+            }
+
+            .text-gradient {
+                background: none;
+                -webkit-text-fill-color: black;
+                color: black;
+            }
+
+            .card,
+            .code-container,
+            .layout-vs-panel {
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: none !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            p {
+                color: black !important;
+            }
+
+            .photo-treated::after {
+                opacity: 0.1;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .slide {
+                transform: none !important;
+            }
+
+            .slide.active {
+                transform: none !important;
+            }
+
+            .mesh-fallback {
+                animation: none !important;
+                background-size: auto !important;
+            }
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.65;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            max-width: 850px;
+        }
+
+        /* Photo Treatment & Fallback */
+        .photo-treated {
+            filter: grayscale(15%) contrast(1.08) brightness(0.92);
+            position: relative;
+        }
+
+        .photo-treated::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, transparent 60%);
+            mix-blend-mode: multiply;
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .mesh-fallback {
+            background: linear-gradient(270deg, #38bdf8, #6366f1, #c084fc);
+            background-size: 600% 600%;
+            animation: MeshAnimation 10s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1rem;
+            border-radius: inherit;
+        }
+
+        @keyframes MeshAnimation {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        /* Layout: Cover Full-Bleed */
+        .slide-cover-full {
+            text-align: center;
+            align-items: center;
+            color: white;
+        }
+
+        .slide-cover-full h1,
+        .slide-cover-full p,
+        .slide-cover-full .badge,
+        .slide-cover-full .author-meta {
+            z-index: 10;
+            position: relative;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-cover-full p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-bg-wrapper {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-bg-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+
+        .hero-scrim {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg-primary) 10%, transparent 80%);
+            z-index: 2;
+        }
+
+        .badge {
+            padding: 0.6rem 1.5rem;
+            border-radius: 9999px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #38bdf8;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        .author-meta {
+            margin-top: 3rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            background: var(--glass-bg);
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+        }
+
+        /* Layout: 2 Columns */
+        .layout-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Layout: VS (Comparison) */
+        .layout-vs {
+            display: flex;
+            gap: 2rem;
+            width: 100%;
+            align-items: stretch;
+            height: 48vh;
+        }
+
+        .layout-vs-panel {
+            flex: 1;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            backdrop-filter: blur(12px);
+        }
+
+        .layout-vs-panel.negative {
+            border-top: 4px solid #ef4444;
+        }
+
+        .layout-vs-panel.positive {
+            border-top: 4px solid #38bdf8;
+        }
+
+        .vs-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            width: 40px;
+        }
+
+        /* Layout: Grid Cards & SVG Masking */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1.75rem 1.5rem;
+            border-radius: 1.25rem;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: var(--glass-hover);
+        }
+
+        .card-icon-container {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .icon-keyword-hint {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.3rem 0.65rem;
+            border-radius: 0.4rem;
+            border: 1px dashed rgba(56, 189, 248, 0.35);
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .card-icon-img {
+            width: 42px;
+            height: 42px;
+            display: block;
+            margin-bottom: 0.25rem;
+            /* background: var(--accent-gradient); */
+            /* -webkit-mask-image: var(--svg-url); */
+            /* mask-image: var(--svg-url); */
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            /* object-position: -9999px; */
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card:hover .card-icon-img {
+            transform: scale(1.1) translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            margin-bottom: 0;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Layout: Quote / Depoimento */
+        .layout-quote {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            color: var(--accent-primary);
+            opacity: 0.5;
+            font-family: serif;
+            line-height: 1;
+            margin-bottom: -1rem;
+        }
+
+        .quote-text {
+            font-size: 2.1rem;
+            font-weight: 500;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.4;
+            max-width: 900px;
+            margin-bottom: 2.5rem;
+            color: var(--text-primary);
+        }
+
+        .quote-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .quote-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--glass-border);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quote-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .quote-meta h4 {
+            font-size: 1.25rem;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .quote-meta span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Layout: Big Number / KPI */
+        .layout-bignum {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .bignum-value {
+            font-size: 8rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .bignum-label {
+            font-size: 2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--progress-bg);
+            z-index: 100;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-gradient);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Footer Controls */
+        .footer-controls {
+            position: fixed;
+            bottom: 2rem;
+            left: 0;
+            width: 100%;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .slide-counter,
+        .shortcuts-hint {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.45rem 1.15rem;
+            border-radius: 9999px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            color: var(--text-secondary);
+        }
+
+        .slide-counter {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .shortcuts-hint {
+            font-size: 0.82rem;
+            opacity: 0.7;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Speaker Notes Modal */
+        .speaker-notes-modal {
+            position: fixed;
+            bottom: 5.5rem;
+            right: 4rem;
+            width: 420px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(24px);
+            z-index: 200;
+            color: #f8fafc;
+            display: none;
+            transform: translateY(15px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+
+        .speaker-notes-modal.visible {
+            display: block;
+            animation: modalFadeIn 0.3s forwards;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .speaker-notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.75rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #38bdf8;
+            text-transform: uppercase;
+        }
+
+        .speaker-notes-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-2"></div>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="presentation-container" id="presentation">
+
+        <!-- Slide 1: Capa Impactante Full Bleed -->
+        <div class="slide slide-cover-full active"
+            data-notes="Olá, pessoal! Sejam muito bem-vindos. Sou o Sávio, graduando em Engenharia de Software aqui na UFC Quixadá e Desenvolvedor Back-End Java na FUNCAP. Hoje vou compartilhar com vocês a minha experiência de estágio na linha de frente da modernização tecnológica e governança digital do Ceará.">
+            <div class="hero-bg-wrapper photo-treated">
+                <!-- IMAGEM [hero-cover]: buscar "modern architecture government tech building blue night"
+                     Alternativas: "digital transformation abstract glowing network modern"
+                     Proporção recomendada: 16:9 | Orientação: paisagem -->
+                <div class="hero-bg-img mesh-fallback">
+                    <img src="../assets/modern-architecture-government-tech-building-blue-night.svg" alt="" class="">
+                </div>
+            </div>
+            <div class="hero-scrim"></div>
+
+            <div class="badge">Estágio Supervisionado • UFC Quixadá</div>
+            <h1>Modernizando o <span class="text-gradient">Fomento à Ciência</span> no Ceará</h1>
+            <p>Como estamos construindo a nova Plataforma de Gestão de Ciclo de Vida do Fomento da FUNCAP, aplicando
+                Engenharia de Software real no Setor Público.</p>
+            <div class="author-meta">
+                <span><strong>Sávio de Carvalho</strong> — Eng. de Software / Back-End Java @ FUNCAP</span>
+                <span>•</span>
+                <span>UFC Campus Quixadá</span>
+            </div>
+        </div>
+
+        <!-- Slide 2: O Contexto & O Desafio (VS Comparison) -->
+        <div class="slide"
+            data-notes="Para entender o tamanho do nosso desafio, precisamos olhar para o passado. A antiga Plataforma Montenegro, criada em 2008, foi pioneira, mas acumulou uma dívida técnica severa ao longo de 15 anos. O nosso papel no estágio não é apenas dar manutenção, mas sim reescrever a história com uma nova plataforma do zero.">
+            <h2>O Desafio: <span class="text-gradient">Legado vs. Inovação</span></h2>
+            <div class="layout-vs">
+                <div class="layout-vs-panel negative">
+                    <h3>Plataforma Montenegro (2008)</h3>
+                    <p>• <strong>Arquitetura Defasada:</strong> Interface baseada em HTML Frames descontinuados e código
+                        sem padronização ou reaproveitamento.<br>
+                        • <strong>Banco de Dados Crítico:</strong> Chaves compostas gigantescas, sem relacionamentos
+                        claros e sem autovacuum.<br>
+                        • <strong>Vulnerabilidades:</strong> Dados sensíveis em GET, risco de SQL Injection/XSS e falhas
+                        em backups íntegros.</p>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="layout-vs-panel positive">
+                    <h3>Nova Plataforma de Fomento</h3>
+                    <p>• <strong>Arquitetura Limpa & OOP:</strong> Sistema modularizado, API RESTful desacoplada e
+                        padrões modernos de Engenharia de Software.<br>
+                        • <strong>Banco Otimizado & Seguro:</strong> PostgreSQL modelado do zero, migrações controladas
+                        via Flyway.<br>
+                        • <strong>Governo Digital:</strong> Automação de todo o ciclo (bolsas, auxílios, SEFAZ) e
+                        integração via API com a Vitrine Tecnológica.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Big Number / Impacto -->
+        <div class="slide"
+            data-notes="O objetivo central do nosso trabalho é atingir 100% de digitalização do ciclo de fomento. Isso significa eliminar pilhas de papel, automatizar análises de mérito e prestação de contas, e garantir que a bolsa ou auxílio chegue muito mais rápido ao pesquisador cearense.">
+            <div class="layout-bignum">
+                <div class="bignum-value" data-target="100%">0%</div>
+                <div class="bignum-label">Ciclo de Vida Digitalizado & Sem Papel</div>
+                <p style="margin-top: 2rem; max-width: 750px;">Da submissão da proposta, avaliação de mérito e
+                    contratação jurídica até a prestação de contas e transmissão de folha de pagamento para a SEFAZ —
+                    eliminando burocracia e acelerando a ciência no Ceará.</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: A Stack Tecnológica & Processos -->
+        <div class="slide"
+            data-notes="Para suportar essa missão crítica, definimos uma stack tecnológica moderna e de nível empresarial. No back-end, utilizamos toda a robustez do Java com Spring Boot. No front, Next.js e TypeScript para performance e UX. E o mais importante: rodamos tudo em metodologia ágil Scrum, num regime de trabalho 100% remoto que exige altíssima disciplina e visibilidade.">
+            <h2>Stack Tecnológica & <span class="text-gradient">Cultura Ágil</span></h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/java.svg" class="card-icon-img" style="--svg-url: url('none');"
+                            alt="Back-End">
+                    </div>
+                    <h3>Back-End & Dados</h3>
+                    <p>API RESTful em <strong>Java / Spring Boot</strong>. Banco <strong>PostgreSQL</strong> modelado do
+                        zero, versionado com <strong>Flyway</strong> e documentado com <strong>Swagger/OpenAPI</strong>.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/react.svg" class="card-icon-img" style="--svg-url: url('none');"
+                            alt="Front-End">
+                    </div>
+                    <h3>Front-End & UX</h3>
+                    <p>Interface moderna em <strong>Next.js + TypeScript + React</strong>, oferecendo uma experiência
+                        rápida, acessível e responsiva para pesquisadores e cidadãos.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/docker.svg" class="card-icon-img" style="--svg-url: url('none');"
+                            alt="DevOps">
+                    </div>
+                    <h3>DevOps & Infraestrutura</h3>
+                    <p>Uso intensivo de <strong>Docker</strong> para conteinerização, garantindo paridade total entre os
+                        ambientes de desenvolvimento e produção, além de CI/CD via Git Lab.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/scrum.svg" class="card-icon-img" style="--svg-url: url('none');"
+                            alt="Scrum">
+                    </div>
+                    <h3>Scrum & Trabalho Remoto</h3>
+                    <p>Atuação 100% remota com <strong>Daily Scrums</strong>, Sprints, Retrospectivas e gestão visual de
+                        fluxo (ClickUp), alinhada ao Governo Digital.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Dificuldades Encontradas & Superação (2 Colunas) -->
+        <div class="slide"
+            data-notes="Nem tudo foram flores. Quando você entra num projeto governamental de grande porte, se depara com duas grandes barreiras: o código legado arriscado e a burocracia dos processos de fomento. Como superamos isso? Com rigor metodológico e modelagem modular.">
+            <h2>Dificuldades & <span class="text-gradient">Como Superamos</span></h2>
+            <div class="layout-2col">
+                <div class="card" style="border-left: 4px solid #ef4444; height: 100%;">
+                    <h3 style="color: #ef4444; font-size: 1.4rem;">⚠️ Os Obstáculos Enfrentados</h3>
+                    <p style="margin-top: 1rem;">
+                        • <strong>Manipulação do Legado:</strong> O banco de dados Montenegro era extremamente frágil e
+                        sem documentação, onde qualquer alteração incorria em alto risco de quebra.<br><br>
+                        • <strong>Complexidade Burocrática:</strong> Regras de negócio intrincadas do fomento público
+                        (avaliações de mérito, tramitações jurídicas, remessas financeiras SEFAZ e prestação de
+                        contas).<br><br>
+                        • <strong>Curva de Aprendizado:</strong> Traduzir requisitos legais e editais governamentais
+                        para fluxos lógicos de software.
+                    </p>
+                </div>
+                <div class="card" style="border-left: 4px solid #38bdf8; height: 100%;">
+                    <h3 style="color: #38bdf8; font-size: 1.4rem;">💡 A Estratégia de Superação</h3>
+                    <p style="margin-top: 1rem;">
+                        • <strong>Modelagem do Zero & Flyway:</strong> Em vez de remendar o banco antigo, modelamos uma
+                        estrutura relacional limpa e modular, validando migrações incrementalmente.<br><br>
+                        • <strong>Rigor no Scrum:</strong> As Daily Scrums e o uso de diagramas UML foram vitais para
+                        alinhar o entendimento da equipe de desenvolvimento e dos gestores da FUNCAP.<br><br>
+                        • <strong>Desacoplamento:</strong> Divisão do sistema em 11 módulos coesos (Usuário, Avaliação,
+                        Jurídico, Recursos, Execução, Financeiro, Diretoria).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Principais Lições Aprendidas (Grid Cards) -->
+        <div class="slide"
+            data-notes="Se eu pudesse resumir os maiores ensinamentos desse estágio para levar para a carreira, seriam estes quatro pontos. A faculdade nos ensina a sintaxe e os algoritmos; o estágio em um projeto real nos ensina arquitetura, segurança, impacto social e autogestão.">
+            <h2>Principais <span class="text-gradient">Lições Aprendidas</span></h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/clean-code-architecture.svg" class="card-icon-img"
+                            style="--svg-url: url('none');" alt="Clean Code">
+                    </div>
+                    <h3>Não Deixar Refém do Criador</h3>
+                    <p>Aprender com o erro do legado: código limpo, OOP, versionamento (Git) e documentação (Swagger)
+                        são essenciais para que o software dure décadas e seja mantível por qualquer time.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/cyber-security-shield.svg" class="card-icon-img"
+                            style="--svg-url: url('none');" alt="Security">
+                    </div>
+                    <h3>Segurança desde o Dia Zero</h3>
+                    <p>Em sistemas governamentais e financeiros, proteção contra SQL Injection, XSS, criptografia de
+                        dados sensíveis e rotinas de backup íntegro são absolutamente inegociáveis.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <!-- Aqui usamos o ícone de cérebro que você já tem! -->
+                        <img src="../assets/icons/software-impacto-social.svg" class="card-icon-img"
+                            style="--svg-url: url('../assets/brain-artificial-intelligence.svg');" alt="Social Impact">
+                    </div>
+                    <h3>Software é Impacto Social</h3>
+                    <p>Programar para o fomento à pesquisa é exercer cidadania. Uma plataforma rápida e transparente
+                        significa que bolsas e auxílios chegam mais cedo para quem faz ciência no Ceará.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/remote-work-global.svg" class="card-icon-img"
+                            style="--svg-url: url('none');" alt="Remote">
+                    </div>
+                    <h3>Maturidade no Trabalho Remoto</h3>
+                    <p>Atuar remotamente simula o mercado global. Exige autogestão, comunicação assíncrona clara e
+                        domínio de ferramentas cloud para gerenciamento de servidores sem presença física.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Próximos Passos & Oportunidades de Melhoria -->
+        <div class="slide"
+            data-notes="O estágio é um ciclo contínuo de evolução. Olhando para o futuro da plataforma e da minha carreira técnica, enxergo três grandes horizontes onde podemos elevar ainda mais o nível dessa engenharia.">
+            <h2>Próximos Passos & <span class="text-gradient">Oportunidades de Melhoria</span></h2>
+            <div class="grid-cards" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/microservices-network-rabbitmq.svg" class="card-icon-img"
+                            style="--svg-url: url('none');" alt="Microservices">
+                    </div>
+                    <h3>Microsserviços & Mensageria</h3>
+                    <p>Aprofundar o uso de filas (RabbitMQ/Kafka) e arquiteturas orientadas a eventos para aumentar a
+                        escalabilidade em dias de pico de submissão de chamadas públicas.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/kubernetes-cloud-orchestration.svg" class="card-icon-img"
+                            style="--svg-url: url('none');" alt="Kubernetes">
+                    </div>
+                    <h3>Orquestração (GKE)</h3>
+                    <p>Expandir os conhecimentos em Kubernetes para gerenciar clusters de contêineres,
+                        garantindo alta disponibilidade e resiliência 24/7 para o cidadão.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon-container">
+                        <img src="../assets/icons/artificial-intelligence-analytics.svg" class="card-icon-img"
+                            style="--svg-url: url('none');" alt="AI Analytics">
+                    </div>
+                    <h3>IA & Análise Preditiva</h3>
+                    <p>Integrar Machine Learning e análise preditiva ao Módulo da Diretoria, transformando dados
+                        históricos em insights estratégicos para a tomada de decisão do Governo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Conclusão & Depoimento (Quote Layout) -->
+        <div class="slide"
+            data-notes="Para encerrar, deixo aqui a minha reflexão final sobre esse ciclo na FUNCAP. Foi a ponte perfeita entre o que aprendemos nas salas de aula da UFC Quixadá e o mercado de trabalho de alta performance. Muito obrigado a todos!">
+            <div class="layout-quote">
+                <div class="quote-icon">"</div>
+                <div class="quote-text">
+                    O estágio na FUNCAP foi um divisor de águas que transformou o conhecimento acadêmico da UFC Quixadá
+                    em maturidade profissional, provando que a engenharia de software de excelência é capaz de
+                    modernizar o estado e impulsionar a ciência.
+                </div>
+                <div class="quote-author">
+                    <div style="border-radius: 50%;">
+                        <!-- IMAGEM [avatar]: sua foto de perfil já conectada! -->
+                        <div class="quote-avatar mesh-fallback" style="font-size: 0.5rem; padding: 0.2rem;">
+                            <img src="../assets/foto-perfil.jpg" alt="Sávio Avatar" style="object-fit: cover;"
+                                loading="lazy">
+                        </div>
+                    </div>
+                    <div class="quote-meta">
+                        <h4>Sávio de Carvalho</h4>
+                        <span>Graduando em Eng. de Software (UFC Quixadá) • Back-End Java @ FUNCAP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal de Notas -->
+    <div class="speaker-notes-modal" id="speakerNotesModal">
+        <div class="speaker-notes-header">
+            <span>🎙️ Notas do Palestrante</span>
+            <span style="font-size: 0.75rem; text-transform: none; color: var(--text-secondary);">(Tecla A)</span>
+        </div>
+        <div class="speaker-notes-content" id="speakerNotesContent"></div>
+    </div>
+
+    <!-- Footer Controls -->
+    <div class="footer-controls">
+        <div class="slide-counter"><span id="currentSlideNum">1</span> / <span id="totalSlidesNum">8</span></div>
+        <!-- <div class="shortcuts-hint">Setas: Navegar • G: Grid • A: Notas • T: Tema</div> -->
+    </div>
+
+    <!-- Script Controller -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const progressBar = document.getElementById('progressBar');
+            const currentSlideNum = document.getElementById('currentSlideNum');
+            const totalSlidesNum = document.getElementById('totalSlidesNum');
+            const speakerNotesModal = document.getElementById('speakerNotesModal');
+            const speakerNotesContent = document.getElementById('speakerNotesContent');
+            const body = document.body;
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            totalSlidesNum.textContent = totalSlides;
+            let isOverviewMode = false;
+
+            function animateBigNumbers(slide) {
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (prefersReducedMotion) return;
+
+                const numbers = slide.querySelectorAll('.bignum-value');
+                numbers.forEach(el => {
+                    const targetStr = el.getAttribute('data-target');
+                    const target = parseFloat(targetStr);
+                    const isPercentage = targetStr.includes('%');
+                    const duration = 1500;
+                    const startTime = performance.now();
+
+                    function updateCounter(currentTime) {
+                        const elapsedTime = currentTime - startTime;
+                        const progress = Math.min(elapsedTime / duration, 1);
+                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        const currentVal = (target * easeOutQuart).toFixed(0);
+
+                        el.textContent = currentVal + (isPercentage ? '%' : '');
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            el.textContent = target + (isPercentage ? '%' : '');
+                        }
+                    }
+                    requestAnimationFrame(updateCounter);
+                });
+            }
+
+            function updateSlide(index) {
+                if (index < 0 || index >= totalSlides) return;
+                currentSlide = index;
+
+                slides.forEach((slide, i) => {
+                    if (i === currentSlide) {
+                        slide.classList.add('active');
+                        animateBigNumbers(slide);
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+
+                currentSlideNum.textContent = currentSlide + 1;
+                progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+
+                const notes = slides[currentSlide].getAttribute('data-notes') || 'Nenhuma nota registrada.';
+                speakerNotesContent.textContent = notes;
+            }
+
+            function toggleOverviewMode() {
+                isOverviewMode = !isOverviewMode;
+                body.classList.toggle('overview-mode', isOverviewMode);
+                if (!isOverviewMode) {
+                    updateSlide(currentSlide);
+                }
+            }
+
+            // Overview click delegation
+            document.getElementById('presentation').addEventListener('click', (e) => {
+                if (!isOverviewMode) return;
+                const slide = e.target.closest('.slide');
+                if (slide) {
+                    const index = Array.from(slides).indexOf(slide);
+                    currentSlide = index;
+                    toggleOverviewMode();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (isOverviewMode) {
+                    if (e.key === 'g' || e.key === 'G' || e.key === 'Escape') toggleOverviewMode();
+                    if (e.key === 'Enter' || e.key === ' ') toggleOverviewMode();
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        if (currentSlide < totalSlides - 1) {
+                            slides[currentSlide].classList.remove('active');
+                            currentSlide++;
+                            slides[currentSlide].classList.add('active');
+                        }
+                    }
+                    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        if (currentSlide > 0) {
+                            slides[currentSlide].classList.remove('active');
+                            currentSlide--;
+                            slides[currentSlide].classList.add('active');
+                        }
+                    }
+                    return;
+                }
+
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+                    e.preventDefault(); updateSlide(currentSlide + 1);
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+                    e.preventDefault(); updateSlide(currentSlide - 1);
+                } else if (e.key === 'a' || e.key === 'A') {
+                    e.preventDefault(); speakerNotesModal.classList.toggle('visible');
+                } else if (e.key === 't' || e.key === 'T') {
+                    e.preventDefault();
+                    document.documentElement.setAttribute('data-theme',
+                        document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+                } else if (e.key === 'g' || e.key === 'G') {
+                    e.preventDefault(); toggleOverviewMode();
+                }
+            });
+
+            let touchStartX = 0, touchEndX = 0;
+            document.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, false);
+            document.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (!isOverviewMode && touchStartX - touchEndX > 50) updateSlide(currentSlide + 1);
+                else if (!isOverviewMode && touchEndX - touchStartX > 50) updateSlide(currentSlide - 1);
+            }, false);
+
+            updateSlide(0);
+        });
+    </script>
+</body>
+
+</html>
