@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WL Multimarcas - Detalhes do Projeto | Sávio Soares</title>
+
+  <link rel="stylesheet" href="../css/global.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="../assets/icons/icone.png" type="image/x-icon" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4A90E2",
+            dark: "var(--color-primary)",
+            gold: "#C5A059",
+            "fundo-claro": "#F8FAFC",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .button-visit-site:hover .icons-blue {
+      filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
+    }
+  </style>
+</head>
+
+<body class="bg-fundo-claro min-h-screen">
+  <header class="bg-white shadow-md p-4 md:px-12 flex justify-between items-center sticky top-0 z-50">
+    <div class="text-2xl font-bold">
+      <span class="">Sávio</span><span class="bg-blue-600 text-white px-1 rounded-md">Soares</span>
+    </div>
+
+    <nav class="hidden md:flex space-x-8" id="navMenu" aria-label="Desktop Menu">
+      <a href="../index.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Home</a>
+      <a href="../projetos.html"
+        class="text-gray-800 hover:text-primary pb-1 border-b-2 border-primary active">Projetos</a>
+      <a href="../blog.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Blog</a>
+      <a href="../sobre.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Sobre</a>
+      <a href="../contato.html"
+        class="text-gray-600 hover:text-primary hover:border-b-2 hover:border-primary pb-1 transition duration-300">Contato</a>
+    </nav>
+
+    <button class="md:hidden flex flex-col justify-center items-center menu-toggle z-50" id="menuToggle"
+      aria-label="Toggle Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav id="mobileMenu"
+      class="fixed top-0 left-0 w-full h-full bg-gray-800 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-40"
+      aria-label="Mobile Menu">
+      <ul class="flex flex-col items-center justify-center h-full text-2xl space-y-8">
+        <li>
+          <a href="../index.html" class="text-white hover:text-primary">Home</a>
+        </li>
+        <li>
+          <a href="../projetos.html" class="text-primary hover:text-white">Projetos</a>
+        </li>
+        <li>
+          <a href="../blog.html" class="text-white hover:text-primary">Blog</a>
+        </li>
+        <li>
+          <a href="../sobre.html" class="text-white hover:text-primary">Sobre</a>
+        </li>
+        <li>
+          <a href="../contato.html" class="text-white hover:text-primary">Contato</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6 md:py-16">
+    <header class="mb-16 md:mb-20 text-center">
+      <div
+        class="inline-flex items-center justify-center p-6 md:p-8 rounded-3xl bg-neutral-950 shadow-2xl border-2 border-amber-500/40 mb-8 max-w-sm w-full mx-auto">
+        <img src="../assets/wlmultimarcas/wl_logo_gold_fundo_preto.svg" alt="Logo WL Multimarcas"
+          class="h-24 md:h-28 w-auto drop-shadow-lg transition-transform duration-500 hover:scale-105" />
+      </div>
+
+      <div class="flex justify-center flex-wrap gap-2 mb-4">
+        <span class="bg-amber-100 text-amber-900 border border-amber-300 text-xs font-semibold px-3 py-1 rounded-full">
+          E-Commerce Enterprise
+        </span>
+        <span class="bg-blue-100 text-blue-800 border border-blue-200 text-xs font-semibold px-3 py-1 rounded-full">
+          Fullstack & Observabilidade
+        </span>
+        <span
+          class="bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-semibold px-3 py-1 rounded-full">
+          Asaas Pagamentos & Webhooks
+        </span>
+      </div>
+
+      <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 font-heading">
+        WL Multimarcas
+      </h1>
+
+      <p class="max-w-3xl mx-auto text-gray-600 text-lg leading-relaxed">
+        O <strong class="text-amber-700 font-semibold">WL Multimarcas</strong> é um ecossistema completo de
+        e-commerce de alta performance, projetado para escala, segurança financeira e rastreabilidade distribuída.
+        Combina um storefront moderno em <span class="text-gray-900 font-semibold">Next.js 16 + React 19</span>,
+        uma API ultraveloz em <span class="text-gray-900 font-semibold">Fastify + TypeScript</span>, banco
+        <span class="text-gray-900 font-semibold">PostgreSQL (Prisma)</span>, telemetria completa com
+        <span class="text-gray-900 font-semibold">OpenTelemetry & Jaeger</span> e gateway financeiro com
+        <span class="text-gray-900 font-semibold">Asaas & Stripe</span>.
+      </p>
+
+      <div class="flex justify-center flex-wrap gap-4 mt-10">
+        <a href="https://github.com/saviosoaresUFC/wlmultimarcas" target="_blank" rel="noopener"
+          class="flex items-center bg-gray-900 text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl">
+          <img src="../assets/icons/github.svg" alt="Ícone do GitHub" class="w-5 h-5 mr-2 icons-white" />
+          Ver no GitHub
+        </a>
+      </div>
+    </header>
+
+    <!-- Destaques Arquiteturais -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 border-b-2 border-gray-200 pb-2 font-heading">
+        Destaques Arquiteturais & Funcionalidades
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-amber-500">
+          <img src="../assets/icons/credit-card.svg" alt="Ícone de Pagamento" class="w-6 h-6 mt-1 icons-amber" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Checkout Asaas & Stripe
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Integração completa com a API v3 do <strong>Asaas</strong> com suporte a Pix instantâneo (QR Code dinâmico
+              e Copia e Cola), Cartão de Crédito com parcelamento em até 12x e Boleto bancário, além de Webhooks seguros
+              para conciliação em tempo real e suporte a Stripe.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-amber-500">
+          <img src="../assets/icons/workflow.svg" alt="Ícone de Tracing" class="w-6 h-6 icons-amber" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Observabilidade com Jaeger
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Instrumentação completa via <strong>OpenTelemetry NodeSDK</strong> conectada ao <strong>Jaeger
+                Tracing</strong>. Rastreabilidade distribuída ponta a ponta (Trace ID, Span ID) para monitorar
+              latências, gargalos e queries em rotas críticas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-amber-500">
+          <img src="../assets/icons/box.svg" alt="Ícone de Estoque" class="w-6 h-6 icons-amber" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Gestão Avançada de Inventário
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Controle granular de variantes (tamanhos, cores hex, SKUs únicos), diferenciação entre estoque físico vs.
+              reservado, registro detalhado de movimentações (Entrada, Saída, Venda, Ajuste e Devolução) e alertas de
+              estoque mínimo.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-amber-500">
+          <img src="../assets/icons/dollar-sign.svg" alt="Ícone Financeiro" class="w-6 h-6 icons-amber" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Módulo Financeiro & Despesas
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Sistema de gestão de despesas operacionais (fornecedores, embalagens, fretes, marketing, SaaS), com
+              suporte a parcelamentos, recorrências (mensal/anual), anexação de comprovantes e controle de fluxo de
+              caixa.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-amber-500">
+          <img src="../assets/icons/star.svg" alt="Ícone de Fidelidade" class="w-6 h-6 icons-amber" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Fidelidade & Cupons
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Cartão fidelidade digital (<em>LoyaltyCard</em>) que contabiliza compras e disponibiliza recompensas e
+              cupons automáticos. Motor flexível de cupons com desconto percentual, valor fixo, frete grátis, limites e
+              validade.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-white p-6 rounded-lg shadow-md flex items-start space-x-4 border-t-4 border-amber-500">
+          <img src="../assets/icons/database.svg" alt="Ícone de Armazenamento" class="w-6 h-6 icons-amber" />
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              MinIO S3 & Notificações
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Armazenamento de mídia de produtos em Object Storage compatível com <strong>Amazon S3 (MinIO)</strong>,
+              autenticação sem senha com OTP por e-mail (Nodemailer), cálculo de frete via <strong>Melhor Envio</strong>
+              e notificações de pedidos no WhatsApp.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tecnologias Utilizadas -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-primary pb-2 font-heading">
+        Tecnologias Utilizadas
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        <!-- Frontend -->
+        <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-4 py-2 rounded-full border border-blue-200">
+          Next.js 16 (App Router)
+        </span>
+        <span class="bg-cyan-100 text-cyan-800 text-sm font-semibold px-4 py-2 rounded-full border border-cyan-200">
+          React 19 & TypeScript
+        </span>
+        <span class="bg-teal-100 text-teal-800 text-sm font-semibold px-4 py-2 rounded-full border border-teal-200">
+          Tailwind CSS & Shadcn UI
+        </span>
+        <span class="bg-gray-100 text-gray-800 text-sm font-semibold px-4 py-2 rounded-full border border-gray-300">
+          Lucide Icons & Embla Carousel
+        </span>
+
+        <!-- Backend -->
+        <span class="bg-neutral-900 text-white text-sm font-semibold px-4 py-2 rounded-full">
+          Fastify 5 (TypeScript)
+        </span>
+        <span
+          class="bg-emerald-100 text-emerald-800 text-sm font-semibold px-4 py-2 rounded-full border border-emerald-200">
+          Prisma ORM & PostgreSQL
+        </span>
+        <span class="bg-red-100 text-red-800 text-sm font-semibold px-4 py-2 rounded-full border border-red-200">
+          Redis (Cache & Sessões)
+        </span>
+        <span
+          class="bg-yellow-100 text-yellow-900 text-sm font-semibold px-4 py-2 rounded-full border border-yellow-300">
+          Zod & Fastify Type Provider
+        </span>
+        <span class="bg-sky-100 text-sky-800 text-sm font-semibold px-4 py-2 rounded-full border border-sky-200">
+          Swagger / OpenAPI (Fastify Swagger)
+        </span>
+
+        <!-- Observabilidade & DevOps -->
+        <span
+          class="bg-violet-100 text-violet-800 text-sm font-semibold px-4 py-2 rounded-full border border-violet-200">
+          OpenTelemetry (NodeSDK)
+        </span>
+        <span
+          class="bg-indigo-100 text-indigo-800 text-sm font-semibold px-4 py-2 rounded-full border border-indigo-200">
+          Jaeger Tracing (Distributed Traces)
+        </span>
+        <span
+          class="bg-orange-100 text-orange-800 text-sm font-semibold px-4 py-2 rounded-full border border-orange-200">
+          Docker & Docker Compose
+        </span>
+        <span class="bg-pink-100 text-pink-800 text-sm font-semibold px-4 py-2 rounded-full border border-pink-200">
+          MinIO (S3 Storage)
+        </span>
+
+        <!-- Integrações & Serviços -->
+        <span class="bg-amber-100 text-amber-900 text-sm font-semibold px-4 py-2 rounded-full border border-amber-300">
+          Asaas API v3 (Pix, Cartão, Boleto)
+        </span>
+        <span class="bg-blue-200 text-blue-900 text-sm font-semibold px-4 py-2 rounded-full">
+          Stripe Payment Gateway
+        </span>
+        <span class="bg-green-100 text-green-800 text-sm font-semibold px-4 py-2 rounded-full border border-green-200">
+          Melhor Envio (Cálculo de Frete)
+        </span>
+        <span class="bg-lime-100 text-lime-800 text-sm font-semibold px-4 py-2 rounded-full border border-lime-200">
+          Nodemailer & WhatsApp API
+        </span>
+      </div>
+    </section>
+
+    <!-- Fluxo de Pagamento e Arquitetura Asaas -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2 font-heading">
+        Arquitetura do Fluxo de Pagamentos (Asaas)
+      </h2>
+      <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100">
+        <p class="text-gray-600 mb-6 text-base leading-relaxed">
+          O fluxo de pagamento é totalmente desacoplado e protegido. O frontend comunica-se exclusivamente com o backend
+          Fastify autenticado, que por sua vez se comunica com a <strong>API v3 do Asaas</strong> gerando cobranças com
+          validação rigorosa de estoque. Notificações automáticas de liquidação chegam via <strong>Webhooks</strong> com
+          validação de tokens secretos antes de efetivar o pedido e dar baixa definitiva no estoque.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+          <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl text-center">
+            <div
+              class="w-10 h-10 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg">
+              1</div>
+            <h4 class="font-bold text-gray-800 mb-2">Geração da Cobrança</h4>
+            <p class="text-xs text-gray-600 leading-normal">Cliente seleciona Pix, Cartão ou Boleto. API valida preços,
+              reserva estoque e cria a transação no Asaas.</p>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl text-center">
+            <div
+              class="w-10 h-10 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg">
+              2</div>
+            <h4 class="font-bold text-gray-800 mb-2">Exibição em Tempo Real</h4>
+            <p class="text-xs text-gray-600 leading-normal">Retorno instantâneo do QR Code Pix, link do boleto PDF ou
+              status de aprovação do cartão.</p>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl text-center">
+            <div
+              class="w-10 h-10 bg-amber-100 text-amber-800 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-lg">
+              3</div>
+            <h4 class="font-bold text-gray-800 mb-2">Webhook & Baixa</h4>
+            <p class="text-xs text-gray-600 leading-normal">Asaas notifica o webhook com <code
+                class="bg-gray-200 px-1 py-0.5 rounded text-xs">asaas-access-token</code>, confirmando a compra e
+              acionando WhatsApp/E-mail.</p>
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <img src="../assets/wlmultimarcas/asaas.png" alt="Fluxo de Pagamento Asaas"
+            class="max-w-full md:max-w-2xl mx-auto rounded-xl shadow-md border border-gray-200" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Demonstrações e Telas -->
+    <section>
+      <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-gray-200 pb-2 font-heading">
+        Visual e Recursos da Loja
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+          <img src="../assets/wlmultimarcas/hero-desktop.svg" alt="Banner Hero WL Multimarcas"
+            class="w-full h-56 object-cover bg-neutral-900" />
+          <div class="p-5">
+            <h4 class="font-bold text-gray-900 mb-1">Identidade Visual & Hero Showcase</h4>
+            <p class="text-gray-600 text-sm">
+              Design premium com estética Gold Edition, banners responsivos e navegação fluida em Next.js.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+          <img src="../assets/wlmultimarcas/catalogo_produto.png" alt="Produtos da Loja"
+            class="w-full h-56 object-cover" />
+          <div class="p-5">
+            <h4 class="font-bold text-gray-900 mb-1">Catálogo e Gestão de Produtos</h4>
+            <p class="text-gray-600 text-sm">
+              Organização por categorias, coleções, novidades e controle rigoroso de estoque físico por SKU.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-sky-900 text-white py-12 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-b border-white/10 pb-8 mb-8">
+        <!-- Brand -->
+        <div>
+          <h3 class="text-2xl font-heading font-bold text-white mb-2">
+            Sávio Soares
+          </h3>
+          <p class="text-white/70 max-w-xs text-sm">
+            Engenheiro de Software. Construindo experiências digitais excepcionais e robustas.
+          </p>
+        </div>
+        <!-- Social -->
+        <div class="flex justify-center gap-4">
+          <a href="https://github.com/saviosoaresUFC" target="_blank"
+            class="p-3 bg-white/5 rounded-full hover:bg-dark transition-colors flex items-center justify-center"
+            aria-label="GitHub">
+            <img src="../assets/icons/github.svg" alt="GitHub" class="w-5 h-5 filter invert" />
+          </a>
+          <a href="https://www.linkedin.com/in/saviosoaresc/" target="_blank"
+            class="p-3 bg-white/5 rounded-full hover:bg-dark transition-colors flex items-center justify-center"
+            aria-label="LinkedIn">
+            <img src="../assets/icons/linkedin.svg" alt="LinkedIn" class="w-5 h-5 filter invert" />
+          </a>
+          <a href="mailto:saviosoares0402@gmail.com"
+            class="p-3 bg-white/5 rounded-full hover:bg-dark transition-colors flex items-center justify-center"
+            aria-label="Email">
+            <img src="../assets/icons/mail.svg" alt="Email" class="w-5 h-5 filter invert" />
+          </a>
+        </div>
+        <!-- Back to top -->
+        <div class="flex justify-end">
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors group">
+            Voltar ao topo
+            <span
+              class="p-2 bg-white/10 rounded-full group-hover:bg-dark transition-colors transform group-hover:-translate-y-1 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-arrow-up text-white">
+                <path d="m5 12 7-7 7 7" />
+                <path d="M12 19V5" />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row justify-center items-center text-sm text-white/50">
+        <p>&copy; 2025 Sávio Soares. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+
+</html>
