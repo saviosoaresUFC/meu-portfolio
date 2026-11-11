@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU 2026 | Plataforma Web de Gestão de Estágios — UFC Quixadá</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- PptxGenJS for native .pptx export -->
+    <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <style>
+        :root {
+            /* Dark Mode Premium Tokens (Aurora Palette) */
+            --bg-primary: #0b0f19;
+            --bg-secondary: #0f172a;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-primary: #6366f1;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #c084fc 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-hover: rgba(255, 255, 255, 0.09);
+            --card-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+            --code-bg: #1e1e2e;
+            --progress-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] {
+            /* Light Mode Tokens */
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-primary: #4f46e5;
+            --accent-gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%);
+            --glass-bg: rgba(255, 255, 255, 0.82);
+            --glass-border: rgba(15, 23, 42, 0.12);
+            --glass-hover: rgba(255, 255, 255, 0.96);
+            --card-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
+            --code-bg: #282c34;
+            --progress-bg: rgba(15, 23, 42, 0.1);
+        }
+
+        /* Review styling kept hidden/neutral */
+        .review-blue {
+            color: inherit !important;
+            background: transparent !important;
+            border-bottom: none !important;
+            padding: 0 !important;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            position: relative;
+        }
+
+        /* Ambient Glow Background */
+        .ambient-glow,
+        .ambient-glow-2 {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .ambient-glow {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.13) 0%, rgba(0, 0, 0, 0) 70%);
+            top: -200px;
+            right: -150px;
+        }
+
+        .ambient-glow-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(192, 132, 252, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: -200px;
+            left: -150px;
+        }
+
+        /* Presentation Container */
+        .presentation-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+
+        /* Slide Styles */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 4.5rem 5.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(25px) scale(0.97);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Overview Mode (Slide Sorter) */
+        body.overview-mode {
+            overflow-y: auto;
+            background: var(--bg-secondary);
+        }
+
+        body.overview-mode .presentation-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 3rem;
+            height: auto;
+        }
+
+        body.overview-mode .slide {
+            position: relative;
+            opacity: 1;
+            transform: scale(1);
+            height: 240px;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            border: 2px solid var(--glass-border);
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        body.overview-mode .slide:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+        }
+
+        body.overview-mode .slide.active {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3);
+        }
+
+        body.overview-mode .slide * {
+            pointer-events: none;
+        }
+
+        body.overview-mode .slide h1 {
+            font-size: 1.35rem;
+        }
+
+        body.overview-mode .slide h2 {
+            font-size: 1.15rem;
+        }
+
+        body.overview-mode .slide p,
+        body.overview-mode .slide .layout-vs,
+        body.overview-mode .slide .layout-2col,
+        body.overview-mode .slide .grid-cards {
+            display: none;
+        }
+
+        body.overview-mode .progress-container,
+        body.overview-mode .footer-controls,
+        body.overview-mode .ambient-glow,
+        body.overview-mode .ambient-glow-2 {
+            display: none !important;
+        }
+
+        /* Print Media for PDF Export */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .ambient-glow,
+            .ambient-glow-2,
+            .progress-container,
+            .footer-controls,
+            .speaker-notes-modal {
+                display: none !important;
+            }
+
+            .presentation-container {
+                display: block;
+                position: static;
+            }
+
+            .slide {
+                position: relative;
+                opacity: 1 !important;
+                transform: none !important;
+                page-break-after: always;
+                height: 100vh;
+                background: white !important;
+                color: black !important;
+            }
+
+            .text-gradient {
+                background: none;
+                -webkit-text-fill-color: black;
+                color: black;
+            }
+
+            .card,
+            .layout-vs-panel {
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: none !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            p {
+                color: black !important;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .slide,
+            .slide.active {
+                transform: none !important;
+            }
+
+            .mesh-fallback {
+                animation: none !important;
+                background-size: auto !important;
+            }
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+        }
+
+        h1 {
+            font-size: 3.3rem;
+            letter-spacing: -0.03em;
+            max-width: 1000px;
+        }
+
+        h2 {
+            font-size: 2.35rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        p {
+            font-size: 1.12rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            max-width: 880px;
+        }
+
+        /* Photo Treatment & Fallback */
+        .photo-treated {
+            filter: grayscale(15%) contrast(1.08) brightness(0.92);
+            position: relative;
+        }
+
+        .photo-treated::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, transparent 60%);
+            mix-blend-mode: multiply;
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .mesh-fallback {
+            background: linear-gradient(270deg, #0f172a, #1e1b4b, #1e3a8a, #0b0f19);
+            background-size: 600% 600%;
+            animation: MeshAnimation 12s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 1rem;
+            border-radius: inherit;
+        }
+
+        @keyframes MeshAnimation {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        /* Layout: Cover Full-Bleed */
+        .slide-cover-full {
+            text-align: center;
+            align-items: center;
+            color: white;
+        }
+
+        .slide-cover-full h1,
+        .slide-cover-full p,
+        .slide-cover-full .badge,
+        .slide-cover-full .author-meta,
+        .slide-cover-full .cover-logo {
+            z-index: 10;
+            position: relative;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+        }
+
+        .slide-cover-full p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-bg-wrapper {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-bg-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+
+        .hero-scrim {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg-primary) 12%, transparent 82%);
+            z-index: 2;
+        }
+
+        .badge {
+            padding: 0.55rem 1.4rem;
+            border-radius: 9999px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.11em;
+            color: #38bdf8;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .author-meta {
+            margin-top: 2rem;
+            font-size: 0.98rem;
+            color: rgba(255, 255, 255, 0.88);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            align-items: center;
+            background: var(--glass-bg);
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+        }
+
+        /* Layout: 2 Columns */
+        .layout-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        /* Layout: VS (Comparison) */
+        .layout-vs {
+            display: flex;
+            gap: 1.75rem;
+            width: 100%;
+            align-items: stretch;
+            min-height: 44vh;
+        }
+
+        .layout-vs-panel {
+            flex: 1;
+            padding: 2.25rem;
+            border-radius: 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            backdrop-filter: blur(12px);
+        }
+
+        .layout-vs-panel.negative {
+            border-top: 4px solid #ef4444;
+        }
+
+        .layout-vs-panel.positive {
+            border-top: 4px solid #38bdf8;
+        }
+
+        .vs-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            width: 36px;
+        }
+
+        /* Layout: Grid Cards */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+            gap: 1.35rem;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1.65rem 1.45rem;
+            border-radius: 1.25rem;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.28);
+            background: var(--glass-hover);
+        }
+
+        .card-icon-container {
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-icon-svg {
+            width: 42px;
+            height: 42px;
+            border-radius: 0.75rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #38bdf8;
+            flex-shrink: 0;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.55rem;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            font-size: 0.92rem;
+            margin-bottom: 0;
+            color: var(--text-secondary);
+            line-height: 1.52;
+        }
+
+        /* Layout: Quote / Conclusão */
+        .layout-quote {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .quote-icon {
+            font-size: 3.5rem;
+            color: var(--accent-primary);
+            opacity: 0.5;
+            font-family: serif;
+            line-height: 1;
+            margin-bottom: -0.75rem;
+        }
+
+        .quote-text {
+            font-size: 1.65rem;
+            font-weight: 500;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.45;
+            max-width: 920px;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        /* Layout: Big Numbers Grid */
+        .bignum-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .bignum-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 1.65rem 1.35rem;
+            text-align: center;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .bignum-value {
+            font-size: 4.75rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.05;
+            margin-bottom: 0.65rem;
+        }
+
+        .bignum-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.6rem;
+        }
+
+        /* Step Flow Pill List */
+        .flow-steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.65rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 140px;
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 0.85rem 1rem;
+            border-radius: 0.9rem;
+            text-align: center;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .flow-arrow {
+            color: #38bdf8;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--progress-bg);
+            z-index: 100;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-gradient);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Footer Controls */
+        .footer-controls {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 0;
+            width: 100%;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .slide-counter,
+        .shortcuts-hint,
+        .action-pill {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.45rem 1.1rem;
+            border-radius: 9999px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+        }
+
+        .slide-counter {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .footer-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            pointer-events: auto;
+        }
+
+        .action-pill {
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-primary);
+        }
+
+        .action-pill:hover {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .action-pill.pptx-btn {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(99, 102, 241, 0.25));
+            border-color: rgba(56, 189, 248, 0.45);
+            display: none;
+        }
+
+        /* Speaker Notes Modal */
+        .speaker-notes-modal {
+            position: fixed;
+            bottom: 5rem;
+            right: 4rem;
+            width: 440px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(24px);
+            z-index: 200;
+            color: #f8fafc;
+            display: none;
+            transform: translateY(15px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        }
+
+        .speaker-notes-modal.visible {
+            display: block;
+            animation: modalFadeIn 0.3s forwards;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .speaker-notes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.65rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: #38bdf8;
+            text-transform: uppercase;
+        }
+
+        .speaker-notes-content {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            max-height: 240px;
+            overflow-y: auto;
+        }
+
+        /* System Screenshot Previews & Lightbox */
+        .screen-strip {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.35rem;
+            width: 100%;
+            margin-top: 1.15rem;
+        }
+
+        .screen-preview-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.1rem;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            text-align: left;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .screen-preview-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(56, 189, 248, 0.55);
+            background: var(--glass-hover);
+        }
+
+        .screen-thumb-wrap {
+            flex-shrink: 0;
+            width: 220px;
+            aspect-ratio: 2 / 1;
+            border-radius: 0.65rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: #ffffff;
+            position: relative;
+        }
+
+        .screen-thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .screen-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            min-width: 0;
+        }
+
+        .screen-meta-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.96rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.25;
+        }
+
+        .screen-meta-desc {
+            font-size: 0.8rem;
+            line-height: 1.4;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .screen-zoom-hint {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #38bdf8;
+            letter-spacing: 0.02em;
+            margin-top: 0.15rem;
+        }
+
+        .bignum-preview {
+            margin-top: 0.9rem;
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.85rem;
+            padding: 0.45rem;
+            cursor: pointer;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .bignum-preview:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.55);
+        }
+
+        .bignum-preview img {
+            width: 100%;
+            aspect-ratio: 1.9 / 1;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 0.55rem;
+            background: #ffffff;
+            display: block;
+        }
+
+        .bignum-preview-caption {
+            font-size: 0.72rem;
+            color: #38bdf8;
+            font-weight: 600;
+            margin-top: 0.35rem;
+        }
+
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 8, 18, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .lightbox-modal.visible {
+            display: flex;
+            animation: modalFadeIn 0.2s ease forwards;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 82vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .lightbox-content img {
+            max-width: 90vw;
+            max-height: 78vh;
+            object-fit: contain;
+            border-radius: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+            background: #ffffff;
+        }
+
+        .lightbox-caption {
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 1.5rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #f8fafc;
+            width: 42px;
+            height: 42px;
+            border-radius: 9999px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(56, 189, 248, 0.3);
+            transform: scale(1.06);
+        }
+
+        body.overview-mode .screen-strip,
+        body.overview-mode .bignum-preview,
+        body.overview-mode .slide-tech-preview {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-2"></div>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="presentation-container" id="presentation">
+
+        <!-- Slide 1: Capa Full Bleed -->
+        <div class="slide slide-cover-full active"
+            data-notes="Olá a todos, bom dia/boa tarde! Sejam bem-vindos à apresentação nos Encontros Universitários 2026. Hoje apresento o Desenvolvimento da Plataforma Web Integrada para Gestão de Estágios na UFC Campus Quixadá — uma ação extensionista conduzida no Núcleo de Práticas em Informática (NPI) que conecta estudantes, docentes e empresas concedentes.">
+            <div class="hero-bg-wrapper photo-treated">
+                <!-- IMAGEM [hero-cover]: buscar "university students software team modern campus blue light"
+                     Alternativas: "digital network connection university business partnership"
+                     Proporção recomendada: 16:9 | Orientação: paisagem -->
+                <div class="hero-bg-img mesh-fallback">
+                    <svg width="100%" height="100%" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"
+                        style="opacity: 0.22;">
+                        <defs>
+                            <radialGradient id="gridGrad" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6" />
+                                <stop offset="100%" stop-color="#0b0f19" stop-opacity="0" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="800" cy="450" r="500" fill="url(#gridGrad)" />
+                        <g stroke="#38bdf8" stroke-width="1" stroke-opacity="0.25" fill="none">
+                            <circle cx="800" cy="450" r="180" />
+                            <circle cx="800" cy="450" r="320" />
+                            <circle cx="800" cy="450" r="460" />
+                            <line x1="200" y1="450" x2="1400" y2="450" />
+                            <line x1="800" y1="50" x2="800" y2="850" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="hero-scrim"></div>
+
+            <div class="badge">Encontros Universitários 2026 • <span class="review-blue">Ação Extensionista NPI — UFC
+                    Quixadá</span></div>
+            <h1>Plataforma Web Integrada para <span class="text-gradient">Gestão de Estágios</span> na UFC Quixadá</h1>
+            <p>Centralizando a tramitação documental, o acompanhamento de prazos e a validação de estágios <span
+                    class="review-blue">para fortalecer o elo entre estudantes, universidade e empresas concedentes no
+                    mercado</span>.</p>
+            <div class="author-meta">
+                <span><strong>Núcleo de Práticas em Informática (NPI)</strong></span>
+                <span>•</span>
+                <span>UFC Campus Quixadá</span>
+                <span>•</span>
+                <span>ODS 4: Educação de Qualidade</span>
+            </div>
+        </div>
+
+        <!-- Slide 2: Por que é Extensão? (Respondendo diretamente aos avaliadores) -->
+        <div class="slide"
+            data-notes="Uma pergunta fundamental é: por que este projeto caracteriza uma ação de extensão? Primeiro, porque o estágio supervisionado é o principal elo entre a universidade e o setor produtivo externo. Nossa plataforma não atende apenas à burocracia interna: ela é utilizada diretamente pelos supervisores das empresas concedentes parceiras. Segundo, porque é construída dentro do NPI pelos próprios alunos, prestando um serviço tecnológico gratuito à sociedade e às organizações parceiras.">
+            <div class="badge"><span class="review-blue">Dimensão Extensionista • Universidade & Sociedade</span></div>
+            <h2>Por que é <span class="text-gradient">Extensão Universitária?</span></h2>
+            <div class="layout-2col">
+                <div class="card" style="border-left: 4px solid #38bdf8;">
+                    <div class="card-icon-container">
+                        <div class="card-icon-svg">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 style="margin:0;"><span class="review-blue">Ponte Direta com o Setor Produtivo</span></h3>
+                    </div>
+                    <p><span class="review-blue">O estágio supervisionado conecta a formação acadêmica às empresas e
+                            órgãos públicos concedentes. A plataforma integra diretamente os <strong>supervisores
+                                externos das empresas</strong> no fluxo digital de acompanhamento e Avaliação de
+                            Rendimento, desburocratizando a parceria universidade–empresa e acelerando a inserção
+                            profissional discente.</span></p>
+                </div>
+
+                <div class="card" style="border-left: 4px solid #c084fc;">
+                    <div class="card-icon-container">
+                        <div class="card-icon-svg" style="color:#c084fc; border-color:rgba(192,132,252,0.4);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 style="margin:0;"><span class="review-blue">Protagonismo Discente no NPI</span></h3>
+                    </div>
+                    <p><span class="review-blue">Desenvolvido como ação extensionista no <strong>Núcleo de Práticas em
+                                Informática (NPI)</strong> da UFC Quixadá, o projeto alia a formação prática dos alunos
+                            de Computação e Design à entrega de um serviço público gratuito para os 4 cursos do campus
+                            (CC, ES, SI e DD) e dezenas de organizações parceiras.</span></p>
+                </div>
+            </div>
+
+            <div class="flow-steps">
+                <div class="flow-step"><span class="review-blue">Empresa Concedente (Supervisor Externo)</span></div>
+                <div class="flow-arrow">⇄</div>
+                <div class="flow-step">Estagiário (Discente UFC)</div>
+                <div class="flow-arrow">⇄</div>
+                <div class="flow-step">Professor Orientador</div>
+                <div class="flow-arrow">⇄</div>
+                <div class="flow-step">Coordenação & Secretaria</div>
+            </div>
+        </div>
+
+        <!-- Slide 3: O Problema & Diagnóstico Empírico (VS Comparison) -->
+        <div class="slide"
+            data-notes="Como identificamos os problemas que precisavam ser resolvidos? Não partimos de suposições: aplicamos questionários a 21 estudantes dos 4 cursos do campus, realizamos entrevistas semiestruturadas com os professores orientadores e coordenadores de estágio (Prof. Bruno Góis e Prof. Régis Pires) e analisamos 4 sistemas similares.">
+            <div class="badge"><span class="review-blue">Diagnóstico Empírico • Questionários & Entrevistas</span></div>
+            <h2>Do Gargalo Operacional à <span class="text-gradient">Solução Centralizada</span></h2>
+            <div class="layout-vs">
+                <div class="layout-vs-panel negative">
+                    <h3>Cenário Anterior (Disperso)</h3>
+                    <p>• <strong>Fragmentação de Canais:</strong> Documentos espalhados entre Google Classroom, e-mails,
+                        SIGAA e links externos.<br><br>
+                        • <strong>Quebra de Assinaturas em PDF:</strong> Quando múltiplos atores (<span
+                            class="review-blue">supervisor da empresa</span>, aluno, orientador e coordenador) assinavam
+                        o mesmo PDF, <span class="review-blue">as assinaturas anteriores eram frequentemente
+                            invalidadas</span>.<br><br>
+                        • <strong>Dificuldade nos Prazos:</strong> <span class="review-blue">Relatos nos questionários
+                            de desistência de matrícula e perda de prazos por falta de orientação centralizada.</span>
+                    </p>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="layout-vs-panel positive">
+                    <h3>Plataforma Gestão de Estágio</h3>
+                    <p>• <strong>Ambiente Único Integrado:</strong> Centraliza Plano de Estágio, Relatório Final,
+                        Aproveitamento e Avaliação de Rendimento.<br><br>
+                        • <strong>Assinatura Sequencial Íntegra:</strong> Protocolo com hash criptográfico e QR Code que
+                        preserva a validade jurídica e permite <strong>assinatura em lote</strong> pelos
+                        docentes.<br><br>
+                        • <strong>Dashboard de Pendências:</strong> <span class="review-blue">Atende diretamente à
+                            demanda das entrevistas docentes por revisão online sem necessidade de baixar dezenas de
+                            arquivos avulsos.</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Big Numbers (Metodologia e Levantamento de Requisitos) -->
+        <div class="slide"
+            data-notes="Estes três números sintetizam a base metodológica do nosso trabalho no NPI: ouvimos 21 estudantes dos quatro cursos de graduação, fizemos benchmarking de 4 plataformas do mercado e universidades (E-clic, Sage/UFT, Abre e PUC Minas), e integramos 5 perfis distintos na plataforma.">
+            <div class="badge"><span class="review-blue">Base Metodológica & Pesquisa de Campo</span></div>
+            <h2>Levantamento de Requisitos com a <span class="text-gradient">Comunidade</span></h2>
+            <div class="bignum-grid">
+                <div class="bignum-card">
+                    <div class="bignum-value" data-target="21" style="font-size: 4rem;">0</div>
+                    <div class="bignum-label"><span class="review-blue">Discentes Respondentes</span></div>
+                    <p style="font-size:0.9rem; margin:0;"><span class="review-blue">Questionário aplicado aos alunos
+                            de ES, CC, SI e DD mapeando dificuldades na matrícula, modelos de documentos e assinaturas
+                            digitais.</span></p>
+                </div>
+                <div class="bignum-card">
+                    <div class="bignum-value" data-target="4" style="font-size: 4rem;">0</div>
+                    <div class="bignum-label"><span class="review-blue">Sistemas Similares Analisados</span></div>
+                    <p style="font-size:0.88rem; margin:0;"><span class="review-blue">Benchmarking funcional com E-clic,
+                            Sage (UFT), Portal Abre e APC/GAD (PUC Minas) combinado a entrevistas com coordenadores de
+                            estágio.</span></p>
+                    <div class="bignum-preview" role="button" tabindex="0"
+                        data-lightbox-src="../assets/eu2026/sistema-apc-pucminas.png"
+                        data-lightbox-caption="Benchmarking: Tela do sistema APC/GAD (PUC Minas) analisada no levantamento de requisitos">
+                        <img src="../assets/eu2026/sistema-apc-pucminas.png"
+                            alt="Print do sistema APC/GAD da PUC Minas utilizado no benchmarking">
+                        <div class="bignum-preview-caption">Benchmarking: APC/GAD (PUC Minas)</div>
+                    </div>
+                </div>
+                <div class="bignum-card">
+                    <div class="bignum-value" data-target="5" style="font-size: 4rem;">0</div>
+                    <div class="bignum-label">Atores Integrados no Ciclo</div>
+                    <p style="font-size:0.9rem; margin:0;">Estagiário, <span class="review-blue">Supervisor da Empresa
+                            Concedente</span>, Professor Orientador, Coordenador de Curso e Secretaria Acadêmica.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: O que são as Regras do Regulamento Automatizadas? (Respondendo à dúvida dos revisores) -->
+        <div class="slide"
+            data-notes="Os avaliadores perguntaram: o que significa ter as regras do regulamento de estágio validadas na plataforma? Aqui detalhamos exatamente quais normas regimentais da UFC Quixadá foram traduzidas em validações automáticas no software.">
+            <div class="badge"><span class="review-blue">Esclarecimento Metodológico • Regras do Regulamento</span>
+            </div>
+            <h2 style="margin-bottom: 1rem;">Automatização das <span class="text-gradient">Normas do Regulamento</span>
+            </h2>
+            <div class="grid-cards">
+                <div class="card" style="padding: 1.15rem 1.2rem;">
+                    <div class="card-icon-container" style="margin-bottom: 0.55rem;">
+                        <div class="card-icon-svg" style="width: 36px; height: 36px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <h3 style="margin:0; font-size: 1.08rem;"><span class="review-blue">1. Controle de Prazos
+                                Letivos</span></h3>
+                    </div>
+                    <p style="font-size: 0.86rem;"><span class="review-blue">A secretaria define os prazos oficiais da
+                            turma para cada etapa (Plano,
+                            Relatório e Avaliação). O sistema alerta sobre atrasos e registra automaticamente
+                            penalidades
+                            por entrega fora do prazo.</span></p>
+                </div>
+                <div class="card" style="padding: 1.15rem 1.2rem;">
+                    <div class="card-icon-container" style="margin-bottom: 0.55rem;">
+                        <div class="card-icon-svg" style="width: 36px; height: 36px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 11 12 14 22 4"></polyline>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            </svg>
+                        </div>
+                        <h3 style="margin:0; font-size: 1.08rem;"><span class="review-blue">2. Ordem Estrita de
+                                Assinaturas</span></h3>
+                    </div>
+                    <p style="font-size: 0.86rem;"><span class="review-blue">Garante a precedência exigida pelo
+                            regulamento na Avaliação de
+                            Rendimento: <strong>1º Supervisor da Empresa → 2º Estagiário → 3º Orientador → 4º
+                                Coordenador</strong>, bloqueando etapas fora de ordem.</span></p>
+                </div>
+                <div class="card" style="padding: 1.15rem 1.2rem;">
+                    <div class="card-icon-container" style="margin-bottom: 0.55rem;">
+                        <div class="card-icon-svg" style="width: 36px; height: 36px;">
+                            <svg width="20" height="20" viewBox="0 0 22 22" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </div>
+                        <h3 style="margin:0; font-size: 1.08rem;"><span class="review-blue">3. Fluxo de
+                                Aproveitamento</span></h3>
+                    </div>
+                    <p style="font-size: 0.86rem;"><span class="review-blue">Valida a documentação de estágios não
+                            obrigatórios para aproveitamento:
+                            o aluno submete via formulário web, o orientador analisa ou solicita ajustes, e a secretaria
+                            efetiva a matrícula.</span></p>
+                </div>
+                <div class="card" style="padding: 1.15rem 1.2rem;">
+                    <div class="card-icon-container" style="margin-bottom: 0.55rem;">
+                        <div class="card-icon-svg" style="width: 36px; height: 36px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                        </div>
+                        <h3 style="margin:0; font-size: 1.08rem;"><span class="review-blue">4. Cálculo Transparente de
+                                Médias</span></h3>
+                    </div>
+                    <p style="font-size: 0.86rem;"><span class="review-blue">Exibe de forma clara para o estudante a
+                            composição de suas notas
+                            (documentação, avaliação da empresa, relatório e seminário de estágio), reduzindo dúvidas
+                            recorrentes nas coordenações.</span></p>
+                </div>
+            </div>
+
+            <div class="screen-strip">
+                <div class="screen-preview-card" role="button" tabindex="0"
+                    data-lightbox-src="../assets/eu2026/plataforma-estagio-home-estagiario.png"
+                    data-lightbox-caption="e-estágio — Painel do Estagiário: controle de prazos, status de entrega, ajustes e assinaturas">
+                    <div class="screen-thumb-wrap">
+                        <img src="../assets/eu2026/plataforma-estagio-home-estagiario.png"
+                            alt="Print da tela inicial do estagiário no sistema e-estágio mostrando prazos e atividades">
+                    </div>
+                    <div class="screen-meta">
+                        <div class="screen-meta-title">Painel de Prazos & Atividades (e-estágio)</div>
+                        <p class="screen-meta-desc">Acompanhamento de prazos oficiais, entregas em atraso, ajustes
+                            submetidos e assinaturas.</p>
+                        <span class="screen-zoom-hint">Clique para ampliar</span>
+                    </div>
+                </div>
+                <div class="screen-preview-card" role="button" tabindex="0"
+                    data-lightbox-src="../assets/eu2026/media-detalhes-estagio.png"
+                    data-lightbox-caption="e-estágio — Detalhes do Estágio: progresso das atividades, média final e situação">
+                    <div class="screen-thumb-wrap">
+                        <img src="../assets/eu2026/media-detalhes-estagio.png"
+                            alt="Print dos detalhes do estágio no sistema e-estágio mostrando média final e situação">
+                    </div>
+                    <div class="screen-meta">
+                        <div class="screen-meta-title">Detalhes do Estágio & Média Final</div>
+                        <p class="screen-meta-desc">Visualização de progresso (5/5), média final calculada, situação e
+                            dados da empresa.</p>
+                        <span class="screen-zoom-hint">Clique para ampliar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Arquitetura Enxuta & Inovação em Assinaturas (Menos jargão, mais foco no valor) -->
+        <div class="slide"
+            data-notes="Seguindo a recomendação dos revisores, enxugamos os detalhes técnicos para focar em como a engenharia serve à extensão. A arquitetura combina Vue.js 3, Spring Boot 3, PostgreSQL, MinIO e Keycloak, viabilizando um acesso seguro tanto para a comunidade interna da UFC quanto para os supervisores externos das empresas.">
+            <div class="badge">Arquitetura Orientada ao Serviço Extensionista</div>
+            <h2 style="margin-bottom: 1rem;">Tecnologia a Serviço da <span
+                    class="text-gradient">Desburocratização</span></h2>
+            <div class="grid-cards" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="card" style="padding: 1.25rem;">
+                    <div class="card-icon-container" style="margin-bottom: 0.65rem;">
+                        <div class="card-icon-svg" style="width: 38px; height: 38px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3 style="margin:0; font-size: 1.1rem;">Formulários Web Guiados</h3>
+                    </div>
+                    <p style="font-size: 0.88rem;">Desenvolvidos em <strong>Vue.js 3 + Vuetify 3</strong>. Substituem
+                        modelos `.doc` avulsos por
+                        preenchimento interativo com feedback em tela entre orientador e estagiário.</p>
+                </div>
+                <div class="card" style="padding: 1.25rem;">
+                    <div class="card-icon-container" style="margin-bottom: 0.65rem;">
+                        <div class="card-icon-svg" style="width: 38px; height: 38px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <h3 style="margin:0; font-size: 1.1rem;">Acesso Externo & Interno</h3>
+                    </div>
+                    <p style="font-size: 0.88rem;">Autenticação via <strong>Keycloak (OAuth2)</strong> e API em
+                        <strong>Spring Boot 3</strong>,
+                        permitindo que <span class="review-blue">supervisores de empresas externas</span> acessem e
+                        avaliem estagiários sem fricção.
+                    </p>
+                </div>
+                <div class="card" style="padding: 1.25rem;">
+                    <div class="card-icon-container" style="margin-bottom: 0.65rem;">
+                        <div class="card-icon-svg" style="width: 38px; height: 38px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 style="margin:0; font-size: 1.1rem;">Assinatura Hash & Lote</h3>
+                    </div>
+                    <p style="font-size: 0.88rem;">Armazenamento seguro (<strong>PostgreSQL + MinIO</strong>) com hash
+                        criptográfico sequencial:
+                        <span class="review-blue">docentes e coordenadores homologam múltiplos termos em lote sem
+                            invalidar assinaturas prévias das empresas</span>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="screen-preview-card slide-tech-preview" role="button" tabindex="0"
+                style="max-width: 780px; width: 100%; margin: 1.2rem auto 0;"
+                data-lightbox-src="../assets/eu2026/assinatura-digital.png"
+                data-lightbox-caption="e-estágio — Modal de confirmação de Assinatura Digital autenticada na plataforma">
+                <div class="screen-thumb-wrap" style="width: 260px;">
+                    <img src="../assets/eu2026/assinatura-digital.png"
+                        alt="Print do modal de Assinatura Digital do sistema e-estágio">
+                </div>
+                <div class="screen-meta">
+                    <div class="screen-meta-title">Assinatura Digital Autenticada no Fluxo Web (e-estágio)</div>
+                    <p class="screen-meta-desc">Confirmação via credencial do usuário diretamente na plataforma,
+                        eliminando quebras de assinatura em PDFs externos.</p>
+                    <span class="screen-zoom-hint">Clique para ampliar</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Como se conclui isso? Resultados e Validação (Respondendo diretamente aos avaliadores) -->
+        <div class="slide"
+            data-notes="Como chegamos às conclusões do trabalho? Através da validação funcional da versão em ambiente de homologação junto às coordenações e à equipe do NPI, contrastando cada funcionalidade entregue com as dores reais levantadas nas entrevistas com os professores Bruno e Régis e nos 21 questionários discentes.">
+            <div class="badge"><span class="review-blue">Evidências & Validação em Homologação</span></div>
+            <h2>Resultados Alcançados & <span class="text-gradient">Validação Funcional</span></h2>
+            <div class="layout-2col">
+                <div class="card" style="border-top: 4px solid #38bdf8;">
+                    <h3><span class="review-blue">Como Validamos a Solução?</span></h3>
+                    <p style="margin-top: 0.75rem;">
+                        • <span class="review-blue"><strong>Inspeção Funcional com Stakeholders:</strong> Validação dos
+                            fluxos em ambiente de homologação junto aos docentes orientadores/coordenadores e equipe
+                            técnica do NPI.</span><br><br>
+                        • <span class="review-blue"><strong>Rastreabilidade Requisitos × Dores:</strong> Cada módulo foi
+                            verificado contra os problemas críticos relatados nos 21 questionários discentes e nas
+                            entrevistas docentes.</span><br><br>
+                        • <span class="review-blue"><strong>Testes de Integridade de Assinatura:</strong> Comprovação da
+                            manutenção de validade na cadeia de 4 assinaturas e homologação em lote.</span>
+                    </p>
+                </div>
+                <div class="card" style="border-top: 4px solid #c084fc;">
+                    <h3><span class="review-blue">Impactos Práticos na Comunidade</span></h3>
+                    <p style="margin-top: 0.75rem;">
+                        • <strong>Fim dos Erros de Formatação:</strong> Geração padronizada dos documentos de Plano,
+                        Relatório Final e Aproveitamento direto na plataforma.<br><br>
+                        • <span class="review-blue"><strong>Desburocratização para Empresas Concedentes:</strong>
+                            Supervisores externos avaliam o rendimento do estagiário online, sem depender de softwares
+                            externos de PDF.</span><br><br>
+                        • <strong>Visibilidade Total para Docentes:</strong> Revisão e feedback dentro do próprio
+                        sistema, eliminando o download manual de arquivos do Classroom.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Conclusão Reavaliada & Trabalhos Futuros -->
+        <div class="slide"
+            data-notes="Para concluir com precisão científica: substituímos afirmações absolutas pela evidência concreta obtida na homologação. A plataforma atende de forma consistente ao objetivo proposto frente às demandas mapeadas. Como próximos passos, faremos a implantação piloto com turmas ativas, avaliação de usabilidade com usuários finais e integração com sistemas da UFC. Muito obrigado!">
+            <div class="layout-quote">
+                <div class="badge"><span class="review-blue">Conclusão Fundamentada & Próximos Passos</span></div>
+                <div class="quote-icon">"</div>
+                <div class="quote-text">
+                    <span class="review-blue">A partir da validação dos fluxos funcionais junto às coordenações e ao NPI
+                        frente às demandas mapeadas nas entrevistas e nos questionários, conclui-se que a plataforma
+                        atende de forma consistente ao objetivo proposto</span>, disponibilizando uma solução segura e
+                    desburocratizada <span class="review-blue">que estreita o vínculo extensionista entre a UFC Quixadá
+                        e as instituições concedentes de estágio</span>.
+                </div>
+                <div class="grid-cards" style="max-width: 960px; margin-top: 0.5rem;">
+                    <div class="card" style="padding: 1.15rem 1.25rem; text-align: left;">
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.35rem;">1. Implantação Piloto</h3>
+                        <p style="font-size: 0.85rem;">Operação assistida com as turmas ativas de Estágio Supervisionado
+                            dos 4 cursos da UFC Quixadá.</p>
+                    </div>
+                    <div class="card" style="padding: 1.15rem 1.25rem; text-align: left;">
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.35rem;"><span class="review-blue">2. Avaliação
+                                de Usabilidade</span></h3>
+                        <p style="font-size: 0.85rem;"><span class="review-blue">Coleta de métricas de satisfação e
+                                usabilidade com estagiários, docentes e supervisores externos das empresas.</span></p>
+                    </div>
+                    <div class="card" style="padding: 1.15rem 1.25rem; text-align: left;">
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.35rem;">3. Integração Institucional</h3>
+                        <p style="font-size: 0.85rem;">Integração aos sistemas centrais da UFC e alertas automáticos
+                            multicanal (E-mail / Telegram).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal de Notas -->
+    <div class="speaker-notes-modal" id="speakerNotesModal">
+        <div class="speaker-notes-header">
+            <span>Notas do Apresentador (EU 2026)</span>
+            <span style="font-size: 0.75rem; text-transform: none; color: var(--text-secondary);">(Tecla A)</span>
+        </div>
+        <div class="speaker-notes-content" id="speakerNotesContent"></div>
+    </div>
+
+    <!-- Modal Lightbox para Prints -->
+    <div class="lightbox-modal" id="imageLightbox" aria-hidden="true">
+        <button type="button" class="lightbox-close" id="lightboxClose"
+            aria-label="Fechar visualização ampliada">✕</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Footer Controls -->
+    <div class="footer-controls">
+        <div class="slide-counter"><span id="currentSlideNum">1</span> / <span id="totalSlidesNum">8</span></div>
+        <div class="footer-actions">
+            <button type="button" class="action-pill pptx-btn" id="exportPptxBtn"
+                title="Exportar apresentação para arquivo PowerPoint .pptx (Tecla P)" />
+        </div>
+    </div>
+
+    <!-- Script Controller + Native PPTX Exporter -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const progressBar = document.getElementById('progressBar');
+            const currentSlideNum = document.getElementById('currentSlideNum');
+            const totalSlidesNum = document.getElementById('totalSlidesNum');
+            const speakerNotesModal = document.getElementById('speakerNotesModal');
+            const speakerNotesContent = document.getElementById('speakerNotesContent');
+            const imageLightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const exportPptxBtn = document.getElementById('exportPptxBtn');
+            const body = document.body;
+
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            totalSlidesNum.textContent = totalSlides;
+            let isOverviewMode = false;
+
+            function openLightbox(src, caption, alt) {
+                lightboxImg.src = src;
+                lightboxImg.alt = alt || caption || '';
+                lightboxCaption.textContent = caption || '';
+                imageLightbox.classList.add('visible');
+                imageLightbox.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeLightbox() {
+                imageLightbox.classList.remove('visible');
+                imageLightbox.setAttribute('aria-hidden', 'true');
+                lightboxImg.src = '';
+            }
+
+            document.querySelectorAll('[data-lightbox-src]').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    if (isOverviewMode) return;
+                    e.stopPropagation();
+                    const img = trigger.querySelector('img');
+                    openLightbox(
+                        trigger.getAttribute('data-lightbox-src'),
+                        trigger.getAttribute('data-lightbox-caption'),
+                        img ? img.alt : ''
+                    );
+                });
+                trigger.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        trigger.click();
+                    }
+                });
+            });
+
+            lightboxClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeLightbox();
+            });
+
+            imageLightbox.addEventListener('click', (e) => {
+                if (e.target === imageLightbox) {
+                    closeLightbox();
+                }
+            });
+
+            function animateBigNumbers(slide) {
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (prefersReducedMotion) return;
+
+                const numbers = slide.querySelectorAll('.bignum-value');
+                numbers.forEach(el => {
+                    const targetStr = el.getAttribute('data-target');
+                    const target = Number.parseFloat(targetStr);
+                    const isPercentage = targetStr.includes('%');
+                    const duration = 1200;
+                    const startTime = performance.now();
+
+                    function updateCounter(currentTime) {
+                        const elapsedTime = currentTime - startTime;
+                        const progress = Math.min(elapsedTime / duration, 1);
+                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        const currentVal = (target * easeOutQuart).toFixed(0);
+
+                        el.textContent = currentVal + (isPercentage ? '%' : '');
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            el.textContent = target + (isPercentage ? '%' : '');
+                        }
+                    }
+                    requestAnimationFrame(updateCounter);
+                });
+            }
+
+            function updateSlide(index) {
+                if (index < 0 || index >= totalSlides) return;
+                currentSlide = index;
+
+                slides.forEach((slide, i) => {
+                    if (i === currentSlide) {
+                        slide.classList.add('active');
+                        animateBigNumbers(slide);
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+
+                currentSlideNum.textContent = currentSlide + 1;
+                progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+
+                const notes = slides[currentSlide].getAttribute('data-notes') || 'Nenhuma nota registrada.';
+                speakerNotesContent.textContent = notes;
+            }
+
+            function toggleOverviewMode() {
+                isOverviewMode = !isOverviewMode;
+                body.classList.toggle('overview-mode', isOverviewMode);
+                if (!isOverviewMode) {
+                    updateSlide(currentSlide);
+                }
+            }
+
+            // Native PowerPoint (.pptx) Generator via PptxGenJS
+            async function exportToPptx() {
+                if (typeof PptxGenJS === 'undefined') {
+                    alert('A biblioteca PptxGenJS ainda está carregando ou você está sem conexão com a internet para baixar o CDN.');
+                    return;
+                }
+
+                const originalText = exportPptxBtn.innerHTML;
+                exportPptxBtn.innerHTML = '⏳ Gerando .PPTX...';
+
+                try {
+                    const pptx = new PptxGenJS();
+                    pptx.layout = 'LAYOUT_WIDE'; // 13.33 x 7.5 inches (16:9)
+                    pptx.author = 'NPI - UFC Campus Quixadá';
+                    pptx.company = 'Universidade Federal do Ceará (UFC)';
+                    pptx.subject = 'Encontros Universitários 2026';
+                    pptx.title = 'Plataforma Web Integrada para Gestão de Estágios na UFC Campus Quixadá';
+
+                    const BG_DARK = '0B0F19';
+                    const CARD_BG = '151E32';
+                    const CARD_BORDER = '2A3655';
+                    const TEXT_WHITE = 'F8FAFC';
+                    const TEXT_MUTED = '94A3B8';
+                    const ACCENT_CYAN = '38BDF8';
+                    const ACCENT_INDIGO = '6366F1';
+                    const ACCENT_PURPLE = 'C084FC';
+                    const ACCENT_RED = 'EF4444';
+                    const REVIEW_COLOR = 'CBD5E1';
+
+                    function addBaseSlide(badgeText, titleText, notesText) {
+                        const slide = pptx.addSlide();
+                        slide.background = { color: BG_DARK };
+                        if (notesText) slide.addNotes(notesText);
+
+                        // Top progress accent bar
+                        slide.addShape(pptx.ShapeType.rect, {
+                            x: 0, y: 0, w: 13.33, h: 0.08,
+                            fill: { color: ACCENT_INDIGO }, line: { color: ACCENT_INDIGO }
+                        });
+
+                        if (badgeText) {
+                            slide.addShape(pptx.ShapeType.roundRect, {
+                                x: 0.8, y: 0.55, w: 5.8, h: 0.42,
+                                fill: { color: CARD_BG }, line: { color: CARD_BORDER, pt: 1 }, rectRadius: 0.2
+                            });
+                            slide.addText(badgeText.toUpperCase(), {
+                                x: 0.8, y: 0.55, w: 5.8, h: 0.42,
+                                fontSize: 10, bold: true, color: ACCENT_CYAN, align: 'center', fontFace: 'Arial'
+                            });
+                        }
+
+                        if (titleText) {
+                            slide.addText(titleText, {
+                                x: 0.8, y: 1.15, w: 11.7, h: 0.75,
+                                fontSize: 28, bold: true, color: TEXT_WHITE, fontFace: 'Arial'
+                            });
+                        }
+                        return slide;
+                    }
+
+                    // SLIDE 1: Cover
+                    const s1 = pptx.addSlide();
+                    s1.background = { color: BG_DARK };
+                    s1.addNotes(slides[0].getAttribute('data-notes'));
+                    s1.addShape(pptx.ShapeType.rect, { x: 0, y: 0, w: 13.33, h: 0.1, fill: { color: ACCENT_CYAN } });
+                    s1.addShape(pptx.ShapeType.roundRect, {
+                        x: 3.1, y: 1.2, w: 7.1, h: 0.5,
+                        fill: { color: CARD_BG }, line: { color: ACCENT_CYAN, pt: 1 }, rectRadius: 0.25
+                    });
+                    s1.addText('ENCONTROS UNIVERSITÁRIOS 2026 • AÇÃO EXTENSIONISTA NPI', {
+                        x: 3.1, y: 1.2, w: 7.1, h: 0.5,
+                        fontSize: 11, bold: true, color: ACCENT_CYAN, align: 'center', fontFace: 'Arial'
+                    });
+                    s1.addText('Plataforma Web Integrada para Gestão de Estágios na UFC Quixadá', {
+                        x: 1.0, y: 2.1, w: 11.33, h: 1.6,
+                        fontSize: 36, bold: true, color: TEXT_WHITE, align: 'center', fontFace: 'Arial'
+                    });
+                    s1.addText('Centralizando a tramitação documental, o acompanhamento de prazos e a validação de estágios para fortalecer o elo entre estudantes, universidade e empresas concedentes.', {
+                        x: 1.6, y: 3.9, w: 10.1, h: 1.1,
+                        fontSize: 16, color: REVIEW_COLOR, align: 'center', fontFace: 'Arial'
+                    });
+                    s1.addShape(pptx.ShapeType.roundRect, {
+                        x: 2.4, y: 5.5, w: 8.5, h: 0.65,
+                        fill: { color: CARD_BG }, line: { color: CARD_BORDER, pt: 1 }, rectRadius: 0.3
+                    });
+                    s1.addText('Núcleo de Práticas em Informática (NPI)  •  UFC Campus Quixadá  •  ODS 4: Educação de Qualidade', {
+                        x: 2.4, y: 5.5, w: 8.5, h: 0.65,
+                        fontSize: 12, bold: true, color: TEXT_WHITE, align: 'center', fontFace: 'Arial'
+                    });
+
+                    // SLIDE 2: Por que é Extensão?
+                    const s2 = addBaseSlide('Dimensão Extensionista • Universidade & Sociedade', 'Por que é Extensão Universitária?', slides[1].getAttribute('data-notes'));
+                    s2.addShape(pptx.ShapeType.roundRect, {
+                        x: 0.8, y: 2.15, w: 5.65, h: 3.4,
+                        fill: { color: CARD_BG }, line: { color: ACCENT_CYAN, pt: 1.5 }, rectRadius: 0.15
+                    });
+                    s2.addText('Ponte Direta com o Setor Produtivo', {
+                        x: 1.1, y: 2.35, w: 5.0, h: 0.45, fontSize: 18, bold: true, color: ACCENT_CYAN, fontFace: 'Arial'
+                    });
+                    s2.addText('O estágio supervisionado conecta a formação acadêmica às empresas e órgãos públicos concedentes.\n\nA plataforma integra diretamente os supervisores externos das empresas no fluxo digital de acompanhamento e Avaliação de Rendimento, desburocratizando a parceria universidade-empresa.', {
+                        x: 1.1, y: 2.9, w: 5.0, h: 2.4, fontSize: 13.5, color: REVIEW_COLOR, fontFace: 'Arial'
+                    });
+
+                    s2.addShape(pptx.ShapeType.roundRect, {
+                        x: 6.85, y: 2.15, w: 5.65, h: 3.4,
+                        fill: { color: CARD_BG }, line: { color: ACCENT_PURPLE, pt: 1.5 }, rectRadius: 0.15
+                    });
+                    s2.addText('Protagonismo Discente no NPI', {
+                        x: 7.15, y: 2.35, w: 5.0, h: 0.45, fontSize: 18, bold: true, color: ACCENT_PURPLE, fontFace: 'Arial'
+                    });
+                    s2.addText('Desenvolvido como ação extensionista no Núcleo de Práticas em Informática (NPI) da UFC Quixadá.\n\nO projeto alia a formação prática dos alunos de Computação e Design à entrega de um serviço público gratuito para os 4 cursos do campus (CC, ES, SI e DD) e organizações parceiras.', {
+                        x: 7.15, y: 2.9, w: 5.0, h: 2.4, fontSize: 13.5, color: REVIEW_COLOR, fontFace: 'Arial'
+                    });
+
+                    s2.addShape(pptx.ShapeType.roundRect, {
+                        x: 0.8, y: 5.85, w: 11.7, h: 0.75,
+                        fill: { color: '112239' }, line: { color: ACCENT_CYAN, pt: 1 }, rectRadius: 0.12
+                    });
+                    s2.addText('Empresa Concedente (Supervisor Externo)   ⇄   Estagiário (UFC)   ⇄   Prof. Orientador   ⇄   Coordenação & Secretaria', {
+                        x: 0.8, y: 5.85, w: 11.7, h: 0.75, fontSize: 13, bold: true, color: TEXT_WHITE, align: 'center', fontFace: 'Arial'
+                    });
+
+                    // SLIDE 3: VS Comparison
+                    const s3 = addBaseSlide('Diagnóstico Empírico • Questionários & Entrevistas', 'Do Gargalo Operacional à Solução Centralizada', slides[2].getAttribute('data-notes'));
+                    s3.addShape(pptx.ShapeType.roundRect, {
+                        x: 0.8, y: 2.15, w: 5.6, h: 4.5,
+                        fill: { color: CARD_BG }, line: { color: ACCENT_RED, pt: 1.5 }, rectRadius: 0.15
+                    });
+                    s3.addText('Cenário Anterior (Disperso)', {
+                        x: 1.1, y: 2.35, w: 5.0, h: 0.45, fontSize: 18, bold: true, color: ACCENT_RED, fontFace: 'Arial'
+                    });
+                    s3.addText('• Fragmentação de Canais: Documentos espalhados entre Google Classroom, e-mails e SIGAA.\n\n• Quebra de Assinaturas em PDF: Múltiplas assinaturas (supervisor externo, aluno, orientador e coordenador) invalidavam certificados anteriores.\n\n• Perda de Prazos: Dificuldades relatadas nos questionários para achar modelos e regras de aproveitamento.', {
+                        x: 1.1, y: 2.95, w: 5.0, h: 3.4, fontSize: 13, color: TEXT_MUTED, fontFace: 'Arial'
+                    });
+
+                    s3.addShape(pptx.ShapeType.roundRect, {
+                        x: 6.9, y: 2.15, w: 5.6, h: 4.5,
+                        fill: { color: CARD_BG }, line: { color: ACCENT_CYAN, pt: 1.5 }, rectRadius: 0.15
+                    });
+                    s3.addText('Plataforma Gestão de Estágio', {
+                        x: 7.2, y: 2.35, w: 5.0, h: 0.45, fontSize: 18, bold: true, color: ACCENT_CYAN, fontFace: 'Arial'
+                    });
+                    s3.addText('• Ambiente Único Integrado: Centraliza Plano de Estágio, Relatório Final, Aproveitamento e Avaliação de Rendimento.\n\n• Assinatura Sequencial Íntegra: Hash criptográfico e QR Code com suporte a assinatura em lote.\n\n• Dashboard de Pendências: Revisão e feedback dentro do sistema sem baixar dezenas de arquivos avulsos.', {
+                        x: 7.2, y: 2.95, w: 5.0, h: 3.4, fontSize: 13, color: REVIEW_COLOR, fontFace: 'Arial'
+                    });
+
+                    // SLIDE 4: Big Numbers
+                    const s4 = addBaseSlide('Base Metodológica & Pesquisa de Campo', 'Levantamento de Requisitos com a Comunidade', slides[3].getAttribute('data-notes'));
+                    const kpis = [
+                        { num: '21', label: 'Discentes Respondentes', desc: 'Questionário aplicado aos alunos de ES, CC, SI e DD mapeando dificuldades na matrícula, modelos e assinaturas.' },
+                        { num: '4', label: 'Sistemas Similares Analisados', desc: 'Benchmarking com E-clic, Sage (UFT), Portal Abre e PUC Minas, somado a entrevistas com coordenadores.' },
+                        { num: '5', label: 'Atores Integrados no Ciclo', desc: 'Estagiário, Supervisor da Empresa Concedente, Orientador, Coordenador de Curso e Secretaria Acadêmica.' }
+                    ];
+                    kpis.forEach((k, idx) => {
+                        const xPos = 0.8 + idx * 4.0;
+                        s4.addShape(pptx.ShapeType.roundRect, {
+                            x: xPos, y: 2.25, w: 3.7, h: 4.3,
+                            fill: { color: CARD_BG }, line: { color: CARD_BORDER, pt: 1.2 }, rectRadius: 0.18
+                        });
+                        s4.addText(k.num, {
+                            x: xPos, y: 2.55, w: 3.7, h: 1.1,
+                            fontSize: 54, bold: true, color: ACCENT_CYAN, align: 'center', fontFace: 'Arial'
+                        });
+                        s4.addText(k.label, {
+                            x: xPos + 0.2, y: 3.75, w: 3.3, h: 0.55,
+                            fontSize: 15, bold: true, color: TEXT_WHITE, align: 'center', fontFace: 'Arial'
+                        });
+                        s4.addText(k.desc, {
+                            x: xPos + 0.25, y: 4.4, w: 3.2, h: 1.8,
+                            fontSize: 12.5, color: REVIEW_COLOR, align: 'center', fontFace: 'Arial'
+                        });
+                    });
+
+                    // SLIDE 5: Regras do Regulamento
+                    const s5 = addBaseSlide('Esclarecimento Metodológico • Regras do Regulamento', 'Automatização das Normas do Regulamento', slides[4].getAttribute('data-notes'));
+                    const rules = [
+                        { title: '1. Prazos Letivos e Turmas', desc: 'A secretaria define deadlines por semestre para Plano, Relatório e Avaliação, com alertas automáticos de atraso.' },
+                        { title: '2. Ordem Estrita de Aprovação', desc: 'Garante a sequência na Avaliação de Rendimento: 1º Supervisor da Empresa → 2º Estagiário → 3º Orientador → 4º Coordenador.' },
+                        { title: '3. Fluxo de Aproveitamento', desc: 'Submissão estruturada para estágios não obrigatórios com análise do orientador, ajustes e matrícula pela secretaria.' },
+                        { title: '4. Cálculo Transparente de Médias', desc: 'Exibe de forma clara a composição das notas (documentos, avaliação da empresa, relatório e seminário).' }
+                    ];
+                    rules.forEach((r, idx) => {
+                        const col = idx % 2;
+                        const row = Math.floor(idx / 2);
+                        const xPos = 0.8 + col * 6.0;
+                        const yPos = 2.15 + row * 2.35;
+                        s5.addShape(pptx.ShapeType.roundRect, {
+                            x: xPos, y: yPos, w: 5.7, h: 2.1,
+                            fill: { color: CARD_BG }, line: { color: ACCENT_CYAN, pt: 1 }, rectRadius: 0.14
+                        });
+                        s5.addText(r.title, {
+                            x: xPos + 0.3, y: yPos + 0.2, w: 5.1, h: 0.4,
+                            fontSize: 16, bold: true, color: ACCENT_CYAN, fontFace: 'Arial'
+                        });
+                        s5.addText(r.desc, {
+                            x: xPos + 0.3, y: yPos + 0.7, w: 5.1, h: 1.2,
+                            fontSize: 13, color: REVIEW_COLOR, fontFace: 'Arial'
+                        });
+                    });
+
+                    // SLIDE 6: Arquitetura Concisa
+                    const s6 = addBaseSlide('Arquitetura Orientada ao Serviço Extensionista', 'Tecnologia a Serviço da Desburocratização', slides[5].getAttribute('data-notes'));
+                    const arch = [
+                        { title: 'Formulários Web Guiados', desc: 'Vue.js 3 + Vuetify 3. Substituem modelos .doc avulsos por preenchimento interativo com feedback em tela entre orientador e estagiário.' },
+                        { title: 'Acesso Interno e Externo', desc: 'Keycloak (OAuth2) + Spring Boot 3. Permite que supervisores de empresas externas acessem e avaliem estagiários de forma segura.' },
+                        { title: 'Assinatura Hash & Lote', desc: 'PostgreSQL + MinIO com hash criptográfico sequencial: docentes homologam processos em lote sem invalidar assinaturas prévias das empresas.' }
+                    ];
+                    arch.forEach((a, idx) => {
+                        const xPos = 0.8 + idx * 4.0;
+                        s6.addShape(pptx.ShapeType.roundRect, {
+                            x: xPos, y: 2.25, w: 3.7, h: 4.2,
+                            fill: { color: CARD_BG }, line: { color: CARD_BORDER, pt: 1.2 }, rectRadius: 0.16
+                        });
+                        s6.addText(a.title, {
+                            x: xPos + 0.25, y: 2.55, w: 3.2, h: 0.55,
+                            fontSize: 16, bold: true, color: ACCENT_CYAN, fontFace: 'Arial'
+                        });
+                        s6.addText(a.desc, {
+                            x: xPos + 0.25, y: 3.3, w: 3.2, h: 2.8,
+                            fontSize: 13, color: TEXT_MUTED, fontFace: 'Arial'
+                        });
+                    });
+
+                    // SLIDE 7: Resultados e Validação
+                    const s7 = addBaseSlide('Evidências & Validação em Homologação', 'Resultados Alcançados & Validação Funcional', slides[6].getAttribute('data-notes'));
+                    s7.addShape(pptx.ShapeType.roundRect, {
+                        x: 0.8, y: 2.15, w: 5.65, h: 4.5,
+                        fill: { color: CARD_BG }, line: { color: ACCENT_CYAN, pt: 1.5 }, rectRadius: 0.15
+                    });
+                    s7.addText('Como Validamos a Solução?', {
+                        x: 1.1, y: 2.35, w: 5.0, h: 0.45, fontSize: 18, bold: true, color: ACCENT_CYAN, fontFace: 'Arial'
+                    });
+                    s7.addText('• Inspeção Funcional com Stakeholders: Validação dos fluxos em homologação junto às coordenações e equipe do NPI.\n\n• Rastreabilidade Requisitos × Dores: Cada módulo verificado frente aos 21 questionários discentes e entrevistas docentes.\n\n• Testes de Integridade de Assinatura: Comprovação da validade na cadeia de 4 assinaturas e homologação em lote.', {
+                        x: 1.1, y: 2.95, w: 5.0, h: 3.4, fontSize: 13, color: REVIEW_COLOR, fontFace: 'Arial'
+                    });
+
+                    s7.addShape(pptx.ShapeType.roundRect, {
+                        x: 6.85, y: 2.15, w: 5.65, h: 4.5,
+                        fill: { color: CARD_BG }, line: { color: ACCENT_PURPLE, pt: 1.5 }, rectRadius: 0.15
+                    });
+                    s7.addText('Impactos Práticos na Comunidade', {
+                        x: 7.15, y: 2.35, w: 5.0, h: 0.45, fontSize: 18, bold: true, color: ACCENT_PURPLE, fontFace: 'Arial'
+                    });
+                    s7.addText('• Fim dos Erros de Formatação: Geração padronizada de Plano, Relatório Final e Aproveitamento.\n\n• Desburocratização para Empresas Concedentes: Supervisores externos avaliam online sem depender de softwares de PDF.\n\n• Visibilidade para Docentes: Revisão e feedback dentro do sistema, sem downloads manuais.', {
+                        x: 7.15, y: 2.95, w: 5.0, h: 3.4, fontSize: 13, color: REVIEW_COLOR, fontFace: 'Arial'
+                    });
+
+                    // SLIDE 8: Conclusão e Trabalhos Futuros
+                    const s8 = addBaseSlide('Conclusão Fundamentada & Próximos Passos', 'Conclusão & Trabalhos Futuros', slides[7].getAttribute('data-notes'));
+                    s8.addShape(pptx.ShapeType.roundRect, {
+                        x: 0.8, y: 2.1, w: 11.7, h: 2.1,
+                        fill: { color: CARD_BG }, line: { color: ACCENT_INDIGO, pt: 1.5 }, rectRadius: 0.15
+                    });
+                    s8.addText('"A partir da validação dos fluxos funcionais junto às coordenações e ao NPI frente às demandas mapeadas nas entrevistas e nos questionários, conclui-se que a plataforma atende de forma consistente ao objetivo proposto, disponibilizando uma solução segura e desburocratizada que estreita o vínculo extensionista entre a UFC Quixadá e as instituições concedentes de estágio."', {
+                        x: 1.1, y: 2.25, w: 11.1, h: 1.8,
+                        fontSize: 14.5, italic: true, color: REVIEW_COLOR, align: 'center', fontFace: 'Arial'
+                    });
+
+                    const future = [
+                        { title: '1. Implantação Piloto', desc: 'Operação assistida com as turmas ativas de Estágio Supervisionado dos 4 cursos da UFC Quixadá.' },
+                        { title: '2. Avaliação de Usabilidade', desc: 'Coleta de métricas de satisfação e usabilidade com estagiários, docentes e supervisores externos.' },
+                        { title: '3. Integração Institucional', desc: 'Integração aos sistemas centrais da UFC e alertas automáticos multicanal (E-mail / Telegram).' }
+                    ];
+                    future.forEach((f, idx) => {
+                        const xPos = 0.8 + idx * 4.0;
+                        s8.addShape(pptx.ShapeType.roundRect, {
+                            x: xPos, y: 4.5, w: 3.7, h: 2.15,
+                            fill: { color: CARD_BG }, line: { color: CARD_BORDER, pt: 1 }, rectRadius: 0.14
+                        });
+                        s8.addText(f.title, {
+                            x: xPos + 0.2, y: 4.7, w: 3.3, h: 0.4,
+                            fontSize: 14.5, bold: true, color: ACCENT_CYAN, fontFace: 'Arial'
+                        });
+                        s8.addText(f.desc, {
+                            x: xPos + 0.2, y: 5.2, w: 3.3, h: 1.2,
+                            fontSize: 12, color: TEXT_MUTED, fontFace: 'Arial'
+                        });
+                    });
+
+                    await pptx.writeFile({ fileName: 'Apresentacao_EU2026_Gestao_Estagio_UFC_Quixada.pptx' });
+                } catch (err) {
+                    console.error(err);
+                    alert('Erro ao exportar PPTX: ' + err.message);
+                } finally {
+                    exportPptxBtn.innerHTML = originalText;
+                    exportPptxBtn.blur();
+                }
+            }
+
+            exportPptxBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                exportToPptx();
+            });
+
+            // Overview click delegation
+            document.getElementById('presentation').addEventListener('click', (e) => {
+                if (!isOverviewMode) return;
+                const slide = e.target.closest('.slide');
+                if (slide) {
+                    const index = Array.from(slides).indexOf(slide);
+                    currentSlide = index;
+                    toggleOverviewMode();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (imageLightbox.classList.contains('visible')) {
+                    if (e.key === 'Escape') {
+                        e.preventDefault();
+                        closeLightbox();
+                    }
+                    return;
+                }
+
+                if (isOverviewMode) {
+                    if (e.key === 'g' || e.key === 'G' || e.key === 'Escape') toggleOverviewMode();
+                    if (e.key === 'Enter' || e.key === ' ') toggleOverviewMode();
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        if (currentSlide < totalSlides - 1) {
+                            slides[currentSlide].classList.remove('active');
+                            currentSlide++;
+                            slides[currentSlide].classList.add('active');
+                        }
+                    }
+                    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        if (currentSlide > 0) {
+                            slides[currentSlide].classList.remove('active');
+                            currentSlide--;
+                            slides[currentSlide].classList.add('active');
+                        }
+                    }
+                    return;
+                }
+
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+                    e.preventDefault(); updateSlide(currentSlide + 1);
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+                    e.preventDefault(); updateSlide(currentSlide - 1);
+                } else if (e.key === 'a' || e.key === 'A') {
+                    e.preventDefault(); speakerNotesModal.classList.toggle('visible');
+                } else if (e.key === 't' || e.key === 'T') {
+                    e.preventDefault();
+                    document.documentElement.setAttribute('data-theme',
+                        document.documentElement.setAttribute('data-theme') === 'light' ? 'dark' : 'light');
+                } else if (e.key === 'g' || e.key === 'G') {
+                    e.preventDefault(); toggleOverviewMode();
+                } else if (e.key === 'p' || e.key === 'P') {
+                    e.preventDefault(); exportToPptx();
+                }
+            });
+
+            let touchStartX = 0, touchEndX = 0;
+            document.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, false);
+            document.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (!isOverviewMode && touchStartX - touchEndX > 50) updateSlide(currentSlide + 1);
+                else if (!isOverviewMode && touchEndX - touchStartX > 50) updateSlide(currentSlide - 1);
+            }, false);
+
+            updateSlide(0);
+        });
+    </script>
+</body>
+
+</html>
